@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://area_selection/area_selection.gd" type="Script" id=1]
+[ext_resource path="res://confirmation/confirmation.tscn" type="PackedScene" id=2]
+[ext_resource path="res://area_detail/area_detail.tscn" type="PackedScene" id=3]
+[ext_resource path="res://capture_scene_img/capture_scene_img.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GradientTexture2D" id=2]
+fill_from = Vector2( 1, 0 )
+fill_to = Vector2( 0, 0 )
+
+[sub_resource type="GradientTexture2D" id=1]
+
+[node name="area_selection" type="Popup"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+popup_exclusive = true
+script = ExtResource( 1 )
+
+[node name="map_tab_container" type="TabContainer" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ทวีป1" type="ItemList" parent="map_tab_container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 36.0
+margin_right = -4.0
+margin_bottom = -4.0
+items = [ "พื้นที่ 1", SubResource( 2 ), false, "พื้นที่ 2", SubResource( 1 ), false ]
+max_columns = 0
+icon_mode = 0
+fixed_icon_size = Vector2( 64, 64 )
+
+[node name="ทวีป2" type="ItemList" parent="map_tab_container"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 36.0
+margin_right = -4.0
+margin_bottom = -4.0
+items = [ "พื้นที่ 1", SubResource( 2 ), false, "พื้นที่ 2", SubResource( 1 ), false ]
+max_columns = 0
+icon_mode = 0
+fixed_icon_size = Vector2( 64, 64 )
+
+[node name="play_confirmation" parent="." instance=ExtResource( 2 )]
+margin_left = -71.0
+margin_top = -39.5
+margin_right = 71.0
+margin_bottom = 39.5
+text_label = "คุณกำลังจะเล่น"
+
+[node name="area_detail" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
+
+[node name="capture_scene_img" parent="." instance=ExtResource( 4 )]
+unique_name_in_owner = true
+margin_left = -2500.0
+margin_right = -1540.0
+margin_bottom = 540.0
+
+[connection signal="item_activated" from="map_tab_container/ทวีป1" to="." method="_on_level_item_activated"]
+[connection signal="item_activated" from="map_tab_container/ทวีป2" to="." method="_on_level_item_activated"]

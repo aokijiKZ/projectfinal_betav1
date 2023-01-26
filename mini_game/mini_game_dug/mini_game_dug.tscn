@@ -1,0 +1,134 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://mini_game/mini_game_dug/mini_game_dug.gd" type="Script" id=1]
+[ext_resource path="res://mini_game/mini_game_dug/img/bg_ground.png" type="Texture" id=2]
+[ext_resource path="res://mini_game/mini_game_dug/img/bg.png" type="Texture" id=3]
+[ext_resource path="res://mini_game/mini_game_dug/img/bg1.png" type="Texture" id=4]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=6]
+size = 6
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 96, 112 )
+margin_left = 9.19516
+margin_right = 9.43125
+margin_top = 11.83
+margin_bottom = 9.70864
+
+[sub_resource type="GDScript" id=1]
+resource_name = "seed_item_list"
+script/source = "extends ItemList
+
+func get_drag_data(position):
+	var select_item_index = get_item_at_position(position)
+	if select_item_index == -1 :
+		return
+	var item_name = get_item_text(select_item_index).rsplit(' ',true,1)[0]
+	var quantity = get_item_text(select_item_index).rsplit('X',true,1)[1]
+	
+	var data = {
+		\"item_name\":item_name,
+		\"quantity\":quantity,
+		\"icon\":get_item_icon(select_item_index),
+		'item':get_item_metadata(select_item_index)
+	}
+	var control = Control.new()
+	var texturerect = TextureRect.new()
+	texturerect.texture = get_item_icon(select_item_index)
+	texturerect.rect_size = Vector2(16, 16)
+	texturerect.rect_position = -0.5 * texturerect.rect_size
+	control.add_child(texturerect)
+	set_drag_preview(control)
+	return data
+"
+
+[sub_resource type="GDScript" id=2]
+resource_name = "area_place_seed"
+script/source = "extends TextureRect
+
+func can_drop_data(position, data):
+	return typeof(data) == TYPE_DICTIONARY and data.has(\"item_name\")
+
+func drop_data(position, data):
+	var item_name = data.item_name
+	var item = get_tree().get_nodes_in_group('inventory')[0].get_item(item_name)
+	get_parent().ground_farm.item_seed = item
+	get_tree().get_nodes_in_group('inventory')[0].remove_item(item)
+	var old_texture = texture
+#	texture = data.item.grow_textrue_list[0]
+	texture = data.icon
+	get_parent().ground_farm.state = 'seed'
+	yield(get_tree().create_timer(0.5), \"timeout\")
+	get_parent().hide()
+	get_parent().get_node('%area_place_seed').texture = old_texture
+	
+"
+
+[node name="mini_game_dug" type="PopupDialog"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.5
+margin_top = -70.0
+margin_right = 128.5
+margin_bottom = 70.0
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 1 )
+
+[node name="bg" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -90.0
+margin_right = 160.0
+margin_bottom = 90.0
+texture = ExtResource( 4 )
+
+[node name="bg_ground" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -42.0
+margin_right = 112.0
+margin_bottom = 38.0
+texture = ExtResource( 2 )
+
+[node name="seed_item_list" type="ItemList" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.5
+margin_top = 11.0
+margin_right = -168.5
+margin_bottom = -17.0
+custom_fonts/font = SubResource( 6 )
+custom_styles/cursor = SubResource( 5 )
+custom_styles/selected_focus = SubResource( 5 )
+custom_styles/bg_focus = SubResource( 5 )
+custom_styles/cursor_unfocused = SubResource( 5 )
+custom_styles/selected = SubResource( 5 )
+custom_styles/bg = SubResource( 5 )
+script = SubResource( 1 )
+
+[node name="area_place_seed" type="TextureRect" parent="."]
+unique_name_in_owner = true
+margin_left = 120.5
+margin_top = 65.0
+margin_right = 136.5
+margin_bottom = 81.0
+rect_min_size = Vector2( 16, 16 )
+script = SubResource( 2 )
+
+[connection signal="about_to_show" from="." to="." method="_on_mini_game_dug_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_mini_game_dug_popup_hide"]

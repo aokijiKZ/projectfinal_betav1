@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://shop_menu/shop_menu.gd" type="Script" id=1]
+[ext_resource path="res://item/instance/medium_energy_potion.tres" type="Resource" id=2]
+[ext_resource path="res://item/instance/tomato_seed.tres" type="Resource" id=3]
+[ext_resource path="res://item/instance/small_energy_potion.tres" type="Resource" id=4]
+[ext_resource path="res://item/instance/medium_unlimit_energy_potion.tres" type="Resource" id=5]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://item/instance/small_unlimit_energy_potion.tres" type="Resource" id=7]
+
+[sub_resource type="DynamicFont" id=5]
+size = 6
+font_data = ExtResource( 6 )
+
+[node name="shop_menu" type="PopupDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -70.0
+margin_right = 140.0
+margin_bottom = 70.0
+script = ExtResource( 1 )
+sell_item_list = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ) ]
+
+[node name="label" type="Label" parent="."]
+margin_top = 2.0
+margin_right = 136.0
+margin_bottom = 20.0
+text = "รายการที่สามาซื้อ"
+align = 1
+valign = 1
+
+[node name="label2" type="Label" parent="."]
+margin_left = 140.0
+margin_top = 3.0
+margin_right = 276.0
+margin_bottom = 21.0
+text = "รายการที่สั่ง"
+align = 1
+valign = 1
+
+[node name="label3" type="Label" parent="."]
+margin_left = 136.0
+margin_top = 68.0
+margin_right = 272.0
+margin_bottom = 86.0
+text = "รายการที่รอขาย"
+align = 1
+valign = 1
+
+[node name="can_buy_item_list" type="ItemList" parent="."]
+unique_name_in_owner = true
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 9.0
+margin_top = -51.0
+margin_right = 137.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 5 )
+
+[node name="waing_item_list" type="ItemList" parent="."]
+unique_name_in_owner = true
+margin_left = 142.0
+margin_top = 20.0
+margin_right = 265.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 5 )
+
+[node name="wating_sell_item_list" type="ItemList" parent="."]
+unique_name_in_owner = true
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 140.0
+margin_top = 13.0
+margin_right = 268.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 5 )
+
+[node name="delivery_time_label" type="Label" parent="."]
+unique_name_in_owner = true
+margin_left = 52.0
+margin_top = 79.0
+margin_right = 92.0
+margin_bottom = 97.0
+text = "00"
+align = 1
+valign = 1
+
+[node name="delivery_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 30.0
+autostart = true
+
+[node name="cancle_all_button" type="Button" parent="."]
+margin_left = 27.0
+margin_top = 100.0
+margin_right = 113.0
+margin_bottom = 124.0
+text = "ยกเลิกทั้้งหมด"
+icon_align = 1
+
+[connection signal="about_to_show" from="." to="." method="_on_shop_menu_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_shop_menu_popup_hide"]
+[connection signal="item_activated" from="can_buy_item_list" to="." method="_on_can_buy_item_list_item_activated"]
+[connection signal="item_activated" from="waing_item_list" to="." method="_on_waing_item_list_item_activated"]
+[connection signal="item_activated" from="wating_sell_item_list" to="." method="_on_can_buy_item_list_item_activated"]
+[connection signal="timeout" from="delivery_timer" to="." method="_on_delivery_timer_timeout"]
+[connection signal="pressed" from="cancle_all_button" to="." method="_on_cancle_all_button_pressed"]

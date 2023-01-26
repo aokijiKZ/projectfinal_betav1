@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://item/ItemRestoreEnergy.gd" type="Script" id=1]
+[ext_resource path="res://item/img/ref/All items.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 112, 16, 16, 16 )
+
+[resource]
+script = ExtResource( 1 )
+item_name = "นํ้าดื่มกลาง"
+icon = SubResource( 1 )
+desc = ""
+buy_price = 10
+restore_energy_point = 10

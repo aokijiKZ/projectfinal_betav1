@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://capture_scene_img/capture_scene_img.gd" type="Script" id=2]
+
+[node name="capture_scene_img" type="ViewportContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="viewport" type="Viewport" parent="."]
+unique_name_in_owner = true
+size = Vector2( 960, 540 )
+handle_input_locally = false
+render_target_update_mode = 3

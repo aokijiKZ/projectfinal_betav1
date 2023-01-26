@@ -1,0 +1,3 @@
+[gd_scene format=2]
+
+[node name="shop_drop_box_group" type="YSort" groups=["shop_drop_box_group"]]

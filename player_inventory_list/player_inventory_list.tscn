@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://player_inventory_list/player_inventory_list.gd" type="Script" id=1]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=5]
+size = 6
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.392157 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 0.392157 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="GradientTexture2D" id=3]
+width = 16
+height = 16
+
+[node name="player_inventory_list" type="ItemList"]
+margin_left = 17.0
+margin_top = 40.0
+margin_right = 114.0
+margin_bottom = 138.0
+custom_fonts/font = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+items = [ "seed 1", SubResource( 3 ), false, "seed 2", SubResource( 3 ), false, "seed 3", SubResource( 3 ), false ]
+script = ExtResource( 1 )
+
+[connection signal="item_activated" from="." to="." method="_on_player_inventory_list_item_activated"]

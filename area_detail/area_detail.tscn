@@ -1,0 +1,170 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://area_detail/area_detail.gd" type="Script" id=1]
+[ext_resource path="res://inventory_chopped.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 512, 208, 16, 16 )
+
+[sub_resource type="GradientTexture2D" id=1]
+
+[node name="level_detail" type="PopupDialog"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -70.0
+margin_right = 140.0
+margin_bottom = 70.0
+script = ExtResource( 1 )
+
+[node name="oxygen_recive" type="Label" parent="."]
+unique_name_in_owner = true
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 37.0
+margin_bottom = 24.0
+text = "5"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="oxygen_icon" type="TextureRect" parent="oxygen_recive"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = SubResource( 2 )
+
+[node name="continent_and_area_name" type="Label" parent="."]
+unique_name_in_owner = true
+margin_left = 88.0
+margin_top = 5.0
+margin_right = 270.0
+margin_bottom = 23.0
+text = "ทวีปที่ 1 - พื้นที่ 1"
+align = 1
+valign = 1
+
+[node name="map_texture_rect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+margin_left = 12.0
+margin_top = 26.0
+margin_right = 972.0
+margin_bottom = 566.0
+rect_scale = Vector2( 0.07, 0.07 )
+texture = SubResource( 1 )
+
+[node name="grid_container" type="GridContainer" parent="."]
+margin_left = 87.0
+margin_top = 24.0
+margin_right = 273.0
+margin_bottom = 111.0
+columns = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="target_time_label" type="Label" parent="grid_container"]
+margin_right = 83.0
+margin_bottom = 18.0
+text = "เวลาที่กำหนด"
+
+[node name="target_time" type="Label" parent="grid_container"]
+unique_name_in_owner = true
+margin_left = 87.0
+margin_right = 143.0
+margin_bottom = 18.0
+text = "    5"
+
+[node name="tartget_time_unit_label" type="Label" parent="grid_container"]
+margin_left = 147.0
+margin_right = 185.0
+margin_bottom = 18.0
+text = "  นาที"
+
+[node name="used_time_label" type="Label" parent="grid_container"]
+margin_top = 22.0
+margin_right = 83.0
+margin_bottom = 40.0
+text = "เวลาที่เคยทำได้"
+
+[node name="used_time" type="Label" parent="grid_container"]
+unique_name_in_owner = true
+margin_left = 87.0
+margin_top = 22.0
+margin_right = 143.0
+margin_bottom = 40.0
+text = "    -"
+
+[node name="used_time_unit_label" type="Label" parent="grid_container"]
+margin_left = 147.0
+margin_top = 22.0
+margin_right = 185.0
+margin_bottom = 40.0
+text = "  นาที"
+
+[node name="received_oxygen_label" type="Label" parent="grid_container"]
+margin_top = 44.0
+margin_right = 83.0
+margin_bottom = 62.0
+text = "ออกซิเจนที่ได้รับ"
+
+[node name="received_oxygen" type="Label" parent="grid_container"]
+unique_name_in_owner = true
+margin_left = 87.0
+margin_top = 44.0
+margin_right = 143.0
+margin_bottom = 62.0
+text = "    -"
+
+[node name="received_oxygen_unit_label" type="Label" parent="grid_container"]
+margin_left = 147.0
+margin_top = 44.0
+margin_right = 185.0
+margin_bottom = 62.0
+text = "  หน่วย"
+
+[node name="complate_percent_label" type="Label" parent="grid_container"]
+margin_top = 66.0
+margin_right = 83.0
+margin_bottom = 84.0
+text = "ความสำเร็จ"
+
+[node name="complate_percent" type="Label" parent="grid_container"]
+unique_name_in_owner = true
+margin_left = 87.0
+margin_top = 66.0
+margin_right = 143.0
+margin_bottom = 84.0
+text = "    00.00"
+
+[node name="complate_percent_unit_label" type="Label" parent="grid_container"]
+margin_left = 147.0
+margin_top = 66.0
+margin_right = 185.0
+margin_bottom = 84.0
+text = "  %"
+
+[node name="close_button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -28.0
+margin_bottom = 24.0
+text = "ปิด"
+
+[node name="play_button" type="Button" parent="."]
+margin_left = 14.0
+margin_top = 105.0
+margin_right = 73.0
+margin_bottom = 129.0
+text = "เล่น"
+
+[connection signal="about_to_show" from="." to="." method="_on_level_detail_about_to_show"]
+[connection signal="pressed" from="close_button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]

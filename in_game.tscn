@@ -1,0 +1,328 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://shop_menu/shop_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://in_game.gd" type="Script" id=3]
+[ext_resource path="res://inventory_chopped.png" type="Texture" id=4]
+[ext_resource path="res://mini_game/mini_game_default/mini_game_default.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mini_game/mini_game_dug/mini_game_dug.tscn" type="PackedScene" id=6]
+[ext_resource path="res://player_inventory_list/player_inventory_list.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mini_game/mini_game_yield/mini_game_yield.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mini_game/mini_game_seed/mini_game_seed.tscn" type="PackedScene" id=9]
+[ext_resource path="res://items.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 1, 0.94902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.513726, 0.513726, 0.513726, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 1
+atlas = ExtResource( 10 )
+region = Rect2( 32, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 80, 192, 16, 16 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.784314 )
+
+[node name="in_game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="world" type="YSort" parent="."]
+
+[node name="map" type="YSort" parent="world"]
+unique_name_in_owner = true
+
+[node name="player" parent="world" instance=ExtResource( 1 )]
+position = Vector2( 480, 270 )
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="oxygen_bar" type="ProgressBar" parent="ui"]
+unique_name_in_owner = true
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 86.0
+margin_bottom = 28.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 6 )
+value = 50.0
+
+[node name="money_label" type="Label" parent="ui"]
+unique_name_in_owner = true
+margin_left = 193.0
+margin_top = 10.0
+margin_right = 233.0
+margin_bottom = 28.0
+text = "0000"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="money_icon" type="TextureRect" parent="ui/money_label"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -8.0
+margin_right = -2.0
+margin_bottom = 8.0
+texture = SubResource( 4 )
+
+[node name="label" type="Label" parent="ui/money_label"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -9.0
+margin_right = 21.0
+margin_bottom = 9.0
+text = "ทอง"
+align = 2
+valign = 1
+
+[node name="time_label" type="Label" parent="ui"]
+unique_name_in_owner = true
+margin_left = 105.0
+margin_top = 10.0
+margin_right = 166.0
+margin_bottom = 28.0
+text = "0000"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="label" type="Label" parent="ui/time_label"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -9.0
+margin_bottom = 9.0
+text = "วินาที"
+align = 2
+valign = 1
+
+[node name="time_icon" type="TextureRect" parent="ui/time_label"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -8.0
+margin_right = -2.0
+margin_bottom = 8.0
+texture = SubResource( 5 )
+
+[node name="stop_button" type="Button" parent="ui"]
+visible = false
+margin_left = 261.0
+margin_top = 10.0
+margin_right = 315.0
+margin_bottom = 34.0
+text = "stop"
+
+[node name="player_inventory_list" parent="ui" instance=ExtResource( 7 )]
+margin_left = 10.0
+margin_top = 48.0
+margin_right = 111.0
+margin_bottom = 163.0
+
+[node name="mini_game_default" parent="ui" instance=ExtResource( 5 )]
+visible = false
+
+[node name="mini_game_dug" parent="ui" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+
+[node name="mini_game_seed" parent="ui" instance=ExtResource( 9 )]
+unique_name_in_owner = true
+
+[node name="mini_game_yield" parent="ui" instance=ExtResource( 8 )]
+unique_name_in_owner = true
+
+[node name="stop_menu" type="PopupDialog" parent="ui"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -133.5
+margin_top = -74.0
+margin_right = 133.5
+margin_bottom = 74.0
+
+[node name="end_game_menu" type="Popup" parent="ui"]
+pause_mode = 2
+unique_name_in_owner = true
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="panel" type="Panel" parent="ui/end_game_menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="success_label" type="Label" parent="ui/end_game_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.0
+margin_top = -48.0
+margin_right = 31.0
+margin_bottom = -30.0
+text = " ความสำเร็จ"
+align = 1
+valign = 1
+
+[node name="success_bar" type="ProgressBar" parent="ui/end_game_menu"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -30.0
+margin_right = 50.0
+margin_bottom = -12.0
+value = 50.0
+
+[node name="used_time_label" type="Label" parent="ui/end_game_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.5
+margin_top = -9.0
+margin_right = 21.5
+margin_bottom = 9.0
+text = "เวลาที่ใช้"
+align = 1
+valign = 1
+
+[node name="used_time" type="Label" parent="ui/end_game_menu"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00.00"
+align = 1
+valign = 1
+
+[node name="restart_area_button" type="Button" parent="ui/end_game_menu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -90.0
+margin_top = -45.0
+margin_right = -41.0
+margin_bottom = -21.0
+text = "เริ่มใหม่"
+
+[node name="go_to_area_selection_button" type="Button" parent="ui/end_game_menu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.5
+margin_top = -45.0
+margin_right = 32.5
+margin_bottom = -21.0
+text = "เลือกพื้นที่"
+
+[node name="go_to_next_area_button" type="Button" parent="ui/end_game_menu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -45.0
+margin_right = 106.0
+margin_bottom = -21.0
+text = "พื้นที่ต่อไป"
+
+[node name="failed_game_menu" type="Popup" parent="ui"]
+pause_mode = 2
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="panel" type="Panel" parent="ui/failed_game_menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="success_label" type="Label" parent="ui/failed_game_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.5
+margin_top = -26.0
+margin_right = 36.5
+margin_bottom = -8.0
+text = "คุณเล่นไม่ผ่าน"
+align = 1
+valign = 1
+
+[node name="restart_area_button" type="Button" parent="ui/failed_game_menu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -59.0
+margin_top = -82.0
+margin_right = -10.0
+margin_bottom = -58.0
+text = "เริ่มใหม่"
+
+[node name="go_to_area_selection_button" type="Button" parent="ui/failed_game_menu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -84.0
+margin_right = 69.0
+margin_bottom = -60.0
+text = "เลือกพื้นที่"
+
+[node name="shop_menu" parent="ui" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+
+[node name="sec_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="ui/stop_button" to="." method="_on_stop_button_pressed"]
+[connection signal="about_to_show" from="ui/end_game_menu" to="." method="_on_end_game_menu_about_to_show"]
+[connection signal="popup_hide" from="ui/end_game_menu" to="." method="_on_end_game_menu_popup_hide"]
+[connection signal="pressed" from="ui/end_game_menu/restart_area_button" to="." method="_on_restart_area_button_pressed"]
+[connection signal="pressed" from="ui/end_game_menu/go_to_area_selection_button" to="." method="_on_go_to_area_selection_button_pressed"]
+[connection signal="pressed" from="ui/end_game_menu/go_to_next_area_button" to="." method="_on_go_to_next_area_button_pressed"]
+[connection signal="about_to_show" from="ui/failed_game_menu" to="." method="_on_failed_game_menu_about_to_show"]
+[connection signal="popup_hide" from="ui/failed_game_menu" to="." method="_on_failed_game_menu_popup_hide"]
+[connection signal="pressed" from="ui/failed_game_menu/restart_area_button" to="." method="_on_restart_area_button_pressed"]
+[connection signal="pressed" from="ui/failed_game_menu/go_to_area_selection_button" to="." method="_on_go_to_area_selection_button_pressed"]
+[connection signal="timeout" from="sec_timer" to="." method="_on_sec_timer_timeout"]

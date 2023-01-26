@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://item/ItemProduct.gd" type="Script" id=1]
+[ext_resource path="res://item/img/ref/item_carry.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[resource]
+script = ExtResource( 1 )
+item_name = "มะเขือเทศ"
+icon = SubResource( 1 )
+desc = ""
