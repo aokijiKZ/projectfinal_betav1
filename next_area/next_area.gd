@@ -3,7 +3,7 @@ extends CanvasLayer
 
 func _ready():
 	yield(get_tree().create_timer(0.5),"timeout")
-	var find_no_contient = Profile.current_no_continent+1
+	var find_no_contient = Profile.current_no_continent
 	var find_no_area = Profile.current_no_area+1
 	var map_path = 'res://map/contient_%s/area_%s/contient_%s_area_%s.tscn'%[find_no_contient,find_no_area,find_no_contient,find_no_area]
 	if File.new().file_exists(map_path):
