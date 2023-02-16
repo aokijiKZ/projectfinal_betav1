@@ -30,6 +30,8 @@ func refesh():
 		get_node('%wating_sell_item_list').add_item('%s X%s'%[item.item_name,sell_item_dict[item]],item.icon)
 		get_node('%wating_sell_item_list').set_item_tooltip(index,'ราคารวม %s ทอง'%[item.sell_price*sell_item_dict[item]])
 		index = index +1
+	$"%money_label".text = str( get_node('/root/in_game').money)
+
 		
 func _on_delivery_timer_timeout():
 #	var inventory = get_tree().get_nodes_in_group('player_inventory')[0]
@@ -57,6 +59,7 @@ func _on_delivery_timer_timeout():
 
 
 func _on_can_buy_item_list_item_activated(index):
+	EffectManager.get_node("coins").play()
 	var item = sell_item_list[index]
 	if get_node('/root/in_game').money >= item.buy_price:
 		get_node('/root/in_game').money = get_node('/root/in_game').money - item.buy_price
@@ -68,6 +71,7 @@ func _on_can_buy_item_list_item_activated(index):
 
 
 func _on_waing_item_list_item_activated(index):
+	EffectManager.get_node("ui_cancel").play()
 	var item = queue_item_dict.keys()[index]
 	get_node('/root/in_game').money = get_node('/root/in_game').money + item.buy_price
 	queue_item_dict[item] = queue_item_dict[item]-1
@@ -77,6 +81,7 @@ func _on_waing_item_list_item_activated(index):
 
 
 func _on_cancle_all_button_pressed():
+	EffectManager.get_node("ui_cancel").play()
 	for item in queue_item_dict:
 		get_node('/root/in_game').money = get_node('/root/in_game').money + item.buy_price
 		print_debug(item)
@@ -99,3 +104,6 @@ func _on_shop_menu_about_to_show():
 func _on_shop_menu_popup_hide():
 	get_tree().get_nodes_in_group('player')[0].is_can_move = true
 
+func _on_exit_button_pressed():
+	EffectManager.get_node("ui_cancel").play()
+	hide()

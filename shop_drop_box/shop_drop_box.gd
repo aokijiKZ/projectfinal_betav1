@@ -35,6 +35,7 @@ func refesh_hight_list():
 
 func _on_player_area_mask_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed('click') and player_in_area!=null:
+		EffectManager.get_node('pick_up_item').play()
 		var player_inventory = get_tree().get_nodes_in_group('player_inventory')[0]
 		player_inventory.merge_item_dict(get_node("%inventory").get_item_dict())
 		hide()

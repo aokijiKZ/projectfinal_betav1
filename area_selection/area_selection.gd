@@ -22,33 +22,26 @@ func _ready():
 		list_contient.append(list_area)
 		find_no_contient = find_no_contient+1
 	
-	print_debug(list_contient)
-	for c in get_node('map_tab_container').get_children():
-		c.queue_free()
-	
-	for index in list_contient.size():
-		var item_list_instance = ItemList.new()
-		get_node('map_tab_container').add_child(item_list_instance,true)
-		item_list_instance.name = 'ทวีป %s'%[index+1]
-		for sub_index in list_contient[index].size():
-			item_list_instance.add_item('พื้นที่ %s'%[sub_index+1])
-	
+	for no_contient in list_contient.size():
+		var item_list_instance
+		if no_contient ==0:
+			item_list_instance = $map_tab_container/continent_template
+		else:
+			item_list_instance = $map_tab_container.get_child(0).duplicate()
+		item_list_instance.clear()
+		item_list_instance.name = 'ทวีป %s'%[no_contient+1]
+		for no_area in list_contient[no_contient].size():
+			var img = load('res://map/contient_%s/area_%s/contient_%s_area_%s.png'%[no_contient,no_area,no_contient,no_area])
+			item_list_instance.add_item('พื้นที่ %s'%[no_area+1],img)
 	
 	
 	yield(get_tree(),"idle_frame")
 	popup()
 	
-
-	
-	for c in get_node('map_tab_container').get_children():
-		print_debug(c)
-		c.connect('item_activated',self,'_on_level_item_activated')
-	
 	if Profile.current_no_continent !=null and Profile.current_no_area!=null:
 		get_node('%area_detail').no_continent = Profile.current_no_continent
 		get_node('%area_detail').no_area = Profile.current_no_area
 		get_node('%area_detail').popup_centered()
-		
 
 
 func _on_level_item_activated(index):
@@ -58,3 +51,11 @@ func _on_level_item_activated(index):
 	get_node('%area_detail').no_continent = no_continent
 	get_node('%area_detail').no_area = no_area
 	get_node('%area_detail').popup_centered()
+	EffectManager.get_node("ui_confirm").play()
+
+
+func _on_map_tab_container_tab_changed(tab):
+	EffectManager.get_node("ui_focus_button").play()
+	
+func _on_area_selected(index):
+	EffectManager.get_node("ui_focus_button").play()

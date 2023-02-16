@@ -6,9 +6,11 @@ var no_area
 var map_instance
 
 func _on_close_button_pressed():
+	EffectManager.get_node("ui_cancel").play()
 	hide()
 
 func _on_play_button_pressed():
+	EffectManager.get_node("ui_confirm").play()
 	var in_game_instance = load('res://in_game.tscn').instance()
 	in_game_instance.target_oxygen = map_instance.target_oxygen
 	in_game_instance.target_time_sec = map_instance.target_time_sec

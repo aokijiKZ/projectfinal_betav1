@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/seed.mp3-5bf9dbcdf0450194ec217b84153c8cef.mp3str"
+
+[deps]
+
+source_file="res://autoload/effect_manager/sound/seed.mp3"
+dest_files=[ "res://.import/seed.mp3-5bf9dbcdf0450194ec217b84153c8cef.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

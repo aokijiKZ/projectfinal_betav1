@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://shop_menu/shop_menu.gd" type="Script" id=1]
 [ext_resource path="res://item/instance/medium_energy_potion.tres" type="Resource" id=2]
@@ -7,8 +7,103 @@
 [ext_resource path="res://item/instance/medium_unlimit_energy_potion.tres" type="Resource" id=5]
 [ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://item/instance/small_unlimit_energy_potion.tres" type="Resource" id=7]
+[ext_resource path="res://shop_menu/img/bg.png" type="Texture" id=8]
+[ext_resource path="res://shop_menu/img/bg_list.png" type="Texture" id=9]
+[ext_resource path="res://shop_menu/img/bg_item.png" type="Texture" id=10]
+[ext_resource path="res://shop_menu/img/scrollbar2.png" type="Texture" id=11]
+[ext_resource path="res://shop_menu/img/scrollbar.png" type="Texture" id=12]
+[ext_resource path="res://shop_menu/img/bg_cancelorder.png" type="Texture" id=13]
+[ext_resource path="res://shop_menu/img/bg_cooldown.png" type="Texture" id=14]
+[ext_resource path="res://shop_menu/img/bgtext_shop.png" type="Texture" id=15]
+[ext_resource path="res://shop_menu/img/bg_money.png" type="Texture" id=16]
+[ext_resource path="res://shop_menu/img/bgtext_order.png" type="Texture" id=17]
+[ext_resource path="res://shop_menu/img/bgtext_sell.png" type="Texture" id=18]
+[ext_resource path="res://shop_menu/img/botton_exit.png" type="Texture" id=19]
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 224, 144 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 10
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 67, 18 )
+margin_left = 2.23818
+margin_right = 2.18471
+margin_top = 2.18471
+margin_bottom = 3.08429
+
+[sub_resource type="DynamicFont" id=17]
+size = 8
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 42, 10 )
+
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 42, 10 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 5, 11 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 5, 28 )
+margin_left = 1.68859
+margin_right = 1.80368
+margin_top = 1.54601
+margin_bottom = 1.93251
+
+[sub_resource type="Theme" id=10]
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_pressed = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_pressed = null
+VScrollBar/styles/grabber = SubResource( 11 )
+VScrollBar/styles/grabber_highlight = SubResource( 11 )
+VScrollBar/styles/grabber_pressed = SubResource( 11 )
+VScrollBar/styles/scroll = SubResource( 12 )
+VScrollBar/styles/scroll_focus = SubResource( 12 )
 
 [sub_resource type="DynamicFont" id=5]
+size = 6
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 81, 28 )
+margin_left = 4.27072
+margin_right = 5.37794
+margin_top = 3.79619
+margin_bottom = 4.27072
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 102, 108 )
+margin_left = 3.36221
+margin_right = 2.77711
+margin_top = 3.67544
+margin_bottom = 3.35886
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 45, 16 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 42, 16 )
+
+[sub_resource type="DynamicFont" id=20]
 size = 6
 font_data = ExtResource( 6 )
 
@@ -21,32 +116,40 @@ margin_left = -140.0
 margin_top = -70.0
 margin_right = 140.0
 margin_bottom = 70.0
+custom_styles/panel = SubResource( 6 )
 script = ExtResource( 1 )
 sell_item_list = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ) ]
 
-[node name="label" type="Label" parent="."]
-margin_top = 2.0
-margin_right = 136.0
-margin_bottom = 20.0
-text = "รายการที่สามาซื้อ"
+[node name="shop_label" type="Label" parent="."]
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 67.0
+margin_bottom = 25.269
+custom_fonts/font = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
+text = "ร้านค้า"
 align = 1
 valign = 1
 
-[node name="label2" type="Label" parent="."]
-margin_left = 140.0
-margin_top = 3.0
-margin_right = 276.0
-margin_bottom = 21.0
+[node name="order_label" type="Label" parent="."]
+margin_left = 226.0
+margin_top = 12.0
+margin_right = 271.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 17 )
+custom_styles/normal = SubResource( 18 )
 text = "รายการที่สั่ง"
 align = 1
 valign = 1
 
-[node name="label3" type="Label" parent="."]
-margin_left = 136.0
-margin_top = 68.0
+[node name="sell_label" type="Label" parent="."]
+margin_left = 231.0
+margin_top = 83.0
 margin_right = 272.0
-margin_bottom = 86.0
-text = "รายการที่รอขาย"
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 17 )
+custom_styles/normal = SubResource( 19 )
+text = "ของขาย"
 align = 1
 valign = 1
 
@@ -54,36 +157,54 @@ valign = 1
 unique_name_in_owner = true
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 9.0
-margin_top = -51.0
+margin_left = 5.0
+margin_top = -45.0
 margin_right = 137.0
-margin_bottom = 3.0
+margin_bottom = 60.0
+theme = SubResource( 10 )
 custom_fonts/font = SubResource( 5 )
+custom_styles/selected_focus = SubResource( 7 )
+custom_styles/bg_focus = SubResource( 8 )
+custom_styles/selected = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
+items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false, "Item 3", null, false, "Item 4", null, false, "Item 5", null, false, "Item 6", null, false ]
 
 [node name="waing_item_list" type="ItemList" parent="."]
 unique_name_in_owner = true
-margin_left = 142.0
-margin_top = 20.0
-margin_right = 265.0
-margin_bottom = 67.0
+margin_left = 144.0
+margin_top = 25.0
+margin_right = 271.0
+margin_bottom = 66.0
+theme = SubResource( 10 )
 custom_fonts/font = SubResource( 5 )
+custom_styles/selected_focus = SubResource( 7 )
+custom_styles/bg_focus = SubResource( 8 )
+custom_styles/selected = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
 
 [node name="wating_sell_item_list" type="ItemList" parent="."]
 unique_name_in_owner = true
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 140.0
-margin_top = 13.0
-margin_right = 268.0
-margin_bottom = 58.0
+margin_left = 144.0
+margin_top = 26.0
+margin_right = 272.0
+margin_bottom = 59.0
+theme = SubResource( 10 )
 custom_fonts/font = SubResource( 5 )
+custom_styles/selected_focus = SubResource( 7 )
+custom_styles/bg_focus = SubResource( 8 )
+custom_styles/selected = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
 
 [node name="delivery_time_label" type="Label" parent="."]
 unique_name_in_owner = true
-margin_left = 52.0
-margin_top = 79.0
-margin_right = 92.0
-margin_bottom = 97.0
+margin_left = 158.0
+margin_top = 68.0
+margin_right = 190.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 17 )
+custom_styles/normal = SubResource( 13 )
 text = "00"
 align = 1
 valign = 1
@@ -94,12 +215,41 @@ wait_time = 30.0
 autostart = true
 
 [node name="cancle_all_button" type="Button" parent="."]
-margin_left = 27.0
-margin_top = 100.0
-margin_right = 113.0
-margin_bottom = 124.0
+margin_left = 195.0
+margin_top = 68.0
+margin_right = 249.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 17 )
+custom_styles/normal = SubResource( 14 )
 text = "ยกเลิกทั้้งหมด"
 icon_align = 1
+
+[node name="money_texture_rect" type="TextureRect" parent="."]
+margin_left = 107.0
+margin_top = 14.0
+margin_right = 136.0
+margin_bottom = 25.0
+texture = ExtResource( 16 )
+stretch_mode = 6
+
+[node name="money_label" type="Label" parent="money_texture_rect"]
+unique_name_in_owner = true
+margin_left = 9.0
+margin_right = 24.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 20 )
+text = "1000"
+
+[node name="exit_button" type="TextureButton" parent="."]
+margin_left = 268.0
+margin_top = -5.0
+margin_right = 285.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 19 )
+texture_disabled = ExtResource( 19 )
+texture_focused = ExtResource( 19 )
 
 [connection signal="about_to_show" from="." to="." method="_on_shop_menu_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_shop_menu_popup_hide"]
@@ -108,3 +258,4 @@ icon_align = 1
 [connection signal="item_activated" from="wating_sell_item_list" to="." method="_on_can_buy_item_list_item_activated"]
 [connection signal="timeout" from="delivery_timer" to="." method="_on_delivery_timer_timeout"]
 [connection signal="pressed" from="cancle_all_button" to="." method="_on_cancle_all_button_pressed"]
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]

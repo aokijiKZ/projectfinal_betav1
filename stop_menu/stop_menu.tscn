@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://stop_menu/img/home_choose.png" type="Texture" id=1]
+[ext_resource path="res://stop_menu/img/renew_choose.png" type="Texture" id=2]
+[ext_resource path="res://stop_menu/img/home.png" type="Texture" id=3]
+[ext_resource path="res://stop_menu/img/bg_pause.png" type="Texture" id=4]
+[ext_resource path="res://stop_menu/img/renew.png" type="Texture" id=5]
+[ext_resource path="res://stop_menu/img/exit_choose.png" type="Texture" id=6]
+[ext_resource path="res://stop_menu/img/exitt.png" type="Texture" id=7]
+[ext_resource path="res://stop_menu/img/set.png" type="Texture" id=8]
+[ext_resource path="res://stop_menu/img/set_choose.png" type="Texture" id=9]
+[ext_resource path="res://stop_menu/stop_menu.gd" type="Script" id=10]
+[ext_resource path="res://confirmation/confirmation.tscn" type="PackedScene" id=11]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 96, 32, 128, 112 )
+margin_left = 20.3049
+margin_right = 20.7985
+margin_top = 18.4602
+margin_bottom = 19.5751
+
+[node name="stop_menu" type="PopupDialog"]
+pause_mode = 2
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.0
+margin_top = -47.5
+margin_right = 58.0
+margin_bottom = 47.5
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 10 )
+
+[node name="grid_container" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = 24.0
+columns = 2
+
+[node name="restart_button" type="TextureButton" parent="grid_container"]
+margin_right = 22.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="home_button" type="TextureButton" parent="grid_container"]
+margin_left = 26.0
+margin_right = 48.0
+margin_bottom = 22.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+stretch_mode = 3
+
+[node name="setting_button" type="TextureButton" parent="grid_container"]
+margin_top = 26.0
+margin_right = 22.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+stretch_mode = 4
+
+[node name="close_button" type="TextureButton" parent="grid_container"]
+margin_left = 26.0
+margin_top = 26.0
+margin_right = 48.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 6 )
+stretch_mode = 4
+
+[node name="exit_confirmation" parent="." instance=ExtResource( 11 )]
+text_label = "คุณกำลังปิดเกม"
+
+[connection signal="about_to_show" from="." to="." method="_on_stop_menu_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_stop_menu_popup_hide"]
+[connection signal="pressed" from="grid_container/restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="grid_container/home_button" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="grid_container/setting_button" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="grid_container/close_button" to="." method="_on_close_button_pressed"]
+[connection signal="confirm" from="exit_confirmation" to="." method="_on_exit_confirmation_confirm"]

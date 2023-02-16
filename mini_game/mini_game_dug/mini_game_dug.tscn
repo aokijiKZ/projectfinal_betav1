@@ -28,13 +28,7 @@ func get_drag_data(position):
 	var select_item_index = get_item_at_position(position)
 	if select_item_index == -1 :
 		return
-	var item_name = get_item_text(select_item_index).rsplit(' ',true,1)[0]
-	var quantity = get_item_text(select_item_index).rsplit('X',true,1)[1]
-	
 	var data = {
-		\"item_name\":item_name,
-		\"quantity\":quantity,
-		\"icon\":get_item_icon(select_item_index),
 		'item':get_item_metadata(select_item_index)
 	}
 	var control = Control.new()
@@ -52,16 +46,15 @@ resource_name = "area_place_seed"
 script/source = "extends TextureRect
 
 func can_drop_data(position, data):
-	return typeof(data) == TYPE_DICTIONARY and data.has(\"item_name\")
+	return typeof(data) == TYPE_DICTIONARY and data.has(\"item\")
 
 func drop_data(position, data):
-	var item_name = data.item_name
-	var item = get_tree().get_nodes_in_group('inventory')[0].get_item(item_name)
+	EffectManager.get_node('seed').play()
+	var item = data.item
 	get_parent().ground_farm.item_seed = item
 	get_tree().get_nodes_in_group('inventory')[0].remove_item(item)
 	var old_texture = texture
-#	texture = data.item.grow_textrue_list[0]
-	texture = data.icon
+	texture = item.icon
 	get_parent().ground_farm.state = 'seed'
 	yield(get_tree().create_timer(0.5), \"timeout\")
 	get_parent().hide()
@@ -70,7 +63,6 @@ func drop_data(position, data):
 "
 
 [node name="mini_game_dug" type="PopupDialog"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

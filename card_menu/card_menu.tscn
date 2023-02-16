@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://card_menu/card_menu.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="ProxyTexture" id=3]
+
+[sub_resource type="GradientTexture2D" id=1]
+width = 48
+
+[node name="card_menu" type="Popup"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="card_item_list" type="ItemList" parent="."]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -69.0
+margin_right = 120.0
+margin_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+items = [ "", SubResource( 3 ), false, "", SubResource( 1 ), false, "", SubResource( 1 ), false, "", SubResource( 1 ), false, "", SubResource( 1 ), false, "", SubResource( 1 ), false ]
+max_columns = 6
+same_column_width = true
+icon_mode = 0
+fixed_icon_size = Vector2( 48, 64 )
+
+[node name="exit_button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -28.0
+margin_bottom = 24.0
+text = "ปิด"
+
+[connection signal="item_selected" from="card_item_list" to="." method="_on_card_item_list_item_selected"]

@@ -7,9 +7,9 @@ func _ready():
 	for effect in get_children():
 		effect.bus = 'Music'
 
-func play_music():
-	get_node("audio_stream_player").play()
-
-
-func stop_music():
-	get_node("audio_stream_player").stop()
+#func play_music():
+#	get_node("audio_stream_player").play()
+#
+#
+#func stop_music():
+#	get_node("audio_stream_player").stop()

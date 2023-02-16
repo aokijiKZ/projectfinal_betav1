@@ -17,7 +17,8 @@ func refesh():
 		if item is ItemSeed:
 			get_node('%seed_item_list').add_item('%s X%s'%[item.item_name,inventory.item_dict[item] ],item.icon)
 			get_node('%seed_item_list').set_item_metadata(index,item)
-		index = index +1
+			index = index +1
+	
 func _on_mini_game_dug_about_to_show():
 	get_tree().get_nodes_in_group('player')[0].is_can_move = false
 	pressed_count = 0

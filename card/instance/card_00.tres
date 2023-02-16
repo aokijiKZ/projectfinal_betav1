@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://card/Card.gd" type="Script" id=1]
+
+[sub_resource type="GradientTexture2D" id=1]
+width = 48
+
+[resource]
+script = ExtResource( 1 )
+card_name = ""
+desc = ""
+pic = SubResource( 1 )
+buff_energy = 0
+buff_oxygen = 0
+buff_move_speed = 0
+buff_start_item = [  ]

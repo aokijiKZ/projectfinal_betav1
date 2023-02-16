@@ -1,14 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://setting_menu/img/exitHover.png" type="Texture" id=1]
 [ext_resource path="res://setting_menu/img/exit.png" type="Texture" id=2]
 [ext_resource path="res://setting_menu/sound/test_effect.wav" type="AudioStream" id=3]
 [ext_resource path="res://setting_menu/Setting_menu.gd" type="Script" id=4]
+[ext_resource path="res://setting_menu/img/bg.png" type="Texture" id=5]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
 
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 201, 112 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 10
+font_data = ExtResource( 6 )
+
 [node name="setting_menu" type="PopupDialog"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -17,10 +28,21 @@ custom_styles/panel = SubResource( 1 )
 popup_exclusive = true
 script = ExtResource( 4 )
 
+[node name="panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -146.0
+margin_top = -76.0
+margin_right = 146.0
+margin_bottom = 76.0
+custom_styles/panel = SubResource( 2 )
+
 [node name="Title" type="Label" parent="."]
 anchor_right = 1.0
-margin_top = 10.0
-margin_bottom = 28.0
+margin_top = 23.0
+margin_bottom = 41.0
 custom_colors/font_color = Color( 1, 0.866667, 0.615686, 1 )
 text = "Options"
 align = 1
@@ -31,74 +53,79 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -134.5
-margin_top = -54.0
-margin_right = 134.5
-margin_bottom = 54.0
+margin_left = -126.5
+margin_top = -48.5
+margin_right = 126.5
+margin_bottom = 48.5
 custom_constants/vseparation = 0
 columns = 2
 
 [node name="Label" type="Label" parent="grid_container"]
 margin_top = 3.0
 margin_right = 150.0
-margin_bottom = 21.0
+margin_bottom = 18.0
 rect_min_size = Vector2( 150, 0 )
+custom_fonts/font = SubResource( 3 )
 text = "Window Size"
 
 [node name="WindowSizeOptionButton" type="OptionButton" parent="grid_container"]
 unique_name_in_owner = true
 margin_left = 154.0
-margin_right = 269.0
-margin_bottom = 24.0
+margin_right = 253.0
+margin_bottom = 21.0
 focus_neighbour_top = NodePath("../../../../../../../exitButton")
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
 keep_pressed_outside = true
 text = "640×360 (1:1)"
 items = [ "640×360 (1:1)", null, false, 0, null, "640×480 (4:3)", null, false, 1, null, "720×480 (3:2)", null, false, 2, null, "800×600 (4:3)", null, false, 3, null, "1152×648 (16:9)", null, false, 5, null, "1280×720 (16:9)", null, false, 6, null, "1280×800 (16:10)", null, false, 6, null, "1680×720 (21:9)", null, false, 7, null, "Custom", null, true, 8, null ]
 selected = 0
 
 [node name="Label2" type="Label" parent="grid_container"]
-margin_top = 28.0
+margin_top = 25.0
 margin_right = 150.0
-margin_bottom = 46.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 150, 0 )
+custom_fonts/font = SubResource( 3 )
 text = "Window Fullscreen"
 
 [node name="WindowFullscreenCheckBox" type="CheckBox" parent="grid_container"]
 unique_name_in_owner = true
 margin_left = 154.0
-margin_top = 24.0
-margin_right = 269.0
-margin_bottom = 50.0
+margin_top = 21.0
+margin_right = 253.0
+margin_bottom = 45.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
 keep_pressed_outside = true
 
 [node name="HSeparator" type="HSeparator" parent="grid_container"]
-margin_top = 50.0
+margin_top = 45.0
 margin_right = 150.0
-margin_bottom = 54.0
+margin_bottom = 49.0
 
 [node name="HSeparator2" type="HSeparator" parent="grid_container"]
 margin_left = 154.0
-margin_top = 50.0
-margin_right = 269.0
-margin_bottom = 54.0
+margin_top = 45.0
+margin_right = 253.0
+margin_bottom = 49.0
 
 [node name="Label3" type="Label" parent="grid_container"]
-margin_top = 54.0
+margin_top = 49.0
 margin_right = 150.0
-margin_bottom = 72.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 150, 0 )
+custom_fonts/font = SubResource( 3 )
 text = "Music Volume"
 
 [node name="MusicVolumeSlider" type="HSlider" parent="grid_container"]
 unique_name_in_owner = true
 margin_left = 154.0
-margin_top = 54.0
-margin_right = 269.0
-margin_bottom = 70.0
+margin_top = 49.0
+margin_right = 253.0
+margin_bottom = 65.0
 mouse_default_cursor_shape = 10
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 100.0
@@ -116,21 +143,23 @@ margin_top = -20.0
 margin_right = 12.0
 rect_min_size = Vector2( 24, 20 )
 size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
 text = "100"
 
 [node name="Label4" type="Label" parent="grid_container"]
-margin_top = 72.0
+margin_top = 65.0
 margin_right = 150.0
-margin_bottom = 90.0
+margin_bottom = 80.0
 rect_min_size = Vector2( 150, 0 )
+custom_fonts/font = SubResource( 3 )
 text = "Effect Volume"
 
 [node name="EffectVolumeSlider" type="HSlider" parent="grid_container"]
 unique_name_in_owner = true
 margin_left = 154.0
-margin_top = 72.0
-margin_right = 269.0
-margin_bottom = 88.0
+margin_top = 65.0
+margin_right = 253.0
+margin_bottom = 81.0
 mouse_default_cursor_shape = 10
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 100.0
@@ -149,6 +178,7 @@ margin_right = 12.0
 margin_bottom = 10.0
 rect_min_size = Vector2( 24, 20 )
 size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
 text = "100"
 
 [node name="test_effect" type="AudioStreamPlayer" parent="grid_container/EffectVolumeSlider"]
@@ -156,18 +186,19 @@ unique_name_in_owner = true
 stream = ExtResource( 3 )
 
 [node name="Label5" type="Label" parent="grid_container"]
-margin_top = 90.0
+margin_top = 81.0
 margin_right = 150.0
-margin_bottom = 108.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 150, 0 )
+custom_fonts/font = SubResource( 3 )
 text = "Dialog Volume"
 
 [node name="DialogVolumeSlider" type="HSlider" parent="grid_container"]
 unique_name_in_owner = true
 margin_left = 154.0
-margin_top = 90.0
-margin_right = 269.0
-margin_bottom = 106.0
+margin_top = 81.0
+margin_right = 253.0
+margin_bottom = 97.0
 mouse_default_cursor_shape = 10
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 100.0
@@ -186,6 +217,7 @@ margin_right = 12.0
 margin_bottom = 10.0
 rect_min_size = Vector2( 24, 20 )
 size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
 text = "100"
 
 [node name="test_dialog" type="AudioStreamPlayer" parent="grid_container/DialogVolumeSlider"]

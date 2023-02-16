@@ -4,10 +4,11 @@ func _ready():
 	get_node("%exit_confirmation").connect("confirm",self,"_on_exit_confirmation_confirm")
 	yield(get_tree(),"idle_frame")
 	popup()
-	MusicManager.play_music()
+	MusicManager.get_node('title_music').play()
+
 
 func _on_start_button_pressed():
-	MusicManager.stop_music()
+	MusicManager.get_node('title_music').stop()
 	EffectManager.get_node("ui_confirm").play()
 	get_tree().change_scene("res://area_selection/area_selection.tscn")
 	

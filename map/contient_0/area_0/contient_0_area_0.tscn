@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://map/contient_0/area_0/Shooting_Range_Design_layer_1.png" type="Texture" id=1]
 [ext_resource path="res://map/contient_0/area_0/contient_0_area_0.gd" type="Script" id=2]
@@ -6,6 +6,88 @@
 [ext_resource path="res://shop/shop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://map/contient_0/tileset/ground_tileset.tres" type="TileSet" id=5]
 [ext_resource path="res://shop_drop_box_spawn_point/shop_drop_box_spawn_point.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ground_farm/img/ground_farm_00.png" type="Texture" id=7]
+[ext_resource path="res://ground_farm/img/ground_farm_cool_down_01.tres" type="Texture" id=8]
+[ext_resource path="res://ground_farm/img/ground_farm_dug_00.tres" type="Texture" id=9]
+[ext_resource path="res://ground_farm/img/ground_farm_cool_down_00.tres" type="Texture" id=10]
+[ext_resource path="res://ground_farm/img/ground_farm_cool_down_02.tres" type="Texture" id=11]
+[ext_resource path="res://ground_farm/img/ground_farm_cool_down_03.tres" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=3]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "cool_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "dug",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "cool_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "dug",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "cool_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "dug",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "cool_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "dug",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 282 )
@@ -38,21 +120,25 @@ z_as_relative = false
 position = Vector2( 440, 328 )
 z_index = -1
 z_as_relative = false
+frames = SubResource( 3 )
 
 [node name="ground_farm2" parent="ground_farm_group" instance=ExtResource( 3 )]
 position = Vector2( 456, 328 )
 z_index = -1
 z_as_relative = false
+frames = SubResource( 4 )
 
 [node name="ground_farm3" parent="ground_farm_group" instance=ExtResource( 3 )]
 position = Vector2( 472, 328 )
 z_index = -1
 z_as_relative = false
+frames = SubResource( 5 )
 
 [node name="ground_farm4" parent="ground_farm_group" instance=ExtResource( 3 )]
 position = Vector2( 488, 328 )
 z_index = -1
 z_as_relative = false
+frames = SubResource( 6 )
 
 [node name="shop" parent="." instance=ExtResource( 4 )]
 position = Vector2( 480, 270 )

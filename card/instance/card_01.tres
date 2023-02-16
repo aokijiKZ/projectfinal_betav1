@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://card/Card.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=2]
+
+[sub_resource type="GradientTexture2D" id=1]
+gradient = SubResource( 2 )
+width = 48
+fill_from = Vector2( 1, 0 )
+fill_to = Vector2( 0.0169492, 0.00416667 )
+
+[resource]
+script = ExtResource( 1 )
+card_name = ""
+desc = ""
+pic = SubResource( 1 )
+buff_energy = 0
+buff_oxygen = 0
+buff_move_speed = 0
+buff_start_item = [  ]

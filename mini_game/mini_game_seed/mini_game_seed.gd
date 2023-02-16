@@ -22,6 +22,7 @@ func _on_watering_button_button_down():
 	get_node("watering_can").texture = load('res://mini_game/mini_game_seed/img/WateringPot2.png')
 	var player = get_tree().get_nodes_in_group('player')[0]
 	if player.energy > 0:
+		EffectManager.get_node('poured_water').play()
 		player.energy = player.energy-1
 		is_watering = true
 	else:
@@ -29,6 +30,7 @@ func _on_watering_button_button_down():
 		hide()
 	
 func _on_watering_button_button_up():
+	EffectManager.get_node('poured_water').stop()
 	get_node("watering_can").texture = load('res://mini_game/mini_game_seed/img/WateringPot.png')
 	is_watering = false
 	get_node('%watering_button').disabled = true

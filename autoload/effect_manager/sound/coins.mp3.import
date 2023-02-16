@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/coins.mp3-d0e8cebb7c27317483a75cbb4557b03d.mp3str"
+
+[deps]
+
+source_file="res://autoload/effect_manager/sound/coins.mp3"
+dest_files=[ "res://.import/coins.mp3-d0e8cebb7c27317483a75cbb4557b03d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

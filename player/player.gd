@@ -1,16 +1,16 @@
 extends KinematicBody2D
 
 #stat
-var max_energy := 10
+var max_energy := 10 setget set_max_energy
 var energy := max_energy setget set_energy
 var is_can_cosume_energy := true
 
-var max_oxygen :=10
-var oxygen := max_oxygen setget set_max_oxygen
+var max_oxygen :=10 setget set_max_oxygen
+var oxygen := max_oxygen setget set_oxygen
 
 
 #movement
-const speed := 16*3
+var move_speed := 16*3 setget set_move_speed
 var velocity := Vector2(0, 0)
 var is_can_move := true
 
@@ -45,7 +45,7 @@ func _physics_process(delta):
 			get_node('%animated_sprite').flip_h = false
 			get_node('%animated_sprite').play("idle")
 		
-		move_and_slide(velocity * speed)
+		move_and_slide(velocity * move_speed)
 
 func set_energy(v):
 	if is_can_cosume_energy:
@@ -84,7 +84,7 @@ func refesh_energy_bar():
 	else:
 		get_node("5_z_index/energy_bar").modulate = Color(1,1,1,1)
 
-func set_max_oxygen(v):
+func set_oxygen(v):
 	oxygen = v
 	if oxygen <=0:
 		get_node('/root/in_game').failed_game()
@@ -96,3 +96,15 @@ func refesh_oxygen_bar():
 
 func _on_oxygen_timer_timeout():
 	self.oxygen = oxygen-1
+	
+func set_max_energy(v):
+	max_energy = v
+	self.energy = max_energy
+
+func set_max_oxygen(v):
+	max_oxygen = v
+	self.oxygen = max_oxygen
+
+func set_move_speed(v):
+	move_speed = v
+	

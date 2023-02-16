@@ -34,4 +34,5 @@ func refesh_hight_list():
 
 func _on_player_area_mask_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed('click') and player_in_area!=null:
+		EffectManager.get_node('bong').play()
 		get_node('/root/in_game').get_node('%shop_menu').popup()

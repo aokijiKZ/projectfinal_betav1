@@ -4,17 +4,13 @@ var ground_farm
 
 
 func _on_yield_button_pressed():
+	EffectManager.get_node('pick_up_item').play()
 	var player = get_tree().get_nodes_in_group('player')[0]
-	if player.energy > 0:
-		player.energy = player.energy-1
-		var inventory = get_tree().get_nodes_in_group('player_inventory')[0]
-		inventory.add_item(ground_farm.item_seed.product)
-		ground_farm.state = 'cool_down'
-		hide()
+	var inventory = get_tree().get_nodes_in_group('player_inventory')[0]
+	inventory.add_item(ground_farm.item_seed.product)
+	ground_farm.state = 'cool_down'
+	hide()
 		
-
-
-
 func _on_mini_game_yield_about_to_show():
 	get_tree().get_nodes_in_group('player')[0].is_can_move = false
 

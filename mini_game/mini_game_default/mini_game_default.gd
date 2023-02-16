@@ -15,6 +15,7 @@ func _on_mini_game_default_popup_hide():
 func _on_hole_button_pressed():
 	var player = get_tree().get_nodes_in_group('player')[0]
 	if player.energy > 0:
+		EffectManager.get_node('hit').play()
 		get_node("hoe_animation_player").play("hole")
 		player.energy = player.energy-1
 		if pressed_count+1 >= pressed_time_target:

@@ -1,15 +1,21 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://title_menu/title_menu.gd" type="Script" id=1]
 [ext_resource path="res://confirmation/confirmation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://setting_menu/Setting_menu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://title_menu/img/choose_exit.png" type="Texture" id=4]
-[ext_resource path="res://title_menu/img/choose_setting.png" type="Texture" id=5]
-[ext_resource path="res://title_menu/img/exit.png" type="Texture" id=6]
-[ext_resource path="res://title_menu/img/bg.png" type="Texture" id=7]
-[ext_resource path="res://title_menu/img/start.png" type="Texture" id=8]
-[ext_resource path="res://title_menu/img/choose_start.png" type="Texture" id=9]
-[ext_resource path="res://title_menu/img/setting.png" type="Texture" id=10]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://title_menu/img/bg (1).png" type="Texture" id=7]
+[ext_resource path="res://title_menu/img/button.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+extra_spacing_top = 8
+extra_spacing_bottom = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 70, 20 )
 
 [node name="title_menu" type="Popup"]
 anchor_right = 1.0
@@ -35,41 +41,62 @@ margin_top = 75.0
 margin_right = 188.0
 margin_bottom = 245.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_constants/vseparation = 10
+custom_constants/vseparation = -5
 
-[node name="start_button" type="TextureButton" parent="grid_container"]
-margin_right = 150.0
-margin_bottom = 54.0
+[node name="start_button" type="Button" parent="grid_container"]
+margin_right = 139.0
+margin_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 9 )
-texture_disabled = ExtResource( 8 )
-texture_focused = ExtResource( 9 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+text = "     เริ่มเกม    "
 
-[node name="setting_button" type="TextureButton" parent="grid_container"]
-margin_top = 64.0
-margin_right = 150.0
-margin_bottom = 118.0
+[node name="setting_button" type="Button" parent="grid_container"]
+margin_top = 46.0
+margin_right = 139.0
+margin_bottom = 97.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 10 )
-texture_focused = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+text = "  ตั้งค่า"
 
-[node name="exit_button" type="TextureButton" parent="grid_container"]
-margin_top = 128.0
-margin_right = 150.0
-margin_bottom = 182.0
+[node name="exit_button" type="Button" parent="grid_container"]
+margin_top = 92.0
+margin_right = 139.0
+margin_bottom = 143.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 4 )
-texture_disabled = ExtResource( 6 )
-texture_focused = ExtResource( 4 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+text = "   ออกเกม"
 
 [connection signal="pressed" from="grid_container/start_button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="grid_container/setting_button" to="." method="_on_setting_button_pressed"]

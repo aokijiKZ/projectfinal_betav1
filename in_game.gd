@@ -16,6 +16,7 @@ func _ready():
 	Profile.current_no_area = no_area
 	refesh_oxygen_bar()
 	refesh_money_label()
+	check_card_buff()
 
 func _process(delta):
 	pass
@@ -25,6 +26,7 @@ func _on_sec_timer_timeout():
 	get_node('%time_label').text = '%4d'%use_time_sec
 
 func _on_stop_button_pressed():
+	EffectManager.get_node("bong").play()
 	get_node('%stop_menu').popup()
 
 func set_oxygen(v):
@@ -34,6 +36,7 @@ func set_oxygen(v):
 
 func check_endgame():
 	if oxygen >= target_oxygen:
+		EffectManager.get_node("completed").play()
 		yield(get_tree(),"idle_frame")
 		get_node('%end_game_menu').popup()
 
@@ -41,17 +44,20 @@ func refesh_oxygen_bar():
 	get_node('%oxygen_bar').value = 100*oxygen/float(target_oxygen)
 
 func _on_restart_area_button_pressed():
+	EffectManager.get_node("ui_confirm").play()
 	var restart_area_instance = load('res://restart_area/restart_area.tscn').instance()
 	self.name = 'remove'
 	get_tree().get_root().add_child(restart_area_instance,true)
 	queue_free()
 
 func _on_go_to_area_selection_button_pressed():
+	EffectManager.get_node("ui_confirm").play()
 	var area_selection_instance = load('res://area_selection/area_selection.tscn').instance()
 	get_tree().get_root().add_child(area_selection_instance,true)
 	queue_free()
 
 func _on_go_to_next_area_button_pressed():
+	EffectManager.get_node("ui_confirm").play()
 	var next_area_instance = load('res://next_area/next_area.tscn').instance()
 	self.name = 'remove'
 	get_tree().get_root().add_child(next_area_instance,true)
@@ -107,6 +113,7 @@ func set_money(v):
 	refesh_money_label()
 	
 func failed_game():
+	EffectManager.get_node("losing").play()
 	get_node('%failed_game_menu').popup()
 	
 func _on_failed_game_menu_about_to_show():
@@ -114,3 +121,16 @@ func _on_failed_game_menu_about_to_show():
 
 func _on_failed_game_menu_popup_hide():
 	get_tree().paused = false
+
+func check_card_buff():
+	if Profile.current_card_path == null:
+		return
+	var player = get_tree().get_nodes_in_group('player')[0]
+	var card_data = load(Profile.current_card_path)
+	if not card_data.buff_start_item.empty():
+		for start_item in card_data.buff_start_item:
+			player.inventory.add_item(start_item)
+	player.max_energy = player.max_energy + card_data.buff_energy
+	player.max_oxygen = player.max_oxygen + card_data.buff_oxygen
+	player.move_speed = player.move_speed + card_data.buff_move_speed
+	
