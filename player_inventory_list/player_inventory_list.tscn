@@ -1,36 +1,250 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://player_inventory_list/player_inventory_list.gd" type="Script" id=1]
 [ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://ingame_art/bg_scrollbar2.png" type="Texture" id=3]
+[ext_resource path="res://ingame_art/bg_scroll.png" type="Texture" id=4]
+[ext_resource path="res://ingame_art/bg_item.png" type="Texture" id=5]
+[ext_resource path="res://ingame_art/bg_bag.png" type="Texture" id=6]
+[ext_resource path="res://ingame_art/bt_close.png" type="Texture" id=7]
+[ext_resource path="res://ingame_art/bt_close2.png" type="Texture" id=8]
+[ext_resource path="res://ingame_art/bt_open.png" type="Texture" id=9]
+[ext_resource path="res://ingame_art/bt_open2.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 5, 96 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 5, 96 )
+margin_left = 1.0
+margin_right = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+
+[sub_resource type="Theme" id=19]
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_pressed = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_pressed = null
+VScrollBar/styles/grabber = SubResource( 17 )
+VScrollBar/styles/grabber_highlight = SubResource( 17 )
+VScrollBar/styles/grabber_pressed = SubResource( 17 )
+VScrollBar/styles/scroll = SubResource( 18 )
+VScrollBar/styles/scroll_focus = SubResource( 18 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 6
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0, 0, 0, 0.392157 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0, 0, 0, 0.392157 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 74, 29 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 96, 112 )
+margin_left = 6.0
+margin_right = 6.0
+margin_top = 8.0
+margin_bottom = 8.0
 
 [sub_resource type="GradientTexture2D" id=3]
 width = 16
 height = 16
 
-[node name="player_inventory_list" type="ItemList"]
-margin_left = 17.0
-margin_top = 40.0
-margin_right = 114.0
-margin_bottom = 138.0
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 9, 60 )
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 9, 60 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 10, 62 )
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 10, 62 )
+
+[sub_resource type="Animation" id=24]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("player_inventory_list:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -101, 47 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("open_player_inv_button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("close_player_inv_button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/path = NodePath("player_inventory_list:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17, 47 ), Vector2( -101, 47 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("close_player_inv_button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("open_player_inv_button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("player_inventory_list:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -101, 47 ), Vector2( 18, 47 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("close_player_inv_button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("open_player_inv_button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+
+[node name="player_inventory_list" type="Control"]
+
+[node name="player_inventory_list" type="ItemList" parent="."]
+margin_left = -101.0
+margin_top = 47.0
+margin_bottom = 162.0
+theme = SubResource( 19 )
 custom_fonts/font = SubResource( 5 )
-custom_styles/bg = SubResource( 6 )
+custom_styles/selected_focus = SubResource( 16 )
+custom_styles/bg_focus = SubResource( 7 )
+custom_styles/bg = SubResource( 15 )
 items = [ "seed 1", SubResource( 3 ), false, "seed 2", SubResource( 3 ), false, "seed 3", SubResource( 3 ), false ]
 script = ExtResource( 1 )
 
-[connection signal="item_activated" from="." to="." method="_on_player_inventory_list_item_activated"]
+[node name="close_player_inv_button" type="Button" parent="."]
+margin_left = 118.0
+margin_top = 74.0
+margin_right = 127.0
+margin_bottom = 134.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/disabled = SubResource( 20 )
+custom_styles/normal = SubResource( 20 )
+
+[node name="open_player_inv_button" type="Button" parent="."]
+visible = false
+margin_left = -1.0
+margin_top = 74.0
+margin_right = 8.0
+margin_bottom = 134.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 22 )
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+pause_mode = 2
+autoplay = "show"
+anims/RESET = SubResource( 24 )
+anims/hide = SubResource( 25 )
+anims/show = SubResource( 26 )
+
+[connection signal="item_activated" from="player_inventory_list" to="player_inventory_list" method="_on_player_inventory_list_item_activated"]
+[connection signal="pressed" from="close_player_inv_button" to="player_inventory_list" method="_on_close_player_inv_button_pressed"]
+[connection signal="pressed" from="open_player_inv_button" to="player_inventory_list" method="_on_open_player_inv_button_pressed"]

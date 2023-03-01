@@ -69,21 +69,25 @@ func _on_player_area_mask_area_exited(area):
 func _on_player_area_mask_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed('click') and player_in_area!=null:
 		if state == 'default':
+			get_node('/root/in_game').get_node('ui/player_inventory_list/player_inventory_list').close_player_inv()
 			EffectManager.get_node('bong').play()
 			get_node('/root/in_game').get_node('%mini_game_default').ground_farm = self
 			get_node('/root/in_game').get_node('%mini_game_default').popup()
 			
 		elif state == 'dug':
+			get_node('/root/in_game').get_node('ui/player_inventory_list/player_inventory_list').close_player_inv()
 			EffectManager.get_node('bong').play()
 			get_node('/root/in_game').get_node('%mini_game_dug').ground_farm = self
 			get_node('/root/in_game').get_node('%mini_game_dug').popup()
 			
 		elif state == 'yield':
+			get_node('/root/in_game').get_node('ui/player_inventory_list/player_inventory_list').close_player_inv()
 			EffectManager.get_node('bong').play()
 			get_node('/root/in_game').get_node('%mini_game_yield').ground_farm = self
 			get_node('/root/in_game').get_node('%mini_game_yield').popup()
 			
 		elif state == 'seed':
+			get_node('/root/in_game').get_node('ui/player_inventory_list/player_inventory_list').close_player_inv()
 			EffectManager.get_node('bong').play()
 			get_node('/root/in_game').get_node('%mini_game_seed').ground_farm = self
 			get_node('/root/in_game').get_node('%mini_game_seed').popup()

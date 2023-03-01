@@ -16,6 +16,7 @@ func _ready():
 	Profile.current_no_area = no_area
 	refesh_oxygen_bar()
 	refesh_money_label()
+	refesh_oxygen_label()
 	check_card_buff()
 
 func _process(delta):
@@ -26,6 +27,7 @@ func _on_sec_timer_timeout():
 	get_node('%time_label').text = '%4d'%use_time_sec
 
 func _on_stop_button_pressed():
+	get_node('ui/player_inventory_list/player_inventory_list').close_player_inv()
 	EffectManager.get_node("bong").play()
 	get_node('%stop_menu').popup()
 
@@ -33,16 +35,21 @@ func set_oxygen(v):
 	oxygen = v
 	check_endgame()
 	refesh_oxygen_bar()
+	refesh_oxygen_label()
 
 func check_endgame():
 	if oxygen >= target_oxygen:
 		EffectManager.get_node("completed").play()
 		yield(get_tree(),"idle_frame")
 		get_node('%end_game_menu').popup()
-
+		$"%end_game_menu".get_node('animetion_player').play('win')
+	
 func refesh_oxygen_bar():
 	get_node('%oxygen_bar').value = 100*oxygen/float(target_oxygen)
 
+func refesh_oxygen_label():
+	$ui/oxygen_label.text = '%s/%s'%[oxygen,target_oxygen]
+	
 func _on_restart_area_button_pressed():
 	EffectManager.get_node("ui_confirm").play()
 	var restart_area_instance = load('res://restart_area/restart_area.tscn').instance()
@@ -91,9 +98,10 @@ func _on_end_game_menu_about_to_show():
 		area_stat['time'] = use_time_sec
 	
 	#update_end_game_menu
-	get_node('%success_bar').value = complate_percent
-	get_node('%used_time').text = '%4d'%use_time_sec
-		
+	$"%end_game_menu".get_node("target_time_panel/target_time").text = '%4d'%target_time_sec
+	$"%end_game_menu".get_node("used_time_panel/used_time").text = '%4d'%use_time_sec
+	$"%end_game_menu".get_node("oxygen_panel/make_oxygen").text = '%d'%oxygen
+	$"%end_game_menu".get_node("sucess_rate_panel/success_bar").text = '%s'%complate_percent
 func _on_end_game_menu_popup_hide():
 	get_tree().paused = false
 
@@ -114,13 +122,8 @@ func set_money(v):
 	
 func failed_game():
 	EffectManager.get_node("losing").play()
-	get_node('%failed_game_menu').popup()
-	
-func _on_failed_game_menu_about_to_show():
-	get_tree().paused = true
-
-func _on_failed_game_menu_popup_hide():
-	get_tree().paused = false
+	$"%end_game_menu".popup()
+	$"%end_game_menu".get_node('animetion_player').play('fail')
 
 func check_card_buff():
 	if Profile.current_card_path == null:

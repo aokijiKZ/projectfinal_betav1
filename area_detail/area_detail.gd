@@ -1,4 +1,4 @@
-extends PopupDialog
+extends Popup
 
 var no_continent
 var no_area 

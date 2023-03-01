@@ -4,13 +4,14 @@
 [ext_resource path="res://mini_game/mini_game_seed/img/_pipe3.png" type="Texture" id=2]
 [ext_resource path="res://mini_game/mini_game_seed/img/m1.png" type="Texture" id=3]
 [ext_resource path="res://mini_game/mini_game_seed/img/WateringPot.png" type="Texture" id=4]
-[ext_resource path="res://mini_game/mini_game_seed/img/bg.png" type="Texture" id=5]
+[ext_resource path="res://mini_game/mini_game_seed/img/bg_seed.png" type="Texture" id=5]
 [ext_resource path="res://mini_game/mini_game_seed/img/pipe2.png" type="Texture" id=6]
 [ext_resource path="res://mini_game/mini_game_seed/img/bg2.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="mini_game_seed" type="PopupDialog"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

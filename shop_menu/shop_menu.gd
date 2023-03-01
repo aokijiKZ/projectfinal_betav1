@@ -12,29 +12,46 @@ func _process(delta):
 		get_node("%delivery_time_label").text = '%2d'%get_node("%delivery_timer").time_left
 
 func refesh():
+	var index
+	var old_select_indedx
+	
+	old_select_indedx = $"%can_buy_item_list".get_selected_items()[0] if not $"%can_buy_item_list".get_selected_items().empty() else null
+	index = 0
 	get_node('%can_buy_item_list').clear()
-	var index=0
 	for item in sell_item_list:
 		get_node('%can_buy_item_list').add_item('%s %s ทอง'%[item.item_name,item.buy_price],item.icon)
 		get_node('%can_buy_item_list').set_item_tooltip(index,item.get_info())
 		index = index +1
-	get_node('%waing_item_list').clear()
+	if old_select_indedx != null:
+		$"%can_buy_item_list".select(old_select_indedx,true)
+		
+	old_select_indedx = $"%waing_item_list".get_selected_items()[0] if not $"%waing_item_list".get_selected_items().empty() else null
 	index=0
+	get_node('%waing_item_list').clear()
 	for item in queue_item_dict:
 		get_node('%waing_item_list').add_item('%s X%s'%[item.item_name,queue_item_dict[item]],item.icon)
 		get_node('%waing_item_list').set_item_tooltip(index,'ราคารวม %s ทอง'%[item.buy_price*queue_item_dict[item]])
 		index = index +1
-	get_node('%wating_sell_item_list').clear()
+	if old_select_indedx != null:
+		if old_select_indedx+1 <= $"%waing_item_list".get_item_count():
+			$"%waing_item_list".select(old_select_indedx,true)
+		
 	index=0
+	get_node('%wating_sell_item_list').clear()
 	for item in sell_item_dict:
 		get_node('%wating_sell_item_list').add_item('%s X%s'%[item.item_name,sell_item_dict[item]],item.icon)
 		get_node('%wating_sell_item_list').set_item_tooltip(index,'ราคารวม %s ทอง'%[item.sell_price*sell_item_dict[item]])
 		index = index +1
+	
 	$"%money_label".text = str( get_node('/root/in_game').money)
-
+	
+	if $"%can_buy_item_list".get_selected_items().empty():
+		$buy_button.disabled = true
+	
+	if $"%waing_item_list".get_selected_items().empty():
+		$cancel_button.disabled = true
 		
 func _on_delivery_timer_timeout():
-#	var inventory = get_tree().get_nodes_in_group('player_inventory')[0]
 	if not queue_item_dict.empty():
 		var shop_drop_box_instance
 		var shop_drop_box_group = get_tree().get_nodes_in_group('shop_drop_box_group')[0]
@@ -59,26 +76,10 @@ func _on_delivery_timer_timeout():
 
 
 func _on_can_buy_item_list_item_activated(index):
-	EffectManager.get_node("coins").play()
-	var item = sell_item_list[index]
-	if get_node('/root/in_game').money >= item.buy_price:
-		get_node('/root/in_game').money = get_node('/root/in_game').money - item.buy_price
-		if not queue_item_dict.has(item):
-			queue_item_dict[item] = 1
-		else:
-			queue_item_dict[item] = queue_item_dict[item]+1
-	refesh()
-
+	buy_item(index)
 
 func _on_waing_item_list_item_activated(index):
-	EffectManager.get_node("ui_cancel").play()
-	var item = queue_item_dict.keys()[index]
-	get_node('/root/in_game').money = get_node('/root/in_game').money + item.buy_price
-	queue_item_dict[item] = queue_item_dict[item]-1
-	if queue_item_dict[item] <=0:
-		queue_item_dict.erase(item)
-	refesh()
-
+	cancle_buy_item(index)
 
 func _on_cancle_all_button_pressed():
 	EffectManager.get_node("ui_cancel").play()
@@ -87,7 +88,6 @@ func _on_cancle_all_button_pressed():
 		print_debug(item)
 	queue_item_dict.clear()
 	refesh()
-
 
 func _on_shop_menu_about_to_show():
 	get_tree().get_nodes_in_group('player')[0].is_can_move = false
@@ -107,3 +107,36 @@ func _on_shop_menu_popup_hide():
 func _on_exit_button_pressed():
 	EffectManager.get_node("ui_cancel").play()
 	hide()
+
+func _on_can_buy_item_list_item_selected(index):
+	$buy_button.disabled = false
+
+func _on_waing_item_list_item_selected(index):
+	$cancel_button.disabled = false
+
+
+func buy_item(index):
+	EffectManager.get_node("coins").play()
+	var item = sell_item_list[index]
+	if get_node('/root/in_game').money >= item.buy_price:
+		get_node('/root/in_game').money = get_node('/root/in_game').money - item.buy_price
+		if not queue_item_dict.has(item):
+			queue_item_dict[item] = 1
+		else:
+			queue_item_dict[item] = queue_item_dict[item]+1
+	refesh()
+	
+func cancle_buy_item(index):
+	EffectManager.get_node("ui_cancel").play()
+	var item = queue_item_dict.keys()[index]
+	get_node('/root/in_game').money = get_node('/root/in_game').money + item.buy_price
+	queue_item_dict[item] = queue_item_dict[item]-1
+	if queue_item_dict[item] <=0:
+		queue_item_dict.erase(item)
+	refesh()
+
+func _on_buy_button_pressed():
+	buy_item($"%can_buy_item_list".get_selected_items()[0])
+
+func _on_cancel_button_pressed():
+	cancle_buy_item($"%waing_item_list".get_selected_items()[0])

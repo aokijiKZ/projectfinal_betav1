@@ -71,7 +71,7 @@ unique_name_in_owner = true
 position = Vector2( 0, -6 )
 frames = SubResource( 2 )
 animation = "move_down"
-frame = 1
+frame = 3
 playing = true
 
 [node name="inventory" parent="." groups=["player_inventory"] instance=ExtResource( 7 )]
@@ -102,6 +102,7 @@ align = 1
 valign = 1
 
 [node name="energy_bar" type="ProgressBar" parent="5_z_index"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

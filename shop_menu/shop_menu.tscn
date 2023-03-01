@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://shop_menu/shop_menu.gd" type="Script" id=1]
 [ext_resource path="res://item/instance/medium_energy_potion.tres" type="Resource" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://shop_menu/img/bg.png" type="Texture" id=8]
 [ext_resource path="res://shop_menu/img/bg_list.png" type="Texture" id=9]
 [ext_resource path="res://shop_menu/img/bg_item.png" type="Texture" id=10]
-[ext_resource path="res://shop_menu/img/scrollbar2.png" type="Texture" id=11]
 [ext_resource path="res://shop_menu/img/scrollbar.png" type="Texture" id=12]
 [ext_resource path="res://shop_menu/img/bg_cancelorder.png" type="Texture" id=13]
 [ext_resource path="res://shop_menu/img/bg_cooldown.png" type="Texture" id=14]
@@ -19,6 +18,10 @@
 [ext_resource path="res://shop_menu/img/bgtext_order.png" type="Texture" id=17]
 [ext_resource path="res://shop_menu/img/bgtext_sell.png" type="Texture" id=18]
 [ext_resource path="res://shop_menu/img/botton_exit.png" type="Texture" id=19]
+[ext_resource path="res://shop_menu/img/bt_buy.png" type="Texture" id=20]
+[ext_resource path="res://shop_menu/img/bt_buy2.png" type="Texture" id=21]
+[ext_resource path="res://shop_menu/img/bt_cancel.png" type="Texture" id=22]
+[ext_resource path="res://shop_menu/img/bt_cancel2.png" type="Texture" id=23]
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 8 )
@@ -37,7 +40,7 @@ margin_top = 2.18471
 margin_bottom = 3.08429
 
 [sub_resource type="DynamicFont" id=17]
-size = 8
+size = 6
 font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxTexture" id=18]
@@ -48,17 +51,21 @@ region_rect = Rect2( 0, 0, 42, 10 )
 texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 42, 10 )
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=25]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 5, 11 )
+margin_left = 1.15661
+margin_right = 0.771073
+margin_top = 0.899585
+margin_bottom = 0.771073
 
 [sub_resource type="StyleBoxTexture" id=12]
-texture = ExtResource( 11 )
-region_rect = Rect2( 0, 0, 5, 28 )
-margin_left = 1.68859
-margin_right = 1.80368
-margin_top = 1.54601
-margin_bottom = 1.93251
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 5, 11 )
+margin_left = 1.04442
+margin_right = 0.773005
+margin_top = 0.90184
+margin_bottom = 0.773005
 
 [sub_resource type="Theme" id=10]
 VScrollBar/icons/decrement = null
@@ -67,9 +74,9 @@ VScrollBar/icons/decrement_pressed = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
 VScrollBar/icons/increment_pressed = null
-VScrollBar/styles/grabber = SubResource( 11 )
-VScrollBar/styles/grabber_highlight = SubResource( 11 )
-VScrollBar/styles/grabber_pressed = SubResource( 11 )
+VScrollBar/styles/grabber = SubResource( 25 )
+VScrollBar/styles/grabber_highlight = SubResource( 25 )
+VScrollBar/styles/grabber_pressed = SubResource( 25 )
 VScrollBar/styles/scroll = SubResource( 12 )
 VScrollBar/styles/scroll_focus = SubResource( 12 )
 
@@ -107,7 +114,25 @@ region_rect = Rect2( 0, 0, 42, 16 )
 size = 6
 font_data = ExtResource( 6 )
 
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 26, 29 )
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 26, 29 )
+margin_left = 1.35561
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 26, 29 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 23 )
+region_rect = Rect2( 0, 0, 26, 29 )
+
 [node name="shop_menu" type="PopupDialog"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -132,9 +157,9 @@ align = 1
 valign = 1
 
 [node name="order_label" type="Label" parent="."]
-margin_left = 226.0
+margin_left = 144.0
 margin_top = 12.0
-margin_right = 271.0
+margin_right = 189.0
 margin_bottom = 25.0
 custom_fonts/font = SubResource( 17 )
 custom_styles/normal = SubResource( 18 )
@@ -143,9 +168,9 @@ align = 1
 valign = 1
 
 [node name="sell_label" type="Label" parent="."]
-margin_left = 231.0
+margin_left = 144.0
 margin_top = 83.0
-margin_right = 272.0
+margin_right = 185.0
 margin_bottom = 96.0
 custom_fonts/font = SubResource( 17 )
 custom_styles/normal = SubResource( 19 )
@@ -165,7 +190,6 @@ theme = SubResource( 10 )
 custom_fonts/font = SubResource( 5 )
 custom_styles/selected_focus = SubResource( 7 )
 custom_styles/bg_focus = SubResource( 8 )
-custom_styles/selected = SubResource( 7 )
 custom_styles/bg = SubResource( 8 )
 items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false, "Item 3", null, false, "Item 4", null, false, "Item 5", null, false, "Item 6", null, false ]
 
@@ -179,7 +203,6 @@ theme = SubResource( 10 )
 custom_fonts/font = SubResource( 5 )
 custom_styles/selected_focus = SubResource( 7 )
 custom_styles/bg_focus = SubResource( 8 )
-custom_styles/selected = SubResource( 7 )
 custom_styles/bg = SubResource( 8 )
 
 [node name="wating_sell_item_list" type="ItemList" parent="."]
@@ -220,6 +243,10 @@ margin_top = 68.0
 margin_right = 249.0
 margin_bottom = 81.0
 custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
 custom_styles/normal = SubResource( 14 )
 text = "ยกเลิกทั้้งหมด"
 icon_align = 1
@@ -227,7 +254,7 @@ icon_align = 1
 [node name="money_texture_rect" type="TextureRect" parent="."]
 margin_left = 107.0
 margin_top = 14.0
-margin_right = 136.0
+margin_right = 137.0
 margin_bottom = 25.0
 texture = ExtResource( 16 )
 stretch_mode = 6
@@ -251,11 +278,43 @@ texture_hover = ExtResource( 19 )
 texture_disabled = ExtResource( 19 )
 texture_focused = ExtResource( 19 )
 
+[node name="buy_button" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 5.0
+margin_right = 86.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 21 )
+custom_styles/normal = SubResource( 22 )
+disabled = true
+text = "ซื้อ"
+
+[node name="cancel_button" type="Button" parent="."]
+margin_left = 189.0
+margin_top = 12.0
+margin_right = 210.0
+margin_bottom = 25.5
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 23 )
+disabled = true
+text = "ยกเลิก"
+
 [connection signal="about_to_show" from="." to="." method="_on_shop_menu_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_shop_menu_popup_hide"]
 [connection signal="item_activated" from="can_buy_item_list" to="." method="_on_can_buy_item_list_item_activated"]
+[connection signal="item_selected" from="can_buy_item_list" to="." method="_on_can_buy_item_list_item_selected"]
 [connection signal="item_activated" from="waing_item_list" to="." method="_on_waing_item_list_item_activated"]
+[connection signal="item_selected" from="waing_item_list" to="." method="_on_waing_item_list_item_selected"]
 [connection signal="item_activated" from="wating_sell_item_list" to="." method="_on_can_buy_item_list_item_activated"]
 [connection signal="timeout" from="delivery_timer" to="." method="_on_delivery_timer_timeout"]
 [connection signal="pressed" from="cancle_all_button" to="." method="_on_cancle_all_button_pressed"]
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="buy_button" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="cancel_button" to="." method="_on_cancel_button_pressed"]

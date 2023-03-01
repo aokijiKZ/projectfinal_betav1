@@ -1,48 +1,69 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://shop_menu/shop_menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://in_game.gd" type="Script" id=3]
-[ext_resource path="res://inventory_chopped.png" type="Texture" id=4]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://mini_game/mini_game_default/mini_game_default.tscn" type="PackedScene" id=5]
 [ext_resource path="res://mini_game/mini_game_dug/mini_game_dug.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player_inventory_list/player_inventory_list.tscn" type="PackedScene" id=7]
 [ext_resource path="res://mini_game/mini_game_yield/mini_game_yield.tscn" type="PackedScene" id=8]
 [ext_resource path="res://mini_game/mini_game_seed/mini_game_seed.tscn" type="PackedScene" id=9]
-[ext_resource path="res://items.png" type="Texture" id=10]
+[ext_resource path="res://ingame_art/setting2.png" type="Texture" id=10]
 [ext_resource path="res://stop_menu/stop_menu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://setting_menu/Setting_menu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://win_game_popup/end_game_menu.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ingame_art/o2.png" type="Texture" id=14]
+[ext_resource path="res://ingame_art/o2_2.png" type="Texture" id=15]
+[ext_resource path="res://ingame_art/time.png" type="Texture" id=16]
+[ext_resource path="res://ingame_art/money.png" type="Texture" id=17]
+[ext_resource path="res://ingame_art/setting.png" type="Texture" id=18]
+[ext_resource path="res://ingame_art/energy.png" type="Texture" id=19]
+[ext_resource path="res://ingame_art/energy2.png" type="Texture" id=20]
+[ext_resource path="res://ingame_art/wingame.png" type="Texture" id=21]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 1, 0.94902, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.513726, 0.513726, 0.513726, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=26]
 flags = 1
-atlas = ExtResource( 10 )
-region = Rect2( 32, 48, 16, 16 )
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 79, 12 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=27]
 flags = 1
-atlas = ExtResource( 4 )
-region = Rect2( 80, 192, 16, 16 )
+atlas = ExtResource( 15 )
+region = Rect2( 13, 0, 66, 12 )
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="DynamicFont" id=28]
+size = 4
+font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="AtlasTexture" id=25]
+flags = 1
+atlas = ExtResource( 20 )
+region = Rect2( 21, 0, 54, 22 )
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0, 0.784314 )
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 53, 14 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 5
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 78, 22 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 21, 21 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 21, 21 )
 
 [node name="in_game" type="Node2D"]
 script = ExtResource( 3 )
@@ -57,96 +78,164 @@ position = Vector2( 480, 270 )
 
 [node name="ui" type="CanvasLayer" parent="."]
 
-[node name="oxygen_bar" type="ProgressBar" parent="ui"]
-unique_name_in_owner = true
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 86.0
-margin_bottom = 28.0
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 6 )
-value = 50.0
+[node name="ex" type="TextureRect" parent="ui"]
+visible = false
+margin_right = 320.0
+margin_bottom = 180.0
+texture = ExtResource( 21 )
 
-[node name="money_label" type="Label" parent="ui"]
+[node name="oxygen_bar" type="TextureProgress" parent="ui"]
 unique_name_in_owner = true
-margin_left = 193.0
-margin_top = 10.0
-margin_right = 233.0
-margin_bottom = 28.0
-text = "0000"
+margin_left = 114.0
+margin_top = 33.0
+margin_right = 193.0
+margin_bottom = 45.0
+value = 50.0
+texture_under = SubResource( 26 )
+texture_progress = SubResource( 27 )
+texture_progress_offset = Vector2( 13, 0 )
+__meta__ = {
+"_editor_description_": "start 20"
+}
+
+[node name="oxygen_label" type="Label" parent="ui"]
+margin_left = 127.0
+margin_top = 33.0
+margin_right = 193.0
+margin_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 28 )
+text = "25/100"
+align = 1
+valign = 1
+
+[node name="player_energy_bar" type="TextureProgress" parent="ui"]
+margin_left = 22.0
+margin_top = 9.0
+margin_right = 97.0
+margin_bottom = 31.0
+texture_under = ExtResource( 19 )
+texture_progress = SubResource( 25 )
+texture_progress_offset = Vector2( 21, 0 )
+__meta__ = {
+"_editor_description_": "start 20"
+}
+
+[node name="player_energy_label" type="Label" parent="ui"]
+margin_left = 34.0
+margin_top = 13.0
+margin_right = 97.0
+margin_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 28 )
+text = "25/100"
+align = 1
+valign = 1
+
+[node name="money_panel" type="Panel" parent="ui"]
+margin_left = 219.0
+margin_top = 13.0
+margin_right = 271.0
+margin_bottom = 27.0
+custom_styles/panel = SubResource( 9 )
+
+[node name="money_label" type="Label" parent="ui/money_panel"]
+unique_name_in_owner = true
+margin_left = 13.0
+margin_top = 3.0
+margin_right = 29.0
+margin_bottom = 11.0
+custom_fonts/font = SubResource( 10 )
+text = "00000"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="money_icon" type="TextureRect" parent="ui/money_label"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = -18.0
-margin_top = -8.0
-margin_right = -2.0
-margin_bottom = 8.0
-texture = SubResource( 4 )
-
-[node name="label" type="Label" parent="ui/money_label"]
+[node name="money_unit_label" type="Label" parent="ui/money_panel"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -9.0
-margin_right = 21.0
-margin_bottom = 9.0
+margin_left = -18.0
+margin_top = -8.0
+margin_right = -3.0
+margin_bottom = 5.0
+custom_fonts/font = SubResource( 11 )
 text = "ทอง"
-align = 2
+align = 1
 valign = 1
 
-[node name="time_label" type="Label" parent="ui"]
+[node name="time_panel" type="Panel" parent="ui"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 121.0
+margin_top = -81.0
+margin_right = 199.0
+margin_bottom = -59.0
+custom_styles/panel = SubResource( 12 )
+
+[node name="time_label" type="Label" parent="ui/time_panel"]
 unique_name_in_owner = true
-margin_left = 105.0
-margin_top = 10.0
-margin_right = 166.0
-margin_bottom = 28.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.0
+margin_right = 8.0
+margin_bottom = 9.0
+custom_fonts/font = SubResource( 11 )
 text = "0000"
+align = 1
 valign = 1
 autowrap = true
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="label" type="Label" parent="ui/time_label"]
-anchor_left = 1.0
+[node name="time_unit_label" type="Label" parent="ui/time_panel"]
+unique_name_in_owner = true
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -21.0
-margin_top = -9.0
+margin_left = 10.0
+margin_top = -7.0
+margin_right = 30.0
 margin_bottom = 9.0
+custom_fonts/font = SubResource( 11 )
 text = "วินาที"
-align = 2
+align = 1
 valign = 1
-
-[node name="time_icon" type="TextureRect" parent="ui/time_label"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = -18.0
-margin_top = -8.0
-margin_right = -2.0
-margin_bottom = 8.0
-texture = SubResource( 5 )
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="stop_button" type="Button" parent="ui"]
-margin_left = 261.0
-margin_top = 10.0
-margin_right = 315.0
-margin_bottom = 34.0
-text = "stop"
+margin_left = 291.0
+margin_top = 9.0
+margin_right = 313.0
+margin_bottom = 30.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
 
 [node name="player_inventory_list" parent="ui" instance=ExtResource( 7 )]
-margin_left = 10.0
-margin_top = 48.0
-margin_right = 111.0
-margin_bottom = 163.0
-custom_styles/selected_focus = SubResource( 8 )
-custom_styles/bg_focus = SubResource( 7 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -320.0
+margin_bottom = -180.0
 
 [node name="mini_game_default" parent="ui" instance=ExtResource( 5 )]
 
@@ -160,150 +249,9 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="stop_menu" parent="ui" instance=ExtResource( 11 )]
+visible = false
 
-[node name="end_game_menu" type="Popup" parent="ui"]
-pause_mode = 2
-unique_name_in_owner = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="panel" type="Panel" parent="ui/end_game_menu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_styles/panel = SubResource( 3 )
-
-[node name="success_label" type="Label" parent="ui/end_game_menu"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -31.0
-margin_top = -48.0
-margin_right = 31.0
-margin_bottom = -30.0
-text = " ความสำเร็จ"
-align = 1
-valign = 1
-
-[node name="success_bar" type="ProgressBar" parent="ui/end_game_menu"]
-unique_name_in_owner = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = -30.0
-margin_right = 50.0
-margin_bottom = -12.0
-value = 50.0
-
-[node name="used_time_label" type="Label" parent="ui/end_game_menu"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -21.5
-margin_top = -9.0
-margin_right = 21.5
-margin_bottom = 9.0
-text = "เวลาที่ใช้"
-align = 1
-valign = 1
-
-[node name="used_time" type="Label" parent="ui/end_game_menu"]
-unique_name_in_owner = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = 10.0
-margin_right = 20.0
-margin_bottom = 28.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "00.00"
-align = 1
-valign = 1
-
-[node name="restart_area_button" type="Button" parent="ui/end_game_menu"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -90.0
-margin_top = -45.0
-margin_right = -41.0
-margin_bottom = -21.0
-text = "เริ่มใหม่"
-
-[node name="go_to_area_selection_button" type="Button" parent="ui/end_game_menu"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -32.5
-margin_top = -45.0
-margin_right = 32.5
-margin_bottom = -21.0
-text = "เลือกพื้นที่"
-
-[node name="go_to_next_area_button" type="Button" parent="ui/end_game_menu"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -45.0
-margin_right = 106.0
-margin_bottom = -21.0
-text = "พื้นที่ต่อไป"
-
-[node name="failed_game_menu" type="Popup" parent="ui"]
-pause_mode = 2
-unique_name_in_owner = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="panel" type="Panel" parent="ui/failed_game_menu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_styles/panel = SubResource( 3 )
-
-[node name="success_label" type="Label" parent="ui/failed_game_menu"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -36.5
-margin_top = -26.0
-margin_right = 36.5
-margin_bottom = -8.0
-text = "คุณเล่นไม่ผ่าน"
-align = 1
-valign = 1
-
-[node name="restart_area_button" type="Button" parent="ui/failed_game_menu"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -59.0
-margin_top = -82.0
-margin_right = -10.0
-margin_bottom = -58.0
-text = "เริ่มใหม่"
-
-[node name="go_to_area_selection_button" type="Button" parent="ui/failed_game_menu"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = -84.0
-margin_right = 69.0
-margin_bottom = -60.0
-text = "เลือกพื้นที่"
+[node name="end_game_menu" parent="ui" instance=ExtResource( 13 )]
 
 [node name="shop_menu" parent="ui" instance=ExtResource( 2 )]
 unique_name_in_owner = true
@@ -322,8 +270,6 @@ autostart = true
 [connection signal="pressed" from="ui/end_game_menu/restart_area_button" to="." method="_on_restart_area_button_pressed"]
 [connection signal="pressed" from="ui/end_game_menu/go_to_area_selection_button" to="." method="_on_go_to_area_selection_button_pressed"]
 [connection signal="pressed" from="ui/end_game_menu/go_to_next_area_button" to="." method="_on_go_to_next_area_button_pressed"]
-[connection signal="about_to_show" from="ui/failed_game_menu" to="." method="_on_failed_game_menu_about_to_show"]
-[connection signal="popup_hide" from="ui/failed_game_menu" to="." method="_on_failed_game_menu_popup_hide"]
-[connection signal="pressed" from="ui/failed_game_menu/restart_area_button" to="." method="_on_restart_area_button_pressed"]
-[connection signal="pressed" from="ui/failed_game_menu/go_to_area_selection_button" to="." method="_on_go_to_area_selection_button_pressed"]
 [connection signal="timeout" from="sec_timer" to="." method="_on_sec_timer_timeout"]
+
+[editable path="ui/end_game_menu"]

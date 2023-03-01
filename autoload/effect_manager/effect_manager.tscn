@@ -85,6 +85,7 @@ stream = ExtResource( 14 )
 
 [node name="ui_cancel" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 1 )
+volume_db = -20.0
 script = ExtResource( 1 )
 wave/type = 1
 sample_params/sound_vol = 0.25
@@ -117,6 +118,7 @@ stream = ExtResource( 2 )
 
 [node name="ui_focus_button" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -20.0
 
 [node name="unlock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )

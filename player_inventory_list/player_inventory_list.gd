@@ -4,7 +4,7 @@ extends ItemList
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var state = 'open'
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,3 +37,23 @@ func _on_player_inventory_list_item_activated(index):
 			inventory.remove_item(item)
 		else:
 			printerr('no implement')
+
+func close_player_inv():
+	if state == 'open':
+		$"../animation_player".play("hide")
+		yield($"../animation_player","animation_finished")
+		state = 'close'
+	
+func open_player_inv():
+	if state == 'close':
+		$"../animation_player".play("show")
+		yield($"../animation_player","animation_finished")
+		state = 'open'
+
+func _on_close_player_inv_button_pressed():
+	EffectManager.get_node("bong").play()
+	close_player_inv()
+
+func _on_open_player_inv_button_pressed():
+	EffectManager.get_node("bong").play()
+	open_player_inv()

@@ -22,6 +22,8 @@ signal energy_changed(energy,max_energy)
 func _ready():
 	refesh_energy_bar()
 	refesh_oxygen_bar()
+	refesh_ingame_player_energy_bar_bar()
+	refesh_ingame_player_energy_label()
 
 func _physics_process(delta):
 	if is_can_move:
@@ -55,6 +57,8 @@ func set_energy(v):
 	else:
 		energy = max_energy
 	refesh_energy_bar()
+	refesh_ingame_player_energy_bar_bar()
+	refesh_ingame_player_energy_label()
 	emit_signal("energy_changed",energy,max_energy)
 	
 func talk(conversation:String):
@@ -72,9 +76,12 @@ func unlimit_energy(time):
 	is_can_cosume_energy = false
 	energy = max_energy
 	refesh_energy_bar()
+	refesh_ingame_player_energy_bar_bar()
 	yield(get_tree().create_timer(time),"timeout")
 	is_can_cosume_energy = true
 	refesh_energy_bar()
+	refesh_ingame_player_energy_bar_bar()
+	refesh_ingame_player_energy_label()
 
 func refesh_energy_bar():
 	get_node("5_z_index/energy_bar").value = energy/float(max_energy) * 100
@@ -84,12 +91,21 @@ func refesh_energy_bar():
 	else:
 		get_node("5_z_index/energy_bar").modulate = Color(1,1,1,1)
 
+func refesh_ingame_player_energy_bar_bar():
+	$"../../ui/player_energy_bar".value = energy/float(max_energy) * (100)
+	print_debug($"../../ui/player_energy_bar".value)
+
+func refesh_ingame_player_energy_label():
+	$"../../ui/player_energy_label".text = '%s/%s'%[energy,max_energy]
+
 func set_oxygen(v):
 	oxygen = v
 	if oxygen <=0:
 		get_node('/root/in_game').failed_game()
 	refesh_oxygen_bar()
 
+
+	
 func refesh_oxygen_bar():
 	get_node("5_z_index/oxygen_bar").value = oxygen/float(max_oxygen) * 100
 	get_node("5_z_index/oxygen_bar").hint_tooltip = str(oxygen)+'/'+str(max_oxygen)

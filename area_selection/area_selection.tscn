@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://area_selection/area_selection.gd" type="Script" id=1]
 [ext_resource path="res://confirmation/confirmation.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://area_selection/img/bg.png" type="Texture" id=5]
 [ext_resource path="res://area_selection/img/bg_continentA.png" type="Texture" id=6]
 [ext_resource path="res://area_selection/img/bg_continentAChoose.png" type="Texture" id=7]
+[ext_resource path="res://area_selection/img/chooseMap.png" type="Texture" id=8]
 [ext_resource path="res://area_selection/img/bg_areaChoose.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -44,7 +45,7 @@ margin_bottom = 12.7557
 [sub_resource type="StyleBoxEmpty" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=10]
-content_margin_left = 20.0
+content_margin_left = 30.0
 
 [sub_resource type="GradientTexture2D" id=2]
 fill_from = Vector2( 1, 0 )
@@ -52,7 +53,10 @@ fill_to = Vector2( 0, 0 )
 
 [sub_resource type="GradientTexture2D" id=1]
 
+[sub_resource type="StyleBoxFlat" id=12]
+
 [node name="area_selection" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -62,14 +66,25 @@ __meta__ = {
 "_edit_vertical_guides_": [ 160.0 ]
 }
 
+[node name="ex" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 8 )
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.513726 )
+
 [node name="map_tab_container" type="TabContainer" parent="."]
 unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 16.0
+margin_top = 24.0
+margin_right = -16.0
+margin_bottom = -20.0
 custom_styles/tab_fg = SubResource( 3 )
 custom_styles/tab_disabled = SubResource( 4 )
 custom_styles/tab_bg = SubResource( 4 )
@@ -80,15 +95,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 32.6316
 margin_top = 49.8954
-margin_right = -31.9603
-margin_bottom = -25.2485
+margin_right = -5.36841
+margin_bottom = -21.1046
+custom_constants/icon_margin = -10
 custom_styles/selected_focus = SubResource( 8 )
 custom_styles/bg_focus = SubResource( 11 )
 custom_styles/bg = SubResource( 10 )
 items = [ "พื้นที่ 1", SubResource( 2 ), false, "พื้นที่ 2", SubResource( 1 ), false, "พื้นที่ 3", SubResource( 1 ), false ]
+auto_height = true
 max_columns = 3
 same_column_width = true
 icon_mode = 0
+icon_scale = 0.8
 fixed_icon_size = Vector2( 64, 64 )
 
 [node name="play_confirmation" parent="." instance=ExtResource( 2 )]
@@ -100,12 +118,21 @@ text_label = "คุณกำลังจะเล่น"
 
 [node name="area_detail" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
+visible = false
 
 [node name="capture_scene_img" parent="." instance=ExtResource( 4 )]
 unique_name_in_owner = true
 margin_left = -2500.0
 margin_right = -1540.0
 margin_bottom = 540.0
+
+[node name="label" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 18.0
+custom_styles/normal = SubResource( 12 )
+text = "เลือกด่าน"
+align = 1
+valign = 1
 
 [connection signal="tab_changed" from="map_tab_container" to="." method="_on_map_tab_container_tab_changed"]
 [connection signal="item_activated" from="map_tab_container/continent_template" to="." method="_on_level_item_activated"]

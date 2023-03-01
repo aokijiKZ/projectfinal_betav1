@@ -3,16 +3,10 @@ extends PopupDialog
 
 
 func _ready():
-#	self.popup()
-	get_node("%WindowFullscreenCheckBox").grab_focus()
-	setup_window_full_screen_label()
+	$"%WindowSizeOptionButton".grab_focus()
 	setup_window_size_label()
 	setup_music_volume_label()
 	setup_effect_volume_label()
-
-func setup_window_full_screen_label():
-	var checkbox = get_node("%WindowFullscreenCheckBox")
-	checkbox.pressed = OS.window_fullscreen
 
 func setup_window_size_label():
 	var size = OS.window_size
@@ -73,25 +67,33 @@ func _on_window_base_size_item_selected(index):
 	match index:
 		0:  # 648×648 (1:1)
 			window_size = Vector2(640, 360)
+			OS.window_fullscreen = false
 		1:  # 640×480 (4:3)
 			window_size = Vector2(640, 480)
+			OS.window_fullscreen = false
 		2:  # 720×480 (3:2)
 			window_size = Vector2(720, 480)
+			OS.window_fullscreen = false
 		3:  # 800×600 (4:3)
 			window_size = Vector2(800, 600)
+			OS.window_fullscreen = false
 		4:  # 1152×648 (16:9)
 			window_size = Vector2(1152, 648)
+			OS.window_fullscreen = false
 		5:  # 1280×720 (16:9)
 			window_size = Vector2(1280, 720)
+			OS.window_fullscreen = false
 		6:  # 1280×800 (16:10)
 			window_size = Vector2(1280, 800)
+			OS.window_fullscreen = false
 		7:  # 1680×720 (21:9)
 			window_size = Vector2(1680, 720)
+			OS.window_fullscreen = false
+		8:
+			OS.window_fullscreen = true
 	
 	OS.set_window_size(window_size)
 	
-
-
 func _on_HSlider_music_value_changed(value: float) -> void:
 	var volume_db = scale_volume_to_volume_db(value)
 	var music_index = AudioServer.get_bus_index('Music')
@@ -99,7 +101,6 @@ func _on_HSlider_music_value_changed(value: float) -> void:
 	var music_value_label = get_node("%MusicVolumeValue")
 	music_value_label.text = str(value)
 	
-
 func _on_HSlider_efftect_value_changed(value: float) -> void:
 	var volume_db = scale_volume_to_volume_db(value)
 	var Effect_index = AudioServer.get_bus_index('Effect')
@@ -119,13 +120,6 @@ func _on_HSlider_dialog_value_changed(value: float) -> void:
 	var test_dialog = get_node("%test_dialog")
 	if(!test_dialog.playing):
 		test_dialog.play()
-	
-func _on_checkBox_toggled(button_pressed: bool) -> void:
-	OS.window_fullscreen = button_pressed
-	var windowSizeOption = get_node("%WindowSizeOptionButton")
-	windowSizeOption.disabled = button_pressed
-	_on_window_base_size_item_selected(0)
-	get_node("%WindowSizeOptionButton").select(0)
 
 func _on_exitButton_pressed() -> void:
 	SettingManager.save_setting_to_file()
