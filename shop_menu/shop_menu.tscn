@@ -132,7 +132,6 @@ texture = ExtResource( 23 )
 region_rect = Rect2( 0, 0, 26, 29 )
 
 [node name="shop_menu" type="PopupDialog"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
