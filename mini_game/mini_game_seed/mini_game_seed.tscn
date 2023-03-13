@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://mini_game/mini_game_seed/mini_game_seed.gd" type="Script" id=1]
 [ext_resource path="res://mini_game/mini_game_seed/img/_pipe3.png" type="Texture" id=2]
@@ -7,8 +7,13 @@
 [ext_resource path="res://mini_game/mini_game_seed/img/bg_seed.png" type="Texture" id=5]
 [ext_resource path="res://mini_game/mini_game_seed/img/pipe2.png" type="Texture" id=6]
 [ext_resource path="res://mini_game/mini_game_seed/img/bg2.png" type="Texture" id=7]
+[ext_resource path="res://card_menu/img/tutorial2.png" type="Texture" id=8]
+[ext_resource path="res://card_menu/img/tutorial.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.658824 )
 
 [node name="mini_game_seed" type="PopupDialog"]
 visible = true
@@ -95,9 +100,46 @@ custom_styles/focus = SubResource( 1 )
 custom_styles/disabled = SubResource( 1 )
 custom_styles/normal = SubResource( 1 )
 
+[node name="help_button" type="TextureButton" parent="."]
+margin_left = -1.0
+margin_top = 21.5
+margin_right = 17.0
+margin_bottom = 38.5
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+
+[node name="help_popup" type="Popup" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -42.5
+margin_right = 112.0
+margin_bottom = 38.5
+
+[node name="panel" type="Panel" parent="help_popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 2 )
+
+[node name="label" type="Label" parent="help_popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.5
+margin_top = -9.0
+margin_right = 91.5
+margin_bottom = 9.0
+text = "กดค้างที่บัวรดนํ้า ให้อยู่ระหว่างกลาง"
+
 [connection signal="about_to_show" from="." to="." method="_on_mini_game_dug_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_mini_game_dug_popup_hide"]
 [connection signal="button_down" from="watering_button" to="." method="_on_watering_button_button_down"]
 [connection signal="button_up" from="watering_button" to="." method="_on_watering_button_button_up"]
 [connection signal="mouse_entered" from="watering_button" to="." method="_on_watering_button_mouse_entered"]
 [connection signal="mouse_exited" from="watering_button" to="." method="_on_watering_button_mouse_exited"]
+[connection signal="pressed" from="help_button" to="." method="_on_help_button_pressed"]

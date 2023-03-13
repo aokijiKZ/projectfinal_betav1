@@ -1,28 +1,75 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://card_menu/card_menu.gd" type="Script" id=1]
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0, 0, 0, 0.392157 )
+[ext_resource path="res://area_detail/img/botton_exit.png" type="Texture" id=2]
+[ext_resource path="res://card_display/card_display.tscn" type="PackedScene" id=3]
+[ext_resource path="res://card_menu/img/cardUI.png" type="Texture" id=4]
+[ext_resource path="res://card_menu/img/bg_allcard.png" type="Texture" id=5]
+[ext_resource path="res://card_menu/img/bg_cardchoose.png" type="Texture" id=6]
+[ext_resource path="res://card_menu/img/bg_detail.png" type="Texture" id=7]
+[ext_resource path="res://card_menu/img/bg.png" type="Texture" id=8]
+[ext_resource path="res://card_menu/img/bg_buff.png" type="Texture" id=9]
+[ext_resource path="res://card_menu/img/bg_title.png" type="Texture" id=10]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=11]
+[ext_resource path="res://card_menu/img/tutorial.png" type="Texture" id=12]
+[ext_resource path="res://card_menu/img/tutorial2.png" type="Texture" id=13]
 
 [sub_resource type="ProxyTexture" id=3]
 
 [sub_resource type="GradientTexture2D" id=1]
 width = 48
 
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 224, 154 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 12
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 84, 20 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+
+[sub_resource type="StyleBoxTexture" id=5]
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 194, 58 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 50, 58 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 138, 58 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 54, 49 )
+
 [node name="card_menu" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 
-[node name="panel" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_styles/panel = SubResource( 2 )
+[node name="ex" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
 
 [node name="card_item_list" type="ItemList" parent="."]
 unique_name_in_owner = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -39,11 +86,153 @@ same_column_width = true
 icon_mode = 0
 fixed_icon_size = Vector2( 48, 64 )
 
+[node name="bg" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 16.0
+margin_right = -48.0
+margin_bottom = -10.0
+custom_styles/panel = SubResource( 9 )
+
+[node name="title" type="Label" parent="."]
+margin_left = 118.0
+margin_top = 7.0
+margin_right = 202.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
+custom_fonts/font = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+text = "การ์ด"
+align = 1
+valign = 1
+
 [node name="exit_button" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -28.0
+margin_left = -60.0
+margin_top = 12.0
+margin_right = -43.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
+icon = ExtResource( 2 )
+
+[node name="all_card" type="ScrollContainer" parent="."]
+margin_left = 63.0
+margin_top = 99.0
+margin_right = 257.0
+margin_bottom = 157.0
+custom_styles/bg = SubResource( 6 )
+follow_focus = true
+
+[node name="h_box_container" type="HBoxContainer" parent="all_card"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 177.0
+margin_bottom = 53.0
+
+[node name="card_display" parent="all_card/h_box_container" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 48.0
+
+[node name="card_display2" parent="all_card/h_box_container" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 48.0
+
+[node name="card_display3" parent="all_card/h_box_container" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 48.0
+
+[node name="card_display4" parent="all_card/h_box_container" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 132.0
+margin_right = 172.0
+margin_bottom = 48.0
+
+[node name="card_choose" type="Panel" parent="."]
+margin_left = 63.0
+margin_top = 35.0
+margin_right = 113.0
+margin_bottom = 93.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="card_display" parent="card_choose" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -24.0
+margin_right = 20.0
 margin_bottom = 24.0
-text = "ปิด"
+
+[node name="detail" type="Panel" parent="."]
+margin_left = 119.0
+margin_top = 35.0
+margin_right = 257.0
+margin_bottom = 93.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="panel" type="ScrollContainer" parent="detail"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 54.0
+custom_styles/bg = SubResource( 12 )
+
+[node name="panel2" type="ScrollContainer" parent="detail"]
+margin_left = 79.0
+margin_top = 5.0
+margin_right = 133.0
+margin_bottom = 53.0
+custom_styles/bg = SubResource( 12 )
+
+[node name="help_button" type="TextureButton" parent="."]
+margin_left = 31.0
+margin_top = 25.0
+margin_right = 49.0
+margin_bottom = 42.0
+texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
+
+[node name="help_popup" type="Popup" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -111.5
+margin_top = -73.0
+margin_right = 111.5
+margin_bottom = 81.0
+
+[node name="panel" type="Panel" parent="help_popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="Label" parent="help_popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -9.0
+margin_right = 44.0
+margin_bottom = 9.0
+text = "นี่คือ การสอนเล่น"
 
 [connection signal="item_selected" from="card_item_list" to="." method="_on_card_item_list_item_selected"]
+[connection signal="pressed" from="help_button" to="." method="_on_help_button_pressed"]

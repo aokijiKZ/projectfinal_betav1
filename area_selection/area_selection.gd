@@ -59,3 +59,7 @@ func _on_map_tab_container_tab_changed(tab):
 	
 func _on_area_selected(index):
 	EffectManager.get_node("ui_focus_button").play()
+
+
+func _on_back_button_pressed():
+	get_tree().change_scene("res://title_menu/title_menu.tscn")

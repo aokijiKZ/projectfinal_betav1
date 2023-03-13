@@ -10,6 +10,7 @@ func _on_mini_game_default_about_to_show():
 
 func _on_mini_game_default_popup_hide():
 	get_tree().get_nodes_in_group('player')[0].is_can_move = true
+	$help_popup.hide()
 
 
 func _on_hole_button_pressed():
@@ -42,3 +43,7 @@ func _on_hole_button_mouse_entered():
 
 func _on_hole_button_mouse_exited():
 	get_node('hoe').material = null
+
+func _on_help_button_pressed():
+	$help_popup.visible = !$help_popup.visible
+

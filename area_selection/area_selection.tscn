@@ -1,30 +1,36 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://area_selection/area_selection.gd" type="Script" id=1]
 [ext_resource path="res://confirmation/confirmation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://area_detail/area_detail.tscn" type="PackedScene" id=3]
 [ext_resource path="res://capture_scene_img/capture_scene_img.tscn" type="PackedScene" id=4]
 [ext_resource path="res://area_selection/img/bg.png" type="Texture" id=5]
-[ext_resource path="res://area_selection/img/bg_continentA.png" type="Texture" id=6]
-[ext_resource path="res://area_selection/img/bg_continentAChoose.png" type="Texture" id=7]
+[ext_resource path="res://area_selection/img/bt_catagory.png" type="Texture" id=6]
+[ext_resource path="res://area_selection/img/bt_catagoryChoose.png" type="Texture" id=7]
 [ext_resource path="res://area_selection/img/chooseMap.png" type="Texture" id=8]
 [ext_resource path="res://area_selection/img/bg_areaChoose.png" type="Texture" id=9]
+[ext_resource path="res://area_selection/img/back.png" type="Texture" id=10]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=11]
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="DynamicFont" id=13]
+size = 10
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 7 )
-region_rect = Rect2( 0, 0, 43, 13 )
-margin_left = 12.8512
-margin_right = 13.3653
-margin_top = 3.59834
-margin_bottom = 3.46983
+region_rect = Rect2( 0, 0, 44, 13 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 43, 13 )
-margin_left = 12.8512
-margin_right = 13.3653
-margin_top = 3.59834
-margin_bottom = 3.46983
+region_rect = Rect2( 0, 0, 44, 13 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 5 )
@@ -84,7 +90,8 @@ margin_left = 16.0
 margin_top = 24.0
 margin_right = -16.0
 margin_bottom = -20.0
-custom_styles/tab_fg = SubResource( 3 )
+custom_fonts/font = SubResource( 13 )
+custom_styles/tab_fg = SubResource( 14 )
 custom_styles/tab_disabled = SubResource( 4 )
 custom_styles/tab_bg = SubResource( 4 )
 custom_styles/panel = SubResource( 5 )
@@ -93,7 +100,7 @@ custom_styles/panel = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 32.6316
-margin_top = 49.8954
+margin_top = 45.8954
 margin_right = -31.9603
 margin_bottom = -25.2485
 custom_constants/icon_margin = -10
@@ -132,6 +139,14 @@ text = "เลือกด่าน"
 align = 1
 valign = 1
 
+[node name="back_button" type="TextureButton" parent="."]
+margin_left = 16.0
+margin_top = 50.0
+margin_right = 33.0
+margin_bottom = 61.0
+texture_normal = ExtResource( 10 )
+
 [connection signal="tab_changed" from="map_tab_container" to="." method="_on_map_tab_container_tab_changed"]
 [connection signal="item_activated" from="map_tab_container/continent_template" to="." method="_on_level_item_activated"]
 [connection signal="item_selected" from="map_tab_container/continent_template" to="." method="_on_area_selected"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

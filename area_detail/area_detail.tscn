@@ -65,7 +65,6 @@ margin_top = 2.44688
 margin_bottom = 3.70229
 
 [node name="level_detail" type="Popup"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

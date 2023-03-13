@@ -41,3 +41,7 @@ func refesh():
 func _on_card_item_list_item_selected(index):
 	var card_data = card_item_list.get_item_metadata(index)
 	Profile.current_card_path = card_data.resource_path
+
+
+func _on_help_button_pressed():
+	$help_popup.visible = !$help_popup.visible

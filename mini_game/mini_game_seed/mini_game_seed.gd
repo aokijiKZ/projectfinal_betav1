@@ -51,3 +51,7 @@ func _on_watering_button_mouse_entered():
 
 func _on_watering_button_mouse_exited():
 	get_node('watering_can').material = null
+
+
+func _on_help_button_pressed():
+	$help_popup.visible = !$help_popup.visible
