@@ -1,21 +1,21 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://card/Card.gd" type="Script" id=1]
-
-[sub_resource type="Gradient" id=2]
-
-[sub_resource type="GradientTexture2D" id=1]
-gradient = SubResource( 2 )
-width = 48
-fill_from = Vector2( 1, 0 )
-fill_to = Vector2( 0.0169492, 0.00416667 )
+[ext_resource path="res://card/img/imageCard1.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-card_name = ""
-desc = ""
-pic = SubResource( 1 )
-buff_energy = 0
+card_name = "สารเคมีจากครีมกันแดด!?"
+desc = "คุณรู้หรือไม่ ครีมกันแดดถูกชะล้างลงแนวประการังในทะเล 14,000 ตัน/ปี ซึ่งมีแนวปะการังทั่วโลกที่ได้รับผลกระทบถึง 10% สารเคมีเพียง 1 หยด ก็ส่งผลต่อปะการังได้ ( 1 หยดต่อปริมาณน้ำในสระมาตรฐาน 6 สระ) สารเคมีที่นักวิจัยตรวจพบนั้นโดยเฉพาะ Oxybenzone กระทบปะการังมากที่สุดและยังใช้ในครีมกันแดดกว่า 3,500 ยี่ห้อทั่วโลก ผลกระทบของปะการังฟอกขาวได้รับจากสารเคมี เช่น ปะการังตายหรือพิการ รบกวนระบบสืบพันธ์ หรือตัวอ่อนปะการังโตผิดรูป เป็นต้น 
+
+วิธีป้องกัน
+1.ไม่ใช้ครีมกันแดดที่มีส่วนผสมของ Oxybenzone 
+2.ใช้ครีมกันแดดแบบกันน้ำ
+3.ใช้ครีมกันแดดที่สามารถย่อยสลายตามธรรมชาติได้
+4.ใช้หมวก เสื้อ ร่ม เพื่อลดการใช้ครีมกันแดด
+"
+pic = ExtResource( 2 )
+buff_energy = 5
 buff_oxygen = 0
 buff_move_speed = 0
 buff_start_item = [  ]

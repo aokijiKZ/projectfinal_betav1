@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://card/Card.gd" type="Script" id=1]
+[ext_resource path="res://item/instance/small_energy_potion.tres" type="Resource" id=2]
+[ext_resource path="res://card/img/imageCard6.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+card_name = "ถุงกระดาษ!?"
+desc = "คุณรู้หรือไม่ ถุงกระดาษ 1 ตัน เท่ากับการสูญเสียทรัพยากรสิ่งแวดล้อมอย่างต้นไม้ถึง 17 ต้น ในการผลิตถุงกระดาษ 1 ใบ ทำให้เกิดมลพิษทางอาการเพิ่มขึ้นถึง 2.6 กิโลกรัม และก่อมลพิษทางน้ำเลวร้ายกว่าการผลิตถุงพลาสติก 50 เท่าตัว เพื่อเป็นการลดการสร้างมลพิษควรนำกลับมารีไซเคิลหรือนำกลับมาใช้ใหม่นั่นเอง"
+pic = ExtResource( 3 )
+buff_energy = 5
+buff_oxygen = 5
+buff_move_speed = 5
+buff_start_item = [ ExtResource( 2 ) ]

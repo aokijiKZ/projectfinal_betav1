@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://card/Card.gd" type="Script" id=1]
+[ext_resource path="res://card/img/imageCard5.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+card_name = "นานเท่าไหร่กว่าจะถูกย่อยสลาย!?"
+desc = "คุณรู้หรือไม่ สิ่งของและอาหารที่เราใช้ในประจำวัน เมื่อกลายเป็นขยะแล้ว กระบวนการย่อยสลายตามธรรมชาตินั้น ใช้ระยะเวลาเท่าไหร่? 
+
+•	พืชผัก ใช้เวลา 5 วัน - 1 เดือน
+•	กระดาษ ใช้เวลา 2 - 5 เดือน
+•	เสื้อผ้าฟ้าย/เปลือกส้ม ใช้เวลา 6 เดือน
+•	ใบไม้ ใช้เวลา 1 ปี
+•	กล่องนมเคลือบพลาสติก ใช้เวลา 5 ปี
+•	รองเท้าหนัง ใช้เวลา 25 - 40 ปี
+•	กระป๋องโลหะบรรจุอาหาร ใช้เวลา 50 - 100 ปี
+•	ถุงพลาสติก/กล่องโฟม ใช้เวลา 500 ปี – ไม่มีวันย่อยสลาย
+"
+pic = ExtResource( 2 )
+buff_energy = 5
+buff_oxygen = 5
+buff_move_speed = 0
+buff_start_item = [  ]

@@ -28,6 +28,17 @@ func _on_level_detail_about_to_show():
 	var str_no_area = 'area_%s'%no_area
 	var continent_stat = Profile.stat_dict.get(str_no_continent,{})
 	var area_stat = continent_stat.get(str_no_area,{})
+	
+	#select display :after_play or before_play
+	$after_play.visible = false
+	$before_play.visible = false
+	if area_stat.empty():
+		$before_play.visible = true
+	else:
+		$after_play.visible = true
+	
+	
+	#provide data
 	get_node('%used_time').text = '%2d'%area_stat.get('time') if area_stat.get('time') != null else '-'
 	get_node('%received_oxygen').text = '%2d'%area_stat.get('oxygen') if area_stat.get('oxygen') != null else '-'
 	get_node('%complate_percent').text = '%2d'%area_stat.get('percentage') if area_stat.get('percentage') != null else '-'

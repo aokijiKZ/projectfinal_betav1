@@ -16,6 +16,7 @@ func _on_mini_game_dug_about_to_show():
 
 func _on_mini_game_dug_popup_hide():
 	get_tree().get_nodes_in_group('player')[0].is_can_move = true
+	$help_popup.hide()
 
 
 func _on_watering_button_button_down():

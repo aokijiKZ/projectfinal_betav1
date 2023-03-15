@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://card/Card.gd" type="Script" id=1]
+[ext_resource path="res://item/instance/small_energy_potion.tres" type="Resource" id=2]
+[ext_resource path="res://card/img/imageCard4.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+card_name = "ต้นไม้ 1 ต้น!?"
+desc = "ต้นไม้ใหญ่ 1 ต้น สามารถดูดซับก๊าซคาร์บอนไดออกไซด์เฉลี่ย 9-15 กิโลกรัม/ปี ลดอุหภูมิรอบบ้านได้ 2-4 องศาเซลเซียส พร้อมทั้งปล่อยออกซิเจนรองรับความต้องการของมนุษย์ได้ถึง 2 คน/ปี ดักจำฝุ่นและมลพิษในอากาศได้ 1.4 กิโลกรัม/ปี เพิ่มมูลค่าให้ที่ดิน ถ้าเราปลูกทางิทศตะวันตกของอาคารเพื่อกันแดด จะทำให้ประหย้ดพลังงาน 3% ภายใน 5 ปี ต้นไม้เพียง 1 ต้น ช่วยลดมลพิษได้มากกว่าที่คิด!"
+pic = ExtResource( 3 )
+buff_energy = 0
+buff_oxygen = 0
+buff_move_speed = 0
+buff_start_item = [ ExtResource( 2 ), ExtResource( 2 ) ]
