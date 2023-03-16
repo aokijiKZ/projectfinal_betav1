@@ -102,6 +102,18 @@ func _on_end_game_menu_about_to_show():
 	$"%end_game_menu".get_node("used_time_panel/used_time").text = '%4d'%use_time_sec
 	$"%end_game_menu".get_node("oxygen_panel/make_oxygen").text = '%d'%oxygen
 	$"%end_game_menu".get_node("sucess_rate_panel/success_bar").text = '%s'%complate_percent
+	
+	#add card to player if there 100% win 
+	if complate_percent >= 100:
+		var card_rw = $"%map".get_child(0).card_reward if 'card_reward' in $"%map".get_child(0) else null
+		if card_rw !=null:
+			if not Profile.own_card_path_list.has(card_rw.resource_path):
+				Profile.own_card_path_list.append(card_rw.resource_path) 
+				Profile.new_own_card_path_list.append(card_rw.resource_path)
+				$"%end_game_menu".get_node("get_new_card_popup/card_pic").texture = card_rw.pic
+				$"%end_game_menu".get_node("get_new_card_popup/desc_and_buff").text = '%s\n%s'%[card_rw.desc,card_rw.get_buff_info()]
+				$"%end_game_menu".get_node("get_new_card_popup").popup()
+	
 func _on_end_game_menu_popup_hide():
 	get_tree().paused = false
 
@@ -129,10 +141,11 @@ func check_card_buff():
 	if Profile.current_card_path == null:
 		return
 	var player = get_tree().get_nodes_in_group('player')[0]
+	var inventory = get_tree().get_nodes_in_group('player_inventory')[0]
 	var card_data = load(Profile.current_card_path)
 	if not card_data.buff_start_item.empty():
 		for start_item in card_data.buff_start_item:
-			player.inventory.add_item(start_item)
+			inventory.add_item(start_item)
 	player.max_energy = player.max_energy + card_data.buff_energy
 	player.max_oxygen = player.max_oxygen + card_data.buff_oxygen
 	player.move_speed = player.move_speed + card_data.buff_move_speed

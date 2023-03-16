@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://card_menu/img/bg_tutorial_description.png" type="Texture" id=1]
+[ext_resource path="res://card_menu/img/exit_tutorial.png" type="Texture" id=2]
+[ext_resource path="res://help_popup/help_popup.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 160, 128 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="help_popup" type="Popup"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -58.0
+margin_right = 80.0
+margin_bottom = 70.0
+script = ExtResource( 3 )
+
+[node name="panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 24 )
+
+[node name="exit_help_popup" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -18.0
+margin_right = -2.0
+margin_bottom = 18.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+
+[node name="label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = -47.0
+margin_right = 76.0
+margin_bottom = 53.0
+text = "นี่คือ การสอนเล่น"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="in_side_help_popup" type="TextureButton" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[connection signal="pressed" from="exit_help_popup" to="." method="_on_exit_help_popup_pressed"]

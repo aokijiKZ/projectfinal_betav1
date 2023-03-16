@@ -1,0 +1,136 @@
+{
+	"events": [
+		{
+			"background": "res://intro_img/Intro1.png",
+			"event_id": "dialogic_021",
+			"fade_duration": 5
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1678958267.cfg"
+		},
+		{
+			"block_input": true,
+			"event_id": "dialogic_050",
+			"wait_time": 3
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "จากโลกที่สิ้นสุดลง และทรัพยากรเหลือน้อย "
+		},
+		{
+			"background": "res://intro_img/Intro2.png",
+			"event_id": "dialogic_021",
+			"fade_duration": 5
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "องค์กรโฮปนาธาเนียลได้จัดตั้งขึ้นเพื่อสืบหาที่อยู่ใหม่ของมนุษย์ในอวกาศ "
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "คุณได้รับเชิญเข้าร่วมเป็นสมาชิกขององค์กรโฮปเพื่อเป็นนักบินของยานอวกาศที่จะไปสำรวจดาวในระบบสุริยะ"
+		},
+		{
+			"background": "res://intro_img/Intro3.png",
+			"event_id": "dialogic_021",
+			"fade_duration": 5
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ค้นหาทรัพยากรที่จำเป็นต่อการอยู่รอดของมนุษย์ คุณพร้อมที่จะเริ่มการผจญภัยในอวกาศแล้วหรือยัง?"
+		},
+		{
+			"background": "",
+			"event_id": "dialogic_021"
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "default-theme.cfg"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1678955808.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"block_input": false,
+			"event_id": "dialogic_050",
+			"wait_time": 0
+		},
+		{
+			"emit_signal": "hide_skip_bt",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1678955808.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "นายพร้อมหรือยัง ? ถา้พร้อมแล้ว ก็คลิกเม้า เพื่อเริ่มเล่น"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": true,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"block_input": true,
+			"event_id": "dialogic_050",
+			"wait_time": 2
+		},
+		{
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "พร้อมแล้ว"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1678956966.json",
+		"name": "intro"
+	}
+}

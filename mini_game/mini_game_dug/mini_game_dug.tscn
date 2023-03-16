@@ -7,6 +7,7 @@
 [ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://card_menu/img/tutorial2.png" type="Texture" id=6]
 [ext_resource path="res://card_menu/img/tutorial.png" type="Texture" id=7]
+[ext_resource path="res://help_popup/help_popup.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
@@ -63,9 +64,6 @@ func drop_data(position, data):
 	get_parent().get_node('%area_place_seed').texture = old_texture
 	
 "
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0, 0, 0, 0.658824 )
 
 [node name="mini_game_dug" type="PopupDialog"]
 visible = true
@@ -137,36 +135,13 @@ texture_normal = ExtResource( 7 )
 texture_hover = ExtResource( 6 )
 flip_h = true
 
-[node name="help_popup" type="Popup" parent="."]
-visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -39.5
-margin_top = -43.0
-margin_right = 111.5
-margin_bottom = 39.0
+[node name="help_popup" parent="." instance=ExtResource( 8 )]
 
-[node name="panel" type="Panel" parent="help_popup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 7 )
-
-[node name="label" type="Label" parent="help_popup"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -76.0
-margin_top = -9.0
-margin_right = 76.0
-margin_bottom = 9.0
+[node name="label" parent="help_popup" index="2"]
 text = "ลากเมล็ดมาลงหลุม"
-align = 1
-valign = 1
 
 [connection signal="about_to_show" from="." to="." method="_on_mini_game_dug_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_mini_game_dug_popup_hide"]
 [connection signal="pressed" from="help_button" to="." method="_on_help_button_pressed"]
+
+[editable path="help_popup"]

@@ -11,6 +11,7 @@ var current_no_area
 
 #card
 var own_card_path_list := []
+var new_own_card_path_list :=[]
 var current_card_path
 
 func _ready():
@@ -28,7 +29,6 @@ func load_from_file():
 	own_card_path_list = data.own_card_path_list
 	current_card_path = data.current_card_path
 	
-
 func save_to_file():
 	var f = File.new()
 	f.open(PROFILE_PATH, File.WRITE)
@@ -39,6 +39,6 @@ func save_to_file():
 	}
 	f.store_string(to_json(data))
 	f.close()
-
+		
 func _exit_tree():
 	save_to_file()

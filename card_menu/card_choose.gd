@@ -13,3 +13,5 @@ func drop_data(position, data):
 	$card_display.get_node("card").texture = data["card_pic"]
 	$"../detail/desc_panel/desc".text =  card_data.desc
 	$"../detail/buff_panel/buff".text = card_data.get_buff_info()
+	EffectManager.get_node("hit").play()
+	Profile.current_card_path = card_data.resource_path

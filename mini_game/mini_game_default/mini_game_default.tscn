@@ -8,6 +8,7 @@
 [ext_resource path="res://card_menu/img/tutorial.png" type="Texture" id=6]
 [ext_resource path="res://mini_game/mini_game_default/img/wp2.png" type="Texture" id=7]
 [ext_resource path="res://mini_game/mini_game_default/img/bg_1.png" type="Texture" id=8]
+[ext_resource path="res://help_popup/help_popup.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -26,9 +27,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ) ]
 }
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0, 0, 0, 0.658824 )
 
 [node name="mini_game_default" type="PopupDialog"]
 unique_name_in_owner = true
@@ -105,32 +103,9 @@ margin_bottom = 42.0
 texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 3 )
 
-[node name="help_popup" type="Popup" parent="."]
-visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -112.0
-margin_top = -43.0
-margin_right = 111.0
-margin_bottom = 39.0
+[node name="help_popup" parent="." instance=ExtResource( 9 )]
 
-[node name="panel" type="Panel" parent="help_popup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 4 )
-
-[node name="label" type="Label" parent="help_popup"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -76.0
-margin_top = -9.0
-margin_right = 76.0
-margin_bottom = 9.0
+[node name="label" parent="help_popup" index="2"]
 text = "กด ที่ขุด 2 ครั้งเพื่อทำการขุด"
 
 [connection signal="about_to_show" from="." to="." method="_on_mini_game_default_about_to_show"]
@@ -139,3 +114,5 @@ text = "กด ที่ขุด 2 ครั้งเพื่อทำกา�
 [connection signal="mouse_exited" from="hole_button" to="." method="_on_hole_button_mouse_exited"]
 [connection signal="pressed" from="hole_button" to="." method="_on_hole_button_pressed"]
 [connection signal="pressed" from="help_button" to="." method="_on_help_button_pressed"]
+
+[editable path="help_popup"]

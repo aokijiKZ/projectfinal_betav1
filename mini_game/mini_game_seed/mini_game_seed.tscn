@@ -9,11 +9,9 @@
 [ext_resource path="res://mini_game/mini_game_seed/img/bg2.png" type="Texture" id=7]
 [ext_resource path="res://card_menu/img/tutorial2.png" type="Texture" id=8]
 [ext_resource path="res://card_menu/img/tutorial.png" type="Texture" id=9]
+[ext_resource path="res://help_popup/help_popup.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0, 0, 0, 0.658824 )
 
 [node name="mini_game_seed" type="PopupDialog"]
 anchor_left = 0.5
@@ -107,32 +105,10 @@ margin_bottom = 38.5
 texture_normal = ExtResource( 9 )
 texture_hover = ExtResource( 8 )
 
-[node name="help_popup" type="Popup" parent="."]
+[node name="help_popup" parent="." instance=ExtResource( 10 )]
 visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -112.0
-margin_top = -42.5
-margin_right = 112.0
-margin_bottom = 38.5
 
-[node name="panel" type="Panel" parent="help_popup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 2 )
-
-[node name="label" type="Label" parent="help_popup"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -91.5
-margin_top = -9.0
-margin_right = 91.5
-margin_bottom = 9.0
+[node name="label" parent="help_popup" index="2"]
 text = "กดค้างที่บัวรดนํ้า ให้อยู่ระหว่างกลาง"
 
 [connection signal="about_to_show" from="." to="." method="_on_mini_game_dug_about_to_show"]
@@ -142,3 +118,5 @@ text = "กดค้างที่บัวรดนํ้า ให้อย�
 [connection signal="mouse_entered" from="watering_button" to="." method="_on_watering_button_mouse_entered"]
 [connection signal="mouse_exited" from="watering_button" to="." method="_on_watering_button_mouse_exited"]
 [connection signal="pressed" from="help_button" to="." method="_on_help_button_pressed"]
+
+[editable path="help_popup"]

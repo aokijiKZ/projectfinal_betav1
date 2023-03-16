@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://get_new_card_popup/img/bg.png" type="Texture" id=1]
+[ext_resource path="res://get_new_card_popup/img/UI_NEWCARD.png" type="Texture" id=2]
+[ext_resource path="res://get_new_card_popup/img/botton_exit.png" type="Texture" id=3]
+[ext_resource path="res://get_new_card_popup/get_new_card_popup.gd" type="Script" id=4]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://get_new_card_popup/img/bg_scoll1.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 238, 144 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 5, 102 )
+margin_left = 1.0
+margin_right = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+
+[sub_resource type="Theme" id=4]
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = SubResource( 3 )
+VScrollBar/styles/scroll_focus = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 4
+font_data = ExtResource( 5 )
+
+[node name="get_new_card_popup" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 41.0
+margin_top = 18.0
+margin_right = -41.0
+margin_bottom = -18.0
+script = ExtResource( 4 )
+
+[node name="panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="ex" type="Node" parent="."]
+
+[node name="ex" type="TextureRect" parent="ex"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+
+[node name="exit_button" type="TextureButton" parent="."]
+margin_left = 224.0
+margin_top = -5.0
+margin_right = 241.0
+margin_bottom = 6.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+texture_focused = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="desc" type="Label" parent="."]
+margin_left = 127.0
+margin_top = 7.0
+margin_right = 229.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
+text = "รายละเอียด"
+align = 1
+valign = 1
+
+[node name="new_card" type="Label" parent="."]
+margin_left = 11.0
+margin_top = 7.0
+margin_right = 118.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
+text = "การ์ดใหม่!"
+align = 1
+valign = 1
+
+[node name="desc_and_buff" type="RichTextLabel" parent="."]
+margin_left = 128.0
+margin_top = 34.0
+margin_right = 233.0
+margin_bottom = 136.0
+theme = SubResource( 4 )
+custom_colors/default_color = Color( 0.207843, 0.207843, 0.219608, 1 )
+custom_fonts/mono_font = SubResource( 2 )
+custom_fonts/bold_italics_font = SubResource( 2 )
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 2 )
+
+[node name="card_pic" type="TextureRect" parent="."]
+margin_left = 40.0
+margin_top = 57.0
+margin_right = 82.0
+margin_bottom = 107.0
+
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]

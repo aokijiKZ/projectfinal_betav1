@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://card_display/img/card.png" type="Texture" id=1]
 [ext_resource path="res://card_display/card_display.gd" type="Script" id=2]
+[ext_resource path="res://card_menu/img/card.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 40, 48 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 40, 48 )
+modulate_color = Color( 0.509804, 0.509804, 0.509804, 1 )
 
 [node name="card_display" type="Button"]
 anchor_right = 1.0
@@ -17,7 +23,7 @@ mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
 custom_styles/focus = SubResource( 1 )
-custom_styles/disabled = SubResource( 1 )
+custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 script = ExtResource( 2 )
 
@@ -37,3 +43,4 @@ stretch_mode = 5
 [node name="card" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource( 3 )

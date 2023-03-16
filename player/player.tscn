@@ -71,7 +71,6 @@ unique_name_in_owner = true
 position = Vector2( 0, -6 )
 frames = SubResource( 2 )
 animation = "move_down"
-frame = 3
 playing = true
 
 [node name="inventory" parent="." groups=["player_inventory"] instance=ExtResource( 7 )]

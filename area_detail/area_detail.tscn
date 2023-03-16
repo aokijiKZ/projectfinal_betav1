@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://area_detail/area_detail.gd" type="Script" id=1]
 [ext_resource path="res://inventory_chopped.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://area_detail/img/read_more1.png" type="Texture" id=16]
 [ext_resource path="res://area_detail/img/read_more2.png" type="Texture" id=17]
 [ext_resource path="res://area_detail/img/tutorial1.png" type="Texture" id=18]
+[ext_resource path="res://card_menu/card_menu.tscn" type="PackedScene" id=19]
 
 [sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 3 )
@@ -62,6 +63,10 @@ margin_left = 2.27833
 margin_right = 2.18471
 margin_top = 2.44688
 margin_bottom = 3.70229
+
+[sub_resource type="DynamicFont" id=15]
+size = 4
+font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 6 )
@@ -221,6 +226,22 @@ texture_hover = ExtResource( 14 )
 texture_disabled = ExtResource( 18 )
 texture_focused = ExtResource( 18 )
 stretch_mode = 4
+
+[node name="new_card_label" type="Label" parent="help_bt"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -13.0
+margin_right = 8.0
+margin_bottom = -6.0
+custom_colors/font_color = Color( 0.796078, 0.254902, 0.254902, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "การ์ดใหม่"
+align = 1
+valign = 1
 
 [node name="after_play" type="Control" parent="."]
 visible = false
@@ -402,7 +423,6 @@ align = 1
 valign = 1
 
 [node name="before_play" type="Control" parent="."]
-visible = false
 
 [node name="bg_mission" type="TextureRect" parent="before_play"]
 margin_left = 138.0
@@ -410,6 +430,54 @@ margin_top = 54.0
 margin_right = 218.0
 margin_bottom = 102.0
 texture = ExtResource( 15 )
+
+[node name="static_label" type="Label" parent="before_play/bg_mission"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -20.5
+margin_right = 32.0
+margin_bottom = -11.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 10 )
+text = "เป้าหมาย "
+align = 1
+valign = 1
+
+[node name="target_oxy" type="Label" parent="before_play/bg_mission"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -9.0
+margin_right = 32.0
+margin_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 10 )
+text = "sadasd"
+align = 1
+valign = 1
+
+[node name="target_time" type="Label" parent="before_play/bg_mission"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -1.5
+margin_right = 32.0
+margin_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 10 )
+text = "หน่วย"
+align = 1
+valign = 1
 
 [node name="read_more" type="TextureRect" parent="before_play"]
 margin_left = 207.0
@@ -423,6 +491,9 @@ autoplay = "idle"
 playback_speed = 2.0
 anims/idle = SubResource( 14 )
 
+[node name="card_menu" parent="." instance=ExtResource( 19 )]
+
 [connection signal="about_to_show" from="." to="." method="_on_level_detail_about_to_show"]
 [connection signal="pressed" from="close_button" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="help_bt" to="." method="_on_help_bt_pressed"]

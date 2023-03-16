@@ -5,17 +5,17 @@
 	"display_name_bool": false,
 	"id": "character-1675240393.json",
 	"mirror_portraits": false,
-	"name": "character-1675240393.json",
+	"name": "นาธาเนียล",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
+	"offset_x": 125,
 	"offset_y": 0,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://character_img/nathanal.png"
 		}
 	],
-	"scale": 100,
+	"scale": 35,
 	"theme": ""
 }

@@ -14,7 +14,6 @@ func _ready():
 			var file_path = 'res://map/contient_%s/area_%s/contient_%s_area_%s.tscn'%[find_no_contient,find_no_area,find_no_contient,find_no_area]
 			if not File.new().file_exists(file_path):
 				break
-			
 			get_node('%capture_scene_img').capture(file_path)
 			list_area.append(file_path)
 			find_no_area = find_no_area+1
@@ -28,6 +27,7 @@ func _ready():
 			item_list_instance = $map_tab_container/continent_template
 		else:
 			item_list_instance = $map_tab_container.get_child(0).duplicate()
+			$"%map_tab_container".add_child(item_list_instance)
 		item_list_instance.clear()
 		item_list_instance.name = 'ทวีป %s'%[no_contient+1]
 		for no_area in list_contient[no_contient].size():

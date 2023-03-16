@@ -144,6 +144,7 @@ margin_left = 16.0
 margin_top = 50.0
 margin_right = 33.0
 margin_bottom = 61.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 10 )
 
 [connection signal="tab_changed" from="map_tab_container" to="." method="_on_map_tab_container_tab_changed"]

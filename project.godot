@@ -135,7 +135,7 @@ _global_script_class_icons={
 [application]
 
 config/name="project2v4"
-run/main_scene="res://title_menu/title_menu.tscn"
+run/main_scene="res://pre_title_menu/pre_title_menu.tscn"
 config/icon="res://env/icon.png"
 
 [audio]

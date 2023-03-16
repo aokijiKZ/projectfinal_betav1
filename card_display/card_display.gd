@@ -1,7 +1,11 @@
 extends Button
 
+var is_have = true
 
 func get_drag_data(position):
+	if not is_have:
+		return {}
+	
 	var data = {
 		'card_index':get_index(),
 		'card_pic':$card.texture

@@ -1,0 +1,21 @@
+{
+	"color": "#ff513735",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1678955816.json",
+	"mirror_portraits": false,
+	"name": "เจ้าหน้าที่",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 125,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://character_img/officer.png"
+		}
+	],
+	"scale": 35,
+	"theme": ""
+}
