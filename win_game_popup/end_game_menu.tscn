@@ -456,4 +456,3 @@ anims/fail = SubResource( 18 )
 anims/win = SubResource( 8 )
 
 [node name="get_new_card_popup" parent="." instance=ExtResource( 17 )]
-visible = false

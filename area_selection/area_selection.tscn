@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://area_selection/area_selection.gd" type="Script" id=1]
 [ext_resource path="res://confirmation/confirmation.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://area_selection/img/bg_areaChoose.png" type="Texture" id=9]
 [ext_resource path="res://area_selection/img/back.png" type="Texture" id=10]
 [ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=11]
+[ext_resource path="res://area_selection/img/icon_card1.png" type="Texture" id=12]
+[ext_resource path="res://area_selection/img/icon_card2.png" type="Texture" id=13]
+[ext_resource path="res://card_menu/card_menu.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=13]
 size = 10
@@ -61,9 +64,27 @@ fill_to = Vector2( 0, 0 )
 
 [sub_resource type="StyleBoxFlat" id=12]
 
+[sub_resource type="DynamicFont" id=15]
+size = 4
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.4, 0.654902, 0.592157, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.4, 0.654902, 0.592157, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="area_selection" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -29, 57 )
 popup_exclusive = true
 script = ExtResource( 1 )
 __meta__ = {
@@ -147,7 +168,63 @@ margin_bottom = 61.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 10 )
 
+[node name="card_menu_bt" type="TextureButton" parent="."]
+margin_left = 276.0
+margin_top = 52.0
+margin_right = 291.0
+margin_bottom = 64.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 12 )
+texture_focused = ExtResource( 12 )
+stretch_mode = 2
+
+[node name="new_card_label" type="Label" parent="card_menu_bt"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -13.0
+margin_right = 8.0
+margin_bottom = -6.0
+custom_colors/font_color = Color( 0.796078, 0.254902, 0.254902, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "การ์ดใหม่"
+align = 1
+valign = 1
+
+[node name="card_menu" parent="." instance=ExtResource( 14 )]
+
+[node name="oxygen_progress_bar" type="ProgressBar" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -18.0
+custom_styles/fg = SubResource( 16 )
+value = 40.0
+percent_visible = false
+
+[node name="total_oxygen" type="Label" parent="oxygen_progress_bar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -9.0
+margin_right = 25.0
+margin_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ออกซิเจน 0/0"
+align = 1
+valign = 1
+
 [connection signal="tab_changed" from="map_tab_container" to="." method="_on_map_tab_container_tab_changed"]
 [connection signal="item_activated" from="map_tab_container/continent_template" to="." method="_on_level_item_activated"]
 [connection signal="item_selected" from="map_tab_container/continent_template" to="." method="_on_area_selected"]
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="card_menu_bt" to="." method="_on_card_menu_bt_pressed"]

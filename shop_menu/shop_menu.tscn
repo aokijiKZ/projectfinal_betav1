@@ -2,7 +2,7 @@
 
 [ext_resource path="res://shop_menu/shop_menu.gd" type="Script" id=1]
 [ext_resource path="res://item/instance/medium_energy_potion.tres" type="Resource" id=2]
-[ext_resource path="res://item/instance/tomato_seed.tres" type="Resource" id=3]
+[ext_resource path="res://item/instance/plant/strawberry_seed.tres" type="Resource" id=3]
 [ext_resource path="res://item/instance/small_energy_potion.tres" type="Resource" id=4]
 [ext_resource path="res://item/instance/medium_unlimit_energy_potion.tres" type="Resource" id=5]
 [ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=6]

@@ -42,6 +42,23 @@ func _ready():
 		get_node('%area_detail').no_continent = Profile.current_no_continent
 		get_node('%area_detail').no_area = Profile.current_no_area
 		get_node('%area_detail').popup_centered()
+	
+	#choose 'new card label' visible 
+	$card_menu_bt/new_card_label.visible = false
+	if Profile.new_own_card_path_list.size() >0:
+		$card_menu_bt/new_card_label.visible = true
+		
+	#update total oxygen
+	var total_oxygen = Profile.get_total_oxygen()
+	var total_target_oxygen = 0
+	for l_f_a in list_contient:
+		for f in l_f_a:
+			var map = load(f).instance()
+			total_target_oxygen = total_target_oxygen+map.target_oxygen
+			map.queue_free()
+	$oxygen_progress_bar/total_oxygen.text	= 'ออกซิเจน %d/%d'%[total_oxygen,total_target_oxygen]
+	$oxygen_progress_bar.max_value = total_target_oxygen
+	$oxygen_progress_bar.value = total_oxygen
 
 
 func _on_level_item_activated(index):
@@ -63,3 +80,11 @@ func _on_area_selected(index):
 
 func _on_back_button_pressed():
 	get_tree().change_scene("res://title_menu/title_menu.tscn")
+
+func _on_card_menu_bt_pressed():
+	EffectManager.get_node("bong").play()
+	$card_menu.popup()
+	
+	#clear new card cach
+	Profile.new_own_card_path_list.clear()
+	$card_menu_bt/new_card_label.visible = false

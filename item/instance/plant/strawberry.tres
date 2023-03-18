@@ -6,10 +6,11 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 32, 0, 16, 16 )
 
 [resource]
 script = ExtResource( 1 )
 item_name = "มะเขือเทศ"
 icon = SubResource( 1 )
 desc = ""
+sell_price = 1

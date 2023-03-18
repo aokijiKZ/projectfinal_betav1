@@ -75,9 +75,6 @@ playing = true
 
 [node name="inventory" parent="." groups=["player_inventory"] instance=ExtResource( 7 )]
 unique_name_in_owner = true
-item_dict = {
-Resource( "res://item/instance/tomato_seed.tres" ): 2
-}
 
 [node name="camera_2d" type="Camera2D" parent="."]
 current = true

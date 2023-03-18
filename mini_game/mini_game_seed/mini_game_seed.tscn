@@ -1,19 +1,27 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://mini_game/mini_game_seed/mini_game_seed.gd" type="Script" id=1]
 [ext_resource path="res://mini_game/mini_game_seed/img/_pipe3.png" type="Texture" id=2]
 [ext_resource path="res://mini_game/mini_game_seed/img/m1.png" type="Texture" id=3]
-[ext_resource path="res://mini_game/mini_game_seed/img/WateringPot.png" type="Texture" id=4]
+[ext_resource path="res://mini_game/mini_game_seed/img/WateringCans1.png" type="Texture" id=4]
 [ext_resource path="res://mini_game/mini_game_seed/img/bg_seed.png" type="Texture" id=5]
 [ext_resource path="res://mini_game/mini_game_seed/img/pipe2.png" type="Texture" id=6]
 [ext_resource path="res://mini_game/mini_game_seed/img/bg2.png" type="Texture" id=7]
-[ext_resource path="res://card_menu/img/tutorial2.png" type="Texture" id=8]
-[ext_resource path="res://card_menu/img/tutorial.png" type="Texture" id=9]
-[ext_resource path="res://help_popup/help_popup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://font/BoonTookMon-Regular.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://mini_game/mini_game_default/img/bg_tutorial.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 250, 20 )
+
 [node name="mini_game_seed" type="PopupDialog"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -80,16 +88,16 @@ margin_right = 181.0
 margin_bottom = 42.5
 texture = ExtResource( 4 )
 
-[node name="watering_button" type="Button" parent="."]
+[node name="watering_button" type="Button" parent="watering_can"]
 unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 25.0
-margin_top = -34.0
-margin_right = 64.0
-margin_bottom = -10.0
+margin_left = -19.0
+margin_top = -20.0
+margin_right = 26.0
+margin_bottom = 24.0
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
@@ -97,26 +105,19 @@ custom_styles/focus = SubResource( 1 )
 custom_styles/disabled = SubResource( 1 )
 custom_styles/normal = SubResource( 1 )
 
-[node name="help_button" type="TextureButton" parent="."]
-margin_left = -1.0
-margin_top = 21.5
-margin_right = 17.0
-margin_bottom = 38.5
-texture_normal = ExtResource( 9 )
-texture_hover = ExtResource( 8 )
-
-[node name="help_popup" parent="." instance=ExtResource( 10 )]
-visible = true
-
-[node name="label" parent="help_popup" index="2"]
+[node name="help_label" type="Label" parent="."]
+margin_top = 115.5
+margin_right = 254.0
+margin_bottom = 129.5
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 8 )
 text = "กดค้างที่บัวรดนํ้า ให้อยู่ระหว่างกลาง"
+align = 1
+valign = 1
 
 [connection signal="about_to_show" from="." to="." method="_on_mini_game_dug_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_mini_game_dug_popup_hide"]
-[connection signal="button_down" from="watering_button" to="." method="_on_watering_button_button_down"]
-[connection signal="button_up" from="watering_button" to="." method="_on_watering_button_button_up"]
-[connection signal="mouse_entered" from="watering_button" to="." method="_on_watering_button_mouse_entered"]
-[connection signal="mouse_exited" from="watering_button" to="." method="_on_watering_button_mouse_exited"]
-[connection signal="pressed" from="help_button" to="." method="_on_help_button_pressed"]
-
-[editable path="help_popup"]
+[connection signal="button_down" from="watering_can/watering_button" to="." method="_on_watering_button_button_down"]
+[connection signal="button_up" from="watering_can/watering_button" to="." method="_on_watering_button_button_up"]
+[connection signal="mouse_entered" from="watering_can/watering_button" to="." method="_on_watering_button_mouse_entered"]
+[connection signal="mouse_exited" from="watering_can/watering_button" to="." method="_on_watering_button_mouse_exited"]

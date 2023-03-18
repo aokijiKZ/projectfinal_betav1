@@ -13,14 +13,11 @@ func _process(delta):
 func _on_mini_game_dug_about_to_show():
 	get_tree().get_nodes_in_group('player')[0].is_can_move = false
 
-
 func _on_mini_game_dug_popup_hide():
 	get_tree().get_nodes_in_group('player')[0].is_can_move = true
-	$help_popup.hide()
-
 
 func _on_watering_button_button_down():
-	get_node("watering_can").texture = load('res://mini_game/mini_game_seed/img/WateringPot2.png')
+	get_node("watering_can").texture = load("res://mini_game/mini_game_seed/img/WateringCans2.png")
 	$bg2.texture = load("res://mini_game/mini_game_seed/img/bg.png")
 	var player = get_tree().get_nodes_in_group('player')[0]
 	if player.energy > 0:
@@ -33,7 +30,7 @@ func _on_watering_button_button_down():
 	
 func _on_watering_button_button_up():
 	EffectManager.get_node('poured_water').stop()
-	get_node("watering_can").texture = load('res://mini_game/mini_game_seed/img/WateringPot.png')
+	get_node("watering_can").texture = load("res://mini_game/mini_game_seed/img/WateringCans1.png")
 	$bg2.texture = load("res://mini_game/mini_game_seed/img/bg_seed.png")
 	is_watering = false
 	get_node('%watering_button').disabled = true
@@ -49,10 +46,5 @@ func _on_watering_button_mouse_entered():
 	shader_material.set_shader_param('outline_color',Color(1,0,0,1))
 	get_node('watering_can').material = shader_material
 
-
 func _on_watering_button_mouse_exited():
 	get_node('watering_can').material = null
-
-
-func _on_help_button_pressed():
-	$help_popup.visible = !$help_popup.visible

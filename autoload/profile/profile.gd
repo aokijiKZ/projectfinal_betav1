@@ -14,6 +14,9 @@ var own_card_path_list := []
 var new_own_card_path_list :=[]
 var current_card_path
 
+#end game
+var is_first_time_complate_game = false
+
 func _ready():
 	load_from_file()
 
@@ -28,6 +31,7 @@ func load_from_file():
 	stat_dict = data.stat_dict
 	own_card_path_list = data.own_card_path_list
 	current_card_path = data.current_card_path
+	is_first_time_complate_game = data.is_first_time_complate_game
 	
 func save_to_file():
 	var f = File.new()
@@ -35,10 +39,18 @@ func save_to_file():
 	var data = {
 		'stat_dict':stat_dict,
 		'own_card_path_list':own_card_path_list,
-		'current_card_path':current_card_path
+		'current_card_path':current_card_path,
+		'is_first_time_complate_game':is_first_time_complate_game
 	}
 	f.store_string(to_json(data))
 	f.close()
-		
+
+func get_total_oxygen():
+	var total_oxygen = 0
+	for c_data in stat_dict.values():
+		for a_data in c_data.values():
+			total_oxygen = total_oxygen+a_data.get('oxygen')
+	return total_oxygen
+
 func _exit_tree():
 	save_to_file()
