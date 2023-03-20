@@ -24,4 +24,4 @@ growth_time_sec = 5.0
 grow_textrue_list = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ]
 product = ExtResource( 1 )
 produce_oxygen = 5
-buy_price = 5
+buy_price = 4

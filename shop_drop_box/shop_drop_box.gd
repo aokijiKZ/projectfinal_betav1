@@ -49,4 +49,4 @@ func _on_player_area_mask_input_event(viewport, event, shape_idx):
 			floating_item_instance.global_position = global_position
 			yield(get_tree().create_timer(0.1),"timeout")
 		queue_free()
-			
+		get_node("/root/in_game/ui/player_inventory_list/animation_player").play('show')			

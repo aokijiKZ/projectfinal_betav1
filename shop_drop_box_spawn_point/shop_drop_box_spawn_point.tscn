@@ -1,3 +1,18 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://setting_menu/img/exit.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
 
 [node name="shop_drop_box_group" type="YSort" groups=["shop_drop_box_group"]]
+
+[node name="static_body_2d" type="StaticBody2D" parent="."]
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="static_body_2d"]
+shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="static_body_2d"]
+self_modulate = Color( 0.384314, 0.560784, 0, 1 )
+scale = Vector2( 0.615385, 0.615385 )
+texture = ExtResource( 1 )

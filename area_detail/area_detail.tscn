@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://area_detail/area_detail.gd" type="Script" id=1]
 [ext_resource path="res://inventory_chopped.png" type="Texture" id=2]
@@ -63,6 +63,10 @@ margin_right = 2.18471
 margin_top = 2.44688
 margin_bottom = 3.70229
 
+[sub_resource type="DynamicFont" id=15]
+size = 4
+font_data = ExtResource( 10 )
+
 [sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 78, 12 )
@@ -89,6 +93,7 @@ tracks/0/keys = {
 }
 
 [node name="level_detail" type="Popup"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -223,6 +228,23 @@ texture_hover = ExtResource( 14 )
 texture_disabled = ExtResource( 18 )
 texture_focused = ExtResource( 18 )
 stretch_mode = 4
+
+[node name="card_rw_label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.0
+margin_top = 58.0
+margin_right = 15.0
+margin_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "มีรางวัล 100% : "
+align = 1
+valign = 1
 
 [node name="after_play" type="Control" parent="."]
 visible = false

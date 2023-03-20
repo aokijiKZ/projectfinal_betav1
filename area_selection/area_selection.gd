@@ -21,6 +21,8 @@ func _ready():
 		list_contient.append(list_area)
 		find_no_contient = find_no_contient+1
 	
+	var total_oxygen = Profile.get_total_oxygen()
+	var total_target_oxygen = 0
 	for no_contient in list_contient.size():
 		var item_list_instance
 		if no_contient ==0:
@@ -32,7 +34,17 @@ func _ready():
 		item_list_instance.name = 'ทวีป %s'%[no_contient+1]
 		for no_area in list_contient[no_contient].size():
 			var img = load('res://map/contient_%s/area_%s/contient_%s_area_%s.png'%[no_contient,no_area,no_contient,no_area])
-			item_list_instance.add_item('พื้นที่ %s'%[no_area+1],img)
+			
+			var lock_img = load("res://area_selection/img/bg_areaLock.png")
+			var map_ins = load('res://map/contient_%s/area_%s/contient_%s_area_%s.tscn'%[no_contient,no_area,no_contient,no_area]).instance()
+			total_target_oxygen = total_target_oxygen+map_ins.target_oxygen
+			
+			if total_oxygen >=map_ins.unlock_oxygen_theshold:
+				item_list_instance.add_item('พื้นที่ %s'%[no_area+1],img)
+			else:
+				item_list_instance.add_item('พื้นที่ %s'%[no_area+1],lock_img,false)
+				
+			map_ins.queue_free()
 	
 	
 	yield(get_tree(),"idle_frame")
@@ -49,13 +61,6 @@ func _ready():
 		$card_menu_bt/new_card_label.visible = true
 		
 	#update total oxygen
-	var total_oxygen = Profile.get_total_oxygen()
-	var total_target_oxygen = 0
-	for l_f_a in list_contient:
-		for f in l_f_a:
-			var map = load(f).instance()
-			total_target_oxygen = total_target_oxygen+map.target_oxygen
-			map.queue_free()
 	$oxygen_progress_bar/total_oxygen.text	= 'ออกซิเจน %d/%d'%[total_oxygen,total_target_oxygen]
 	$oxygen_progress_bar.max_value = total_target_oxygen
 	$oxygen_progress_bar.value = total_oxygen

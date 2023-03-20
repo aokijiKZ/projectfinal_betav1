@@ -72,7 +72,6 @@ texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 250, 20 )
 
 [node name="mini_game_dug" type="PopupDialog"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

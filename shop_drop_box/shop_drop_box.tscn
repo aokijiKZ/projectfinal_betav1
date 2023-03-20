@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://shop_drop_box/img/Piknik basket.png" type="Texture" id=1]
 [ext_resource path="res://shop_drop_box/shop_drop_box.gd" type="Script" id=2]
@@ -19,12 +19,65 @@ height = 10.0
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 6.5 )
 
+[sub_resource type="GDScript" id=6]
+resource_name = "time_label"
+script/source = "extends Label
+
+export var is_counting = false
+
+func _process(delta):
+	if is_counting:
+		text = '%.2f'%clamp((10-$\"../../animation_player\".current_animation_position),0,10)
+	else:
+		text = ''
+"
+
+[sub_resource type="Animation" id=5]
+resource_name = "fall"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("animated_sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -500 ), Vector2( 0, -8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("animated_sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("5_z_index/time_label:is_counting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [node name="shop_drop_box" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="animated_sprite" type="AnimatedSprite" parent="."]
 unique_name_in_owner = true
-position = Vector2( 0, -5 )
+position = Vector2( 0, -8 )
 frames = SubResource( 1 )
 
 [node name="static_body_2d" type="StaticBody2D" parent="."]
@@ -56,18 +109,35 @@ z_index = 5
 
 [node name="conversation" type="Label" parent="5_z_index"]
 unique_name_in_owner = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -20.0
-margin_top = -29.0
+margin_top = -35.0
 margin_right = 20.0
-margin_bottom = -11.0
+margin_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 align = 1
 valign = 1
+
+[node name="time_label" type="Label" parent="5_z_index"]
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10.00"
+align = 1
+valign = 1
+script = SubResource( 6 )
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+autoplay = "fall"
+anims/fall = SubResource( 5 )
 
 [connection signal="area_entered" from="player_area_mask" to="." method="_on_player_area_mask_area_entered"]
 [connection signal="area_exited" from="player_area_mask" to="." method="_on_player_area_mask_area_exited"]

@@ -52,27 +52,28 @@ func refesh():
 		$cancel_button.disabled = true
 		
 func _on_delivery_timer_timeout():
-	if not queue_item_dict.empty():
-		var shop_drop_box_instance
-		var shop_drop_box_group = get_tree().get_nodes_in_group('shop_drop_box_group')[0]
-		if shop_drop_box_group.get_child_count() <=0:
-			shop_drop_box_instance = load('res://shop_drop_box/shop_drop_box.tscn').instance()
-			shop_drop_box_group.add_child(shop_drop_box_instance)
-		else:
-			shop_drop_box_instance = shop_drop_box_group.get_child(0)
-		var inventory = shop_drop_box_instance.get_node('%inventory')
-		for item in queue_item_dict:
-			for i in queue_item_dict[item]:
-				inventory.add_item(item)
-		queue_item_dict.clear()
-	
-	if not sell_item_dict.empty():
-		var totol_money = 0
-		for item in sell_item_dict:
-			totol_money = totol_money + item.sell_price*sell_item_dict[item]
-		get_node('/root/in_game').money = get_node('/root/in_game').money+totol_money
-		sell_item_dict.clear()
-	refesh()
+#	if not queue_item_dict.empty():
+#		var shop_drop_box_instance
+#		var shop_drop_box_group = get_tree().get_nodes_in_group('shop_drop_box_group')[0]
+#		if shop_drop_box_group.get_child_count() <=1:
+#			shop_drop_box_instance = load('res://shop_drop_box/shop_drop_box.tscn').instance()
+#			shop_drop_box_group.add_child(shop_drop_box_instance)
+#		else:
+#			shop_drop_box_instance = shop_drop_box_group.get_child(1)
+#		var inventory = shop_drop_box_instance.get_node('%inventory')
+#		for item in queue_item_dict:
+#			for i in queue_item_dict[item]:
+#				inventory.add_item(item)
+#		queue_item_dict.clear()
+#
+#	if not sell_item_dict.empty():
+#		var totol_money = 0
+#		for item in sell_item_dict:
+#			totol_money = totol_money + item.sell_price*sell_item_dict[item]
+#		get_node('/root/in_game').money = get_node('/root/in_game').money+totol_money
+#		sell_item_dict.clear()
+#	refesh()
+	pass
 
 
 func _on_can_buy_item_list_item_activated(index):
@@ -140,3 +141,28 @@ func _on_buy_button_pressed():
 
 func _on_cancel_button_pressed():
 	cancle_buy_item($"%waing_item_list".get_selected_items()[0])
+
+func _on_sumit_button_pressed():
+	EffectManager.get_node("bong").play()
+	if not queue_item_dict.empty():
+		var shop_drop_box_instance
+		var shop_drop_box_group = get_tree().get_nodes_in_group('shop_drop_box_group')[0]
+		if shop_drop_box_group.get_child_count() <=1:
+			shop_drop_box_instance = load('res://shop_drop_box/shop_drop_box.tscn').instance()
+			shop_drop_box_group.add_child(shop_drop_box_instance)
+		else:
+			shop_drop_box_instance = shop_drop_box_group.get_child(1)
+		var inventory = shop_drop_box_instance.get_node('%inventory')
+		for item in queue_item_dict:
+			for i in queue_item_dict[item]:
+				inventory.add_item(item)
+		queue_item_dict.clear()
+	
+	if not sell_item_dict.empty():
+		var totol_money = 0
+		for item in sell_item_dict:
+			totol_money = totol_money + item.sell_price*sell_item_dict[item]
+		get_node('/root/in_game').money = get_node('/root/in_game').money+totol_money
+		sell_item_dict.clear()
+	refesh()
+	hide()

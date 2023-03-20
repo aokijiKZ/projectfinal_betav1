@@ -11,6 +11,8 @@ func _on_stop_menu_about_to_show():
 	
 func _on_stop_menu_popup_hide():
 	get_tree().paused = false
+	yield(get_tree().create_timer(0.1),"timeout")
+	$"../stop_button".disabled = false
 
 func _on_exit_confirmation_confirm():
 	EffectManager.get_node("ui_confirm").play()

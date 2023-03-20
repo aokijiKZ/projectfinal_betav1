@@ -11,6 +11,7 @@ func _ready():
 		var in_game_instance = load('res://in_game.tscn').instance()
 		in_game_instance.target_oxygen = map_instance.target_oxygen
 		in_game_instance.target_time_sec = map_instance.target_time_sec
+		in_game_instance.money = map_instance.money
 		get_tree().get_root().add_child(in_game_instance,true)
 		in_game_instance.get_node('%map').add_child(map_instance,true)
 		self.queue_free()

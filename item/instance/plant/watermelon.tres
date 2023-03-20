@@ -13,4 +13,4 @@ script = ExtResource( 1 )
 item_name = "มะเขือเทศ"
 icon = SubResource( 1 )
 desc = ""
-sell_price = 1
+sell_price = 40

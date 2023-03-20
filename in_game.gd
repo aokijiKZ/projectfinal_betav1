@@ -18,18 +18,21 @@ func _ready():
 	refesh_money_label()
 	refesh_oxygen_label()
 	check_card_buff()
-
+	$ui/show_no_map.get_node("label").text = 'ทวีปที่ %d - พื้นที่ %d'%[no_continent+1,no_area+1]
+	get_node('%time_label').text = '%d/%d'%[use_time_sec,target_time_sec]
+	
 func _process(delta):
 	pass
 
 func _on_sec_timer_timeout():
 	use_time_sec = use_time_sec+1
-	get_node('%time_label').text = '%4d'%use_time_sec
+	get_node('%time_label').text = '%d/%d'%[use_time_sec,target_time_sec]
 
 func _on_stop_button_pressed():
 	get_node('ui/player_inventory_list/player_inventory_list').close_player_inv()
 	EffectManager.get_node("bong").play()
 	get_node('%stop_menu').popup()
+	$ui/stop_button.disabled = true
 
 func set_oxygen(v):
 	oxygen = v
@@ -41,8 +44,11 @@ func check_endgame():
 	if oxygen >= target_oxygen:
 		EffectManager.get_node("completed").play()
 		yield(get_tree(),"idle_frame")
-		get_node('%end_game_menu').popup()
-		$"%end_game_menu".get_node('animetion_player').play('win')
+		if no_continent==2 and no_area==2:
+			pass #complate game
+		else:
+			get_node('%end_game_menu').popup()
+			$"%end_game_menu".get_node('animetion_player').play('win')
 	
 func refesh_oxygen_bar():
 	get_node('%oxygen_bar').value = 100*oxygen/float(target_oxygen)

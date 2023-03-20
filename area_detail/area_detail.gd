@@ -16,6 +16,7 @@ func _on_play_button_pressed():
 	in_game_instance.target_time_sec = map_instance.target_time_sec
 	in_game_instance.no_continent = no_continent
 	in_game_instance.no_area = no_area
+	in_game_instance.money = map_instance.money
 	get_tree().get_root().add_child(in_game_instance,true)
 	in_game_instance.get_node('%map').add_child(map_instance,true)
 	
@@ -33,6 +34,7 @@ func _on_level_detail_about_to_show():
 	map_instance = load('res://map/contient_%s/area_%s/contient_%s_area_%s.tscn'%[no_continent,no_area,no_continent,no_area]).instance()
 	get_node('%target_time').text = '%2d'%map_instance.target_time_sec
 	get_node('%oxygen_recive').text = '%s'%map_instance.target_oxygen
+	$card_rw_label.text = 'รางวัลหากสำเร็จ 100% จะได้รับการ์ด '+map_instance.card_reward.card_name if map_instance.card_reward!= null else ''
 	
 	
 	#select display swap_bt (display after_play)

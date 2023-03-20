@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://shop_menu/shop_menu.gd" type="Script" id=1]
 [ext_resource path="res://item/instance/medium_energy_potion.tres" type="Resource" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://shop_menu/img/bg.png" type="Texture" id=8]
 [ext_resource path="res://shop_menu/img/bg_list.png" type="Texture" id=9]
 [ext_resource path="res://shop_menu/img/bg_item.png" type="Texture" id=10]
+[ext_resource path="res://item/instance/plant/tomato_seed.tres" type="Resource" id=11]
 [ext_resource path="res://shop_menu/img/scrollbar.png" type="Texture" id=12]
 [ext_resource path="res://shop_menu/img/bg_cancelorder.png" type="Texture" id=13]
 [ext_resource path="res://shop_menu/img/bg_cooldown.png" type="Texture" id=14]
@@ -22,6 +23,11 @@
 [ext_resource path="res://shop_menu/img/bt_buy2.png" type="Texture" id=21]
 [ext_resource path="res://shop_menu/img/bt_cancel.png" type="Texture" id=22]
 [ext_resource path="res://shop_menu/img/bt_cancel2.png" type="Texture" id=23]
+[ext_resource path="res://item/instance/plant/watermelon_seed.tres" type="Resource" id=24]
+[ext_resource path="res://item/instance/plant/potato_seed.tres" type="Resource" id=25]
+[ext_resource path="res://item/instance/plant/corn_seed.tres" type="Resource" id=26]
+[ext_resource path="res://item/instance/plant/carrot_seed.tres" type="Resource" id=27]
+[ext_resource path="res://item/instance/plant/kabocha_seed.tres" type="Resource" id=28]
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 8 )
@@ -142,13 +148,14 @@ margin_right = 140.0
 margin_bottom = 70.0
 custom_styles/panel = SubResource( 6 )
 script = ExtResource( 1 )
-sell_item_list = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ) ]
+sell_item_list = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 24 ) ]
 
 [node name="shop_label" type="Label" parent="."]
 margin_left = 6.0
 margin_top = 5.0
 margin_right = 67.0
 margin_bottom = 25.269
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
 custom_fonts/font = SubResource( 15 )
 custom_styles/normal = SubResource( 16 )
 text = "ร้านค้า"
@@ -160,6 +167,7 @@ margin_left = 144.0
 margin_top = 12.0
 margin_right = 189.0
 margin_bottom = 25.0
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
 custom_fonts/font = SubResource( 17 )
 custom_styles/normal = SubResource( 18 )
 text = "รายการที่สั่ง"
@@ -171,6 +179,7 @@ margin_left = 144.0
 margin_top = 83.0
 margin_right = 185.0
 margin_bottom = 96.0
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
 custom_fonts/font = SubResource( 17 )
 custom_styles/normal = SubResource( 19 )
 text = "ของขาย"
@@ -221,6 +230,7 @@ custom_styles/bg = SubResource( 8 )
 
 [node name="delivery_time_label" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 margin_left = 158.0
 margin_top = 68.0
 margin_right = 190.0
@@ -230,6 +240,20 @@ custom_styles/normal = SubResource( 13 )
 text = "00"
 align = 1
 valign = 1
+
+[node name="sumit_button" type="Button" parent="."]
+margin_left = 158.0
+margin_top = 68.0
+margin_right = 190.0
+margin_bottom = 81.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+text = "สั่ง"
 
 [node name="delivery_timer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -241,6 +265,7 @@ margin_left = 195.0
 margin_top = 68.0
 margin_right = 249.0
 margin_bottom = 81.0
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
 custom_fonts/font = SubResource( 17 )
 custom_styles/hover = SubResource( 14 )
 custom_styles/pressed = SubResource( 14 )
@@ -263,6 +288,7 @@ unique_name_in_owner = true
 margin_left = 9.0
 margin_right = 24.0
 margin_bottom = 10.0
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
 custom_fonts/font = SubResource( 20 )
 text = "1000"
 
@@ -282,6 +308,8 @@ margin_left = 64.0
 margin_top = 5.0
 margin_right = 86.0
 margin_bottom = 25.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
 custom_fonts/font = SubResource( 17 )
 custom_styles/hover = SubResource( 22 )
 custom_styles/pressed = SubResource( 22 )
@@ -296,6 +324,8 @@ margin_left = 189.0
 margin_top = 12.0
 margin_right = 210.0
 margin_bottom = 25.5
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
 custom_fonts/font = SubResource( 17 )
 custom_styles/hover = SubResource( 23 )
 custom_styles/pressed = SubResource( 23 )
@@ -312,6 +342,7 @@ text = "ยกเลิก"
 [connection signal="item_activated" from="waing_item_list" to="." method="_on_waing_item_list_item_activated"]
 [connection signal="item_selected" from="waing_item_list" to="." method="_on_waing_item_list_item_selected"]
 [connection signal="item_activated" from="wating_sell_item_list" to="." method="_on_can_buy_item_list_item_activated"]
+[connection signal="pressed" from="sumit_button" to="." method="_on_sumit_button_pressed"]
 [connection signal="timeout" from="delivery_timer" to="." method="_on_delivery_timer_timeout"]
 [connection signal="pressed" from="cancle_all_button" to="." method="_on_cancle_all_button_pressed"]
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
