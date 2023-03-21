@@ -21,6 +21,28 @@ func _ready():
 	$ui/show_no_map.get_node("label").text = 'ทวีปที่ %d - พื้นที่ %d'%[no_continent+1,no_area+1]
 	get_node('%time_label').text = '%d/%d'%[use_time_sec,target_time_sec]
 	
+	#dialog event
+	yield(get_tree(),"idle_frame")
+	yield(get_tree().create_timer(1),"timeout")
+	if Profile.is_first_time_in_game:
+		get_tree().paused = true
+		var dialog = Dialogic.start('in_game')
+		yield(get_tree().create_timer(1),"timeout")
+		dialog.pause_mode = PAUSE_MODE_PROCESS
+		$ui.add_child(dialog)
+		dialog.connect('timeline_end',self,'_on_dialog_end',[dialog])
+		dialog.connect("dialogic_signal", self, "dialog_listener")
+		
+func _on_dialog_end(timeline_name,dialog):
+	Profile.is_first_time_in_game = false
+	get_tree().paused = false
+	dialog.queue_free()
+
+func dialog_listener(string):
+	match string:
+		"somthing":
+			pass
+	
 func _process(delta):
 	pass
 
@@ -44,14 +66,16 @@ func check_endgame():
 	if oxygen >= target_oxygen:
 		EffectManager.get_node("completed").play()
 		yield(get_tree(),"idle_frame")
-		if no_continent==2 and no_area==2:
-			pass #complate game
+		if no_continent==2 and no_area==2 and Profile.is_first_time_complate_game:
+			var complate_game_ins = load('res://complate_game/complate_game.tscn').instance()
+			get_tree().get_root().add_child(complate_game_ins,true)
+			queue_free()
 		else:
 			get_node('%end_game_menu').popup()
 			$"%end_game_menu".get_node('animetion_player').play('win')
 	
 func refesh_oxygen_bar():
-	get_node('%oxygen_bar').value = 100*oxygen/float(target_oxygen)
+	get_node('%oxygen_bar').value = 100*oxygen/float(target_oxygen) if target_oxygen!=0 else 0.0001
 
 func refesh_oxygen_label():
 	$ui/oxygen_label.text = '%s/%s'%[oxygen,target_oxygen]
@@ -119,6 +143,9 @@ func _on_end_game_menu_about_to_show():
 				$"%end_game_menu".get_node("get_new_card_popup/card_pic").texture = card_rw.pic
 				$"%end_game_menu".get_node("get_new_card_popup/desc_and_buff").text = '%s\n%s'%[card_rw.desc,card_rw.get_buff_info()]
 				$"%end_game_menu".get_node("get_new_card_popup").popup()
+	
+	if no_continent==2 and no_area==2:
+		$"%end_game_menu".get_node("go_to_next_area_button").visible = false
 	
 func _on_end_game_menu_popup_hide():
 	get_tree().paused = false

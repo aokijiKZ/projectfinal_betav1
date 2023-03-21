@@ -87,6 +87,25 @@ func _on_card_display_pressed():
 
 func _on_card_menu_about_to_show():
 	refesh()
+	yield(get_tree(),"idle_frame")
+	if Profile.is_first_time_recive_card:
+		get_tree().paused = true
+		var dialog = Dialogic.start('card')
+		yield(get_tree().create_timer(1),"timeout")
+		dialog.pause_mode = PAUSE_MODE_PROCESS
+		add_child(dialog)
+		dialog.connect('timeline_end',self,'_on_dialog_end',[dialog])
+		dialog.connect("dialogic_signal", self, "dialog_listener")
+
+func _on_dialog_end(timeline_name,dialog):
+	Profile.is_first_time_recive_card = false
+	get_tree().paused = false
+	dialog.queue_free()
+
+func dialog_listener(string):
+	match string:
+		"somthing":
+			pass
 
 
 func _on_read_more_button_pressed():

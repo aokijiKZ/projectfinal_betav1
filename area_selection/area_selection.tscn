@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://area_selection/area_selection.gd" type="Script" id=1]
 [ext_resource path="res://confirmation/confirmation.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://area_selection/img/icon_card1.png" type="Texture" id=12]
 [ext_resource path="res://area_selection/img/icon_card2.png" type="Texture" id=13]
 [ext_resource path="res://card_menu/card_menu.tscn" type="PackedScene" id=14]
+[ext_resource path="res://area_selection/img/bg_o2.png" type="Texture" id=15]
+[ext_resource path="res://area_selection/img/bg_o2_2.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=13]
 size = 10
@@ -68,20 +70,23 @@ fill_to = Vector2( 0, 0 )
 size = 4
 font_data = ExtResource( 11 )
 
-[sub_resource type="StyleBoxFlat" id=16]
-bg_color = Color( 0.4, 0.654902, 0.592157, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0.4, 0.654902, 0.592157, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 250, 16 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 250, 16 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
 
 [node name="area_selection" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -29, 57 )
@@ -204,7 +209,8 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -18.0
-custom_styles/fg = SubResource( 16 )
+custom_styles/fg = SubResource( 18 )
+custom_styles/bg = SubResource( 17 )
 value = 40.0
 percent_visible = false
 
@@ -222,6 +228,11 @@ grow_vertical = 2
 text = "ออกซิเจน 0/0"
 align = 1
 valign = 1
+
+[node name="input_block" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [connection signal="tab_changed" from="map_tab_container" to="." method="_on_map_tab_container_tab_changed"]
 [connection signal="item_activated" from="map_tab_container/continent_template" to="." method="_on_level_item_activated"]

@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready():
+	Profile.is_first_time_complate_game = false
 	var dialog = Dialogic.start('complate_game')
 	add_child(dialog)
 	dialog.connect('timeline_end',self,'_on_dialog_end')
@@ -14,7 +15,9 @@ func _on_skip_button_pressed():
 	to_title_menu()
 	
 func to_title_menu():
-	get_tree().change_scene("res://title_menu/title_menu.tscn")
+	var title_menu_instance = load('res://title_menu/title_menu.tscn').instance()
+	get_tree().get_root().add_child(title_menu_instance,true)
+	queue_free()
 
 func dialog_listener(string):
 	match string:

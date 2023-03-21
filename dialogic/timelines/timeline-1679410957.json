@@ -5,7 +5,7 @@
 			"animation_length": 0,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
-			"character": "character-1678955808.json",
+			"character": "character-1678955816.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
 			"portrait": "Default",
@@ -21,25 +21,15 @@
 			"z_index": 0
 		},
 		{
-			"character": "character-1678955808.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "นายทำได้"
-		},
-		{
-			"event_id": "dialogic_024",
-			"set_theme": "theme-1678958267.cfg"
-		},
-		{
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "คุณได้เล่นเกมจบแล้ว"
+			"text": "sdsd"
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.5",
-		"file": "timeline-1679175392.json",
-		"name": "c_0_a_0"
+		"file": "timeline-1679410957.json",
+		"name": "test"
 	}
 }

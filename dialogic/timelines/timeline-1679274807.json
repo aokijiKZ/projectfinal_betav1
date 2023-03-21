@@ -1,6 +1,88 @@
 {
 	"events": [
-
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1678955808.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": true,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1678955808.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "พวกเราได้ทำภารกิจของเราสำเร็จแล้ว! พวกเราสามารถเปลี่ยนดาวที่เราค้นพบให้เป็นที่อยู่อาศัยได้ \nนายได้ช่วยพวกเราทุกคนไว้"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "หวังว่ามันจะช่วยพวกเรา โดยที่เราจะไม่ทำลายมัน"
+		},
+		{
+			"character": "character-1678955808.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "แน่นอน นาธาเนียล พวกเราในองค์กรโฮปจะสนับสนุนคุณในทุกๆ ขั้นตอน จงเชื่อมั่นในวิสัยทัศน์ของคุณ และร่วมมือกันสร้างอนาคตที่ดีขึ้นให้กับมนุษยชาติ"
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1678958267.cfg"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "นาธาเนียล ได้ช่วยสร้างโลกใบใหม่ และ หวังว่าจะไม่มีการทำลายโลกใหม่ที่เขาช่วยสร้างขึ้นมา "
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": true,
+			"wait_seconds": 1
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "default-theme.cfg"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "เกมจบแล้ว คุณยังสามารถกลับไปเล่นด่านต่างๆได้ ขอให้สนุก"
+		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.5",

@@ -332,6 +332,7 @@ pause_mode = 2
 unique_name_in_owner = true
 
 [node name="show_no_map" parent="ui" instance=ExtResource( 22 )]
+pause_mode = 2
 
 [node name="sec_timer" type="Timer" parent="."]
 autostart = true

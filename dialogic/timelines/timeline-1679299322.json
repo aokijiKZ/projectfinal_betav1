@@ -1,0 +1,91 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1678955816.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": true,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1678955816.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ในการทำภารกิจ"
+		},
+		{
+			"character": "character-1678955816.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "คุณจะต้องทำให้ ออกซิเจน ในพื้นนี้ให้ถึงค่าที่กำหนด โดยการปลูกผัก"
+		},
+		{
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "แล้วออกซิเจนจะไม่กระจายออกไปเหรอ"
+		},
+		{
+			"character": "character-1678955816.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ไม่ต้องห่วงเราได้กลางโดมอากาศไว้แล้ว นั้นรวมไปถึงคุณไม่ต้องกังวลเกี่ยวกับ ออกซิเจนที่คุณจะใช้ในพื้นที่ และแม้คุณออกไปนอกโดม ชุดของคุณก็มีออกซิเจนเพียงพอให้อยู่ได้ตลอด"
+		},
+		{
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "แล้วจะเอาเมล็ดมากจากไหน"
+		},
+		{
+			"character": "character-1678955816.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "เราได้ให้งบประมาณคุณไป สำหรับแต่ล่ะพื้นที่ คุณจะต้องไปที่ หุ่นร้านค้า เอาเมาส์ไปคลิกที่ตัวหุ่น อย่าลืมเข้าไปใกล้ๆมันด้วยล่ะ เดี๋ยวจะกดไม่ถึง\nซึ่งคุณจะต้องเป็นคนเลือกซื้อ เมล็ดที่จะนำมาปลูก หรือ ไอเทมอื่นที่ช่วยให้คุณทำภารกิจสำเร็จ\nยิ่งคุณทำได้ไวเท่าไหร่ เรายิ่งจะปิดกั้นโดมแบบสมบูรณ์ ได้ไวเท่านั้น หมายความว่าออกซืเจนของโลกใบนี้ก็จะขึ้นกับความไวด้วย ทำเวลาให้ไวเข้าไว้ มันขึ้นอยู่กับคุณ\nการปลูกก็ให้เอาเมาส์ไปคลิกที่พื้นที่ปลูก อย่าลืมเอาใกล้ คุณไม่ได้แขนยาว จากนั้นก็ทำการ ขุด หว่าน รด และก็เก็บเกี่ยว\nขอแค่ผักโต ออกซิเจนในพื้นที่นี้ก็จะเพิ่มขึ้น ส่วนผลผลิตก็มีมูลค่า ยิ่งโลกเป็นอย่างทุกวันนี้ สามารถนำไปขายกับหุ่นได้ ถ้าคุณต้องการเงิน ณ ตอนนั้น\nจบการบรรยาย"
+		},
+		{
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "เข้าใขแล้ว"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1679299322.json",
+		"name": "in_game"
+	}
+}

@@ -3,9 +3,20 @@ extends PopupDialog
 export(Array,Resource) var sell_item_list:Array
 var queue_item_dict:Dictionary
 var sell_item_dict:Dictionary
+var is_no_shop_drop_box := true
 
 func _ready():
 	refesh()
+		
+func _on_dialog_end(timeline_name,dialog):
+	Profile.is_first_time_in_shop = false
+	get_tree().paused = false
+	dialog.queue_free()
+
+func dialog_listener(string):
+	match string:
+		"somthing":
+			pass
 
 func _process(delta):
 	if get_node("%delivery_timer").time_left >0:
@@ -50,6 +61,7 @@ func refesh():
 	
 	if $"%waing_item_list".get_selected_items().empty():
 		$cancel_button.disabled = true
+		
 		
 func _on_delivery_timer_timeout():
 #	if not queue_item_dict.empty():
@@ -101,6 +113,16 @@ func _on_shop_menu_about_to_show():
 				sell_item_dict[item] = sell_item_dict[item]+player.get_node('%inventory').get_item_dict()[item]
 			player.get_node('%inventory').erase_item(item)
 	refesh()
+	#dialog event
+	yield(get_tree(),"idle_frame")
+	if Profile.is_first_time_in_shop:
+		get_tree().paused = true
+		var dialog = Dialogic.start('shop')
+		yield(get_tree().create_timer(1),"timeout")
+		dialog.pause_mode = PAUSE_MODE_PROCESS
+		add_child(dialog)
+		dialog.connect('timeline_end',self,'_on_dialog_end',[dialog])
+		dialog.connect("dialogic_signal", self, "dialog_listener")
 
 func _on_shop_menu_popup_hide():
 	get_tree().get_nodes_in_group('player')[0].is_can_move = true
@@ -114,7 +136,6 @@ func _on_can_buy_item_list_item_selected(index):
 
 func _on_waing_item_list_item_selected(index):
 	$cancel_button.disabled = false
-
 
 func buy_item(index):
 	EffectManager.get_node("coins").play()
@@ -143,26 +164,33 @@ func _on_cancel_button_pressed():
 	cancle_buy_item($"%waing_item_list".get_selected_items()[0])
 
 func _on_sumit_button_pressed():
-	EffectManager.get_node("bong").play()
-	if not queue_item_dict.empty():
-		var shop_drop_box_instance
+	if not queue_item_dict.empty() and is_no_shop_drop_box:
+		EffectManager.get_node("bong").play()
+		is_no_shop_drop_box = false
 		var shop_drop_box_group = get_tree().get_nodes_in_group('shop_drop_box_group')[0]
-		if shop_drop_box_group.get_child_count() <=1:
-			shop_drop_box_instance = load('res://shop_drop_box/shop_drop_box.tscn').instance()
-			shop_drop_box_group.add_child(shop_drop_box_instance)
-		else:
-			shop_drop_box_instance = shop_drop_box_group.get_child(1)
+		var shop_drop_box_instance = load('res://shop_drop_box/shop_drop_box.tscn').instance()
+		shop_drop_box_group.add_child(shop_drop_box_instance)
 		var inventory = shop_drop_box_instance.get_node('%inventory')
 		for item in queue_item_dict:
 			for i in queue_item_dict[item]:
 				inventory.add_item(item)
 		queue_item_dict.clear()
-	
+		hide()
+		refesh()
+	else:
+		EffectManager.get_node("ui_cancel").play()
+
+
+func _on_sell_button_pressed():
+	EffectManager.get_node("bong").play()
+	print(sell_item_dict)
 	if not sell_item_dict.empty():
 		var totol_money = 0
 		for item in sell_item_dict:
 			totol_money = totol_money + item.sell_price*sell_item_dict[item]
 		get_node('/root/in_game').money = get_node('/root/in_game').money+totol_money
 		sell_item_dict.clear()
-	refesh()
-	hide()
+		refesh()
+		
+		
+

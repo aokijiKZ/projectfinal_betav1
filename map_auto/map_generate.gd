@@ -95,16 +95,28 @@ func generate_map():
 			is_in_no_gen_area = true
 		var is_already_has_obj = false
 		for c in obejct_group.get_children():
-			var pre_object_position = Vector2(clamp(current_position.x,1,map_size.x-2),clamp(current_position.y,1,map_size.y-2))
-			pre_object_position = Vector2(pre_object_position.x*16+8,pre_object_position.y*16+8)
-			if c.position == pre_object_position:
+			var c_p_m = ground_tile_map.world_to_map(c.global_position)
+#			var pre_object_position = Vector2(clamp(current_position.x,1,map_size.x-2),clamp(current_position.y,1,map_size.y-2))
+#			pre_object_position = Vector2(pre_object_position.x*16+8,pre_object_position.y*16+8)
+			if c_p_m == current_position:
 				is_already_has_obj = true
 		if (not is_already_has_obj) and (not is_in_no_gen_area):
 			#draw object
+			var v_randf = randf()
 			if randf() < 0.02: #draw tree
 				add_object("res://tree/tree.tscn",current_position)
 			elif randf() <0.01: #draw rock
 				add_object("res://rock/rock.tscn",current_position)
+			elif randf() <0.005:
+				add_object("res://map_auto/decorator/flower.tscn",current_position)
+			elif randf() <0.005:
+				add_object("res://map_auto/decorator/flower2.tscn",current_position)
+			elif randf() <0.005:
+				add_object("res://map_auto/decorator/grass.tscn",current_position)
+			elif randf() <0.005:
+				add_object("res://map_auto/decorator/rock_with_tree.tscn",current_position)
+			elif randf() <0.005:
+				add_object("res://map_auto/decorator/cactus.tscn",current_position)
 
 	ground_tile_map.update_bitmask_region()
 	water_tile_map.update_bitmask_region()

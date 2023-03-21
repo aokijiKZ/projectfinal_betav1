@@ -10,7 +10,9 @@ func _ready():
 func _on_start_button_pressed():
 	MusicManager.get_node('title_music').stop()
 	EffectManager.get_node("ui_confirm").play()
-	get_tree().change_scene("res://area_selection/area_selection.tscn")
+	var area_selection_instance = load("res://area_selection/area_selection.tscn").instance()
+	get_tree().get_root().add_child(area_selection_instance,true)
+	queue_free()
 	
 func _on_setting_button_pressed():
 	EffectManager.get_node("ui_confirm").play()

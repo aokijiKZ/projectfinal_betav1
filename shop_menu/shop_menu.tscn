@@ -335,16 +335,31 @@ custom_styles/normal = SubResource( 23 )
 disabled = true
 text = "ยกเลิก"
 
+[node name="sell_button" type="Button" parent="."]
+margin_left = 185.0
+margin_top = 83.0
+margin_right = 215.0
+margin_bottom = 96.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.219608, 1 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 23 )
+text = "ขายหมด"
+
 [connection signal="about_to_show" from="." to="." method="_on_shop_menu_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_shop_menu_popup_hide"]
 [connection signal="item_activated" from="can_buy_item_list" to="." method="_on_can_buy_item_list_item_activated"]
 [connection signal="item_selected" from="can_buy_item_list" to="." method="_on_can_buy_item_list_item_selected"]
 [connection signal="item_activated" from="waing_item_list" to="." method="_on_waing_item_list_item_activated"]
 [connection signal="item_selected" from="waing_item_list" to="." method="_on_waing_item_list_item_selected"]
-[connection signal="item_activated" from="wating_sell_item_list" to="." method="_on_can_buy_item_list_item_activated"]
 [connection signal="pressed" from="sumit_button" to="." method="_on_sumit_button_pressed"]
 [connection signal="timeout" from="delivery_timer" to="." method="_on_delivery_timer_timeout"]
 [connection signal="pressed" from="cancle_all_button" to="." method="_on_cancle_all_button_pressed"]
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="buy_button" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="cancel_button" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="sell_button" to="." method="_on_sell_button_pressed"]

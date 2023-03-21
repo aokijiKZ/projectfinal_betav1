@@ -4,6 +4,9 @@ export var item_dict := {}
 
 signal item_dict_changed()
 
+func _ready():
+	item_dict = item_dict.duplicate()
+
 #add item to dict 1 quantity
 func add_item(item):
 	if item in item_dict:
@@ -24,7 +27,9 @@ func remove_item(item):
 func merge_item_dict(dict):
 	for item in dict:
 		if item in item_dict:
-			item_dict[item] += dict[item]
+			print(dict[item])
+			item_dict[item] = item_dict[item] + dict[item]
+			print(dict[item])
 		else:
 			item_dict[item] = dict[item]
 	emit_signal("item_dict_changed")

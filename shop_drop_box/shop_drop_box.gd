@@ -35,8 +35,10 @@ func refesh_hight_list():
 
 func _on_player_area_mask_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed('click') and player_in_area!=null:
+		$player_area_mask/collision_shape_2d.disabled = true
 		EffectManager.get_node('pick_up_item').play()
 		var player_inventory = get_tree().get_nodes_in_group('player_inventory')[0]
+		print(player_inventory.item_dict)
 		player_inventory.merge_item_dict(get_node("%inventory").get_item_dict())
 		hide()
 		get_node("player_area_mask/collision_shape_2d").disabled = true
@@ -48,5 +50,7 @@ func _on_player_area_mask_input_event(viewport, event, shape_idx):
 			get_tree().get_root().add_child(floating_item_instance)
 			floating_item_instance.global_position = global_position
 			yield(get_tree().create_timer(0.1),"timeout")
+		get_node("/root/in_game/ui/player_inventory_list/player_inventory_list").open_player_inv()
+		get_node("/root/in_game/ui/shop_menu").is_no_shop_drop_box = true
 		queue_free()
-		get_node("/root/in_game/ui/player_inventory_list/animation_player").play('show')			
+				

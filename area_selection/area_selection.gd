@@ -64,12 +64,33 @@ func _ready():
 	$oxygen_progress_bar/total_oxygen.text	= 'ออกซิเจน %d/%d'%[total_oxygen,total_target_oxygen]
 	$oxygen_progress_bar.max_value = total_target_oxygen
 	$oxygen_progress_bar.value = total_oxygen
+	
+	#dialog event
+	if Profile.is_first_time_in_area_selection:
+		print(Profile.is_first_time_in_area_selection)
+		$input_block.visible = true
+		var dialog = Dialogic.start('area_selection')
+		yield(get_tree().create_timer(1),"timeout")
+		add_child(dialog)
+		dialog.connect('timeline_end',self,'_on_dialog_end',[dialog])
+		dialog.connect("dialogic_signal", self, "dialog_listener")
+		
+func _on_dialog_end(timeline_name,dialog):
+	Profile.is_first_time_in_area_selection = false
+	$input_block.visible = false
+	dialog.queue_free()
 
+func dialog_listener(string):
+	match string:
+		"somthing":
+			pass
 
 func _on_level_item_activated(index):
 	var no_continent = get_node('%map_tab_container').current_tab
 	var item_list = get_node('%map_tab_container').get_child(no_continent)
-	var no_area = item_list.get_selected_items()[0]
+	if item_list.get_selected_items().size() <=0:
+		return
+	var no_area = item_list.get_selected_items()[0] 
 	get_node('%area_detail').no_continent = no_continent
 	get_node('%area_detail').no_area = no_area
 	get_node('%area_detail').popup_centered()

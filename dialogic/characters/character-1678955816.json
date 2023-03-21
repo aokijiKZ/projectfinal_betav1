@@ -9,13 +9,13 @@
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 125,
-	"offset_y": 0,
+	"offset_y": -35,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://character_img/officer.png"
+			"path": "res://dialogic_img/ผู้ช่วยในภารกิจ.png"
 		}
 	],
-	"scale": 35,
+	"scale": 100,
 	"theme": ""
 }

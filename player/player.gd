@@ -93,7 +93,6 @@ func refesh_energy_bar():
 
 func refesh_ingame_player_energy_bar_bar():
 	$"../../ui/player_energy_bar".value = energy/float(max_energy) * (100)
-	print_debug($"../../ui/player_energy_bar".value)
 
 func refesh_ingame_player_energy_label():
 	$"../../ui/player_energy_label".text = '%s/%s'%[energy,max_energy]
