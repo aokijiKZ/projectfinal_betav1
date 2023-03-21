@@ -1,37 +1,19 @@
 {
 	"events": [
 		{
-			"animation": "[Default]",
-			"animation_length": 0,
-			"change_mirror_portrait": false,
-			"change_z_index": false,
-			"character": "character-1678955808.json",
-			"event_id": "dialogic_002",
-			"mirror_portrait": false,
-			"portrait": "Default",
-			"portrait_definition": "",
-			"position": {
-				"0": false,
-				"1": false,
-				"2": true,
-				"3": false,
-				"4": false
-			},
-			"type": 0,
-			"z_index": 0
+			"background": "res://dialogic_img/bg_intro_complete.png",
+			"event_id": "dialogic_021"
 		},
 		{
-			"character": "character-1678955808.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "พวกเราได้ทำภารกิจของเราสำเร็จแล้ว! พวกเราสามารถเปลี่ยนดาวที่เราค้นพบให้เป็นที่อยู่อาศัยได้ \nนายได้ช่วยพวกเราทุกคนไว้"
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1679430446.cfg"
 		},
 		{
 			"animation": "[Default]",
 			"animation_length": 0,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
-			"character": "character-1675240393.json",
+			"character": "character-1678955808.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
 			"portrait": "Default",
@@ -47,41 +29,123 @@
 			"z_index": 0
 		},
 		{
+			"character": "character-1678955808.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ในที่สุด คุณก็ทำภารกิจช่วยมนุษยชาติได้สำเร็จ ยอดเยี่ยมมากอาธาเนียล!\nพวกเราองค์กร Hope ไม่สิ... พวกเราทุกคนบนโลกเป็นหนคุณซะเเล้ว"
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1679430474.cfg"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": true,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
 			"character": "character-1675240393.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "หวังว่ามันจะช่วยพวกเรา โดยที่เราจะไม่ทำลายมัน"
+			"text": "มันเป็นสิ่งที่พวกเราต้องช่วยกันอยู่เเล้วครับ"
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1679430446.cfg"
 		},
 		{
 			"character": "character-1678955808.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "แน่นอน นาธาเนียล พวกเราในองค์กรโฮปจะสนับสนุนคุณในทุกๆ ขั้นตอน จงเชื่อมั่นในวิสัยทัศน์ของคุณ และร่วมมือกันสร้างอนาคตที่ดีขึ้นให้กับมนุษยชาติ"
+			"text": "เพื่อเป็นเกียรติเเก่คุณ พวกเราได้ตั้งชื่อของโลกใหม่ไว้เเล้ว นั่นคือ \"นาธอส\""
 		},
 		{
 			"event_id": "dialogic_024",
-			"set_theme": "theme-1678958267.cfg"
+			"set_theme": "theme-1679430474.cfg"
+		},
+		{
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "เป็นเกียรติมากเลยครับ!"
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1679430446.cfg"
+		},
+		{
+			"character": "character-1678955808.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ครั้งนี้พวกเราทุกคนบนโลก คงได้ตะหนักถึงภัยของธรรมชาติหรือปัญหาด้านสิ่งเเวดล้อมเเล้ว\nเพราะไม่ใช่ว่าโอกาสที่ธรรมชาติให้จะมาหาเราเสมอ เรื่องใกล้ตัวที่เรามองข้ามอาจทำให้เกิดภัยที่รอวันระเบิดออกมา\nสิ่งที่สูญเสียไปเเล้ว ไม่สามารถเอากลับมาคืนได้\nเอาล่ะ พวกเราจะรีบส่งกำลังเเละอุปกรณ์ไปเสริมทันที We are Hope! ขอบคุณนายมากจริงๆ"
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1679430474.cfg"
+		},
+		{
+			"character": "character-1675240393.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "We are Hope! ขอบคุณเช่นกันครับ"
+		},
+		{
+			"background": "",
+			"event_id": "dialogic_021"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "[All]",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 1,
+			"z_index": 0
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1679426944.cfg"
 		},
 		{
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "นาธาเนียล ได้ช่วยสร้างโลกใบใหม่ และ หวังว่าจะไม่มีการทำลายโลกใหม่ที่เขาช่วยสร้างขึ้นมา "
+			"text": "10 ปีผ่านไป..."
 		},
 		{
 			"event_id": "dialogic_023",
 			"hide_dialogbox": true,
-			"wait_seconds": 1
+			"wait_seconds": 2
 		},
 		{
-			"event_id": "dialogic_024",
-			"set_theme": "default-theme.cfg"
-		},
-		{
-			"character": "",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "เกมจบแล้ว คุณยังสามารถกลับไปเล่นด่านต่างๆได้ ขอให้สนุก"
+			"change_timeline": "timeline-1679417427.json",
+			"event_id": "dialogic_020"
 		}
 	],
 	"metadata": {

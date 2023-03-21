@@ -1,0 +1,236 @@
+{
+	"events": [
+		{
+			"background": "res://intro_img/IMG_5364.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1679418446.cfg"
+		},
+		{
+			"block_input": true,
+			"event_id": "dialogic_050",
+			"wait_time": 0
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "10 ปีผ่านไป โลกใหม่ \"นาธอส\" ก็สามารถฟื้นฟูสิ่งก่อสร้างต่างๆได้สมบูรณ์ ระเอียดจนที่ว่าวิเคราะห์วัสดุที่ใช้มีผลกระทบต่อสิ่งเเวดล้อมมากเเค่ไหน?"
+		},
+		{
+			"background": "res://intro_img/IMG_5365.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5366.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5367.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5368.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5369.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5370.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "มีทั้งพื้นที่สำหรับทิ้งขยะโดยเฉพาะ ระบบพลังงานที่อนุรักษ์สิ่งเเวดล้อม เเละ มีการให้ความรู้เกี่ยวกับสิ่งเเวดล้อมตั้งเเต่เด็ก ฯลฯ"
+		},
+		{
+			"background": "res://intro_img/IMG_5371.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5372.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5373.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ส่วนผู้คนที่ผ่านเหตุการณ์นี้มา ก็ได้ตะหนักถึงปัญหาด้านสิ่งเเวดล้อม ทุกคนบนโลกใหม่ต่างรับผิดชอบต่อสังคม"
+		},
+		{
+			"background": "res://intro_img/IMG_5374.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5375.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5376.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "res://intro_img/IMG_5377.PNG",
+			"event_id": "dialogic_021",
+			"fade_duration": 2
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "จำไว้เสมอว่า \"โอกาสไม่ได้มีมาตลอด...\""
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": false,
+			"wait_seconds": 2
+		},
+		{
+			"background": "",
+			"event_id": "dialogic_021"
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": true,
+			"wait_seconds": 4
+		},
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1679426944.cfg"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ไม่จำเป็นที่ต้องรอคนอื่น เพียงเริ่มที่ตัวเราเอง"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "จะเป็นเรื่องใกล้ตัวหรือเเค่เราคิด มันก็สำเร็จไปเเล้ว 50% ที่เหลือเเค่เราลงมือทำก็สามารถเติมเต็มให้ 100% ได้"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "เพียง 1 เรื่อง เริ่มที่ตัวเองนับ 1 ครั้ง คนรอบข้างก็เริ่มที่ 1 ครั้ง พวกเรากว่าหลายพันล้านคน นับหลายพันล้านครั้ง "
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "เเค่ 1 ครั้ง ก็สามารถช่วยให้โลกของเราน่าอยู่ยิ่งขึ้นได้เเล้ว"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ถ้าไม่เริ่มตอนนี้ จะเริ่มตอนไหนล่ะ?....."
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": true,
+			"wait_seconds": 1
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ขอบคุณ."
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": true,
+			"wait_seconds": 3
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1679417427.json",
+		"name": "complete_game2"
+	}
+}
